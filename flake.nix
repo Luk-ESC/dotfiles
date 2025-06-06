@@ -65,7 +65,7 @@
         }: {
           imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")];
           networking.wireless.enable = false;
-          isoImage.squashfsCompression = "lz4";
+          isoImage.squashfsCompression = "zstd";
 
           isoImage.contents = [
             {
