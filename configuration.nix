@@ -19,6 +19,19 @@
   };
   services.desktopManager.plasma6.enable = true;
 
+  systemd.services."set-etc-nixos-perms" = {
+    description = "Set /etc/nixos permissions for wheel group";
+    wantedBy = ["multi-user.target"];
+    after = ["local-fs.target"];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "set-etc-nixos-perms" ''
+        chgrp -R wheel /etc/nixos
+        chmod -R 770 /etc/nixos
+      '';
+    };
+  };
+
   virtualisation = let
     options = {
       virtualisation.memorySize = 8192;
