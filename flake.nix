@@ -20,6 +20,10 @@
     };
 
     impermanence.url = "github:nix-community/impermanence";
+    panoptes = {
+      url = "github:Luk-ESC/panoptes";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -29,6 +33,7 @@
     disko,
     impermanence,
     plasma-manager,
+    panoptes,
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -52,6 +57,11 @@
 
         ./persist/persist.nix
         ./persist/conf.nix
+
+        panoptes.nixosModules.x86_64-linux.panoptes-service
+        {
+          environment.systemPackages = [(panoptes.defaultPackage.x86_64-linux)];
+        }
       ];
     };
 
