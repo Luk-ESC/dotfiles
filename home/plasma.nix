@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.plasma = {
     enable = true;
     overrideConfig = true;
@@ -11,20 +11,15 @@
       };
     };
 
-    input.keyboard.layouts = [
-      {
-        layout = "at";
-        variant = "nodeadkeys";
-      }
-    ];
+    input.keyboard.layouts = [{
+      layout = "at";
+      variant = "nodeadkeys";
+    }];
 
-    shortcuts = {
-    };
-    configFile = {
-    };
-    dataFile = {
-    };
+    shortcuts = { };
+    configFile = { };
+    dataFile = { };
   };
 
-  home.packages = with pkgs; [papirus-icon-theme];
+  home.packages = with pkgs; [ papirus-icon-theme ];
 }

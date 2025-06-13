@@ -1,17 +1,9 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  home.packages = with pkgs; [
-    nil
-    nixd
-    alejandra
-  ];
+{ config, pkgs, ... }: {
+  home.packages = with pkgs; [ nil nixd alejandra ];
 
   programs.zed-editor = {
     enable = true;
-    extensions = ["nix" "toml"];
+    extensions = [ "nix" "toml" ];
 
     userSettings = {
       inlay_hints.enabled = true;
@@ -26,14 +18,13 @@
       terminal.env.TERM = "alacritty";
 
       lsp = {
-        nil = {
-          initialization_options.formatting.command = ["alejandra"];
-        };
+        nil = { initialization_options.formatting.command = [ "alejandra" ]; };
         nixd = {
           initialization_options = {
             options = {
               home-manager = {
-                expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.nixos.options.home-manager.users.type.getSubOptions []";
+                expr =
+                  "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.nixos.options.home-manager.users.type.getSubOptions []";
               };
             };
           };
