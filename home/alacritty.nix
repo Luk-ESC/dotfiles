@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -18,5 +14,5 @@
       };
     };
   };
-  home.packages = [pkgs.nerd-fonts.meslo-lg];
+  home.packages = [ pkgs.nerd-fonts.meslo-lg ];
 }

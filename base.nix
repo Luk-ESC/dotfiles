@@ -1,15 +1,10 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{ config, lib, pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix # TODO: Does this make sense here??
   ];
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -24,14 +19,12 @@
           id = "L Diablo";
           type = "wifi";
         };
-        ipv4 = {
-          method = "auto";
-        };
+        ipv4 = { method = "auto"; };
         ipv6 = {
           addr-gen-mode = "default";
           method = "auto";
         };
-        proxy = {};
+        proxy = { };
         wifi = {
           mode = "infrastructure";
           ssid = "L Diablo";
@@ -75,17 +68,13 @@
   users.users.eschb = {
     isNormalUser = true;
     initialPassword = "lol";
-    extraGroups = ["wheel" "video"]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [];
+    extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [ ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    nano
-    git
-    wget
-  ];
+  environment.systemPackages = with pkgs; [ nano git wget ];
 
   environment.variables.EDITOR = "nano";
 

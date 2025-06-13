@@ -1,14 +1,5 @@
-{
-  config,
-  lib,
-  options,
-  pkgs,
-  ...
-}: {
-  imports = [
-    ./base.nix
-    ./persist/persist.nix
-  ];
+{ config, lib, options, pkgs, ... }: {
+  imports = [ ./base.nix ./persist/persist.nix ];
 
   networking.hostName = lib.mkForce "nixos";
 
@@ -21,8 +12,8 @@
 
   systemd.services."set-etc-nixos-perms" = {
     description = "Set /etc/nixos permissions for wheel group";
-    wantedBy = ["multi-user.target"];
-    after = ["local-fs.target"];
+    wantedBy = [ "multi-user.target" ];
+    after = [ "local-fs.target" ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = pkgs.writeShellScript "set-etc-nixos-perms" ''
@@ -57,8 +48,7 @@
       dolphin-plugins
       ffmpegthumbs
       xwaylandvideobridge
-    ]
-    ++ (lib.optionals (!(options.virtualisation ? qemu)) [konsole]);
+    ] ++ (lib.optionals (!(options.virtualisation ? qemu)) [ konsole ]);
 
   services.speechd.enable = lib.mkForce false;
 
@@ -74,17 +64,13 @@
   users.users.eschb = {
     isNormalUser = true;
     initialPassword = "lol";
-    extraGroups = ["wheel" "video"]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [];
+    extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [ ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    nano
-    git
-    wget
-  ];
+  environment.systemPackages = with pkgs; [ nano git wget ];
 
   environment.variables.EDITOR = "nano";
 }

@@ -1,9 +1,12 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  imports = [./zed.nix ./alacritty.nix ./zsh.nix ./starship.nix ./cursor.nix ./plasma.nix];
+{ config, pkgs, ... }: {
+  imports = [
+    ./zed.nix
+    ./alacritty.nix
+    ./zsh.nix
+    ./starship.nix
+    ./cursor.nix
+    ./plasma.nix
+  ];
 
   home.username = "eschb";
   home.homeDirectory = "/home/eschb";

@@ -26,79 +26,66 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    disko,
-    impermanence,
-    plasma-manager,
-    panoptes,
-    ...
-  } @ inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
-        ./configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.eschb = ./home;
-          home-manager.sharedModules = [plasma-manager.homeManagerModules.plasma-manager];
-        }
-        disko.nixosModules.disko
-        ./disko/disko-config.nix
+  outputs = { self, nixpkgs, home-manager, disko, impermanence, plasma-manager
+    , panoptes, ... }@inputs: {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          # Import the previous configuration.nix we used,
+          # so the old configuration file still takes effect
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.eschb = ./home;
+            home-manager.sharedModules =
+              [ plasma-manager.homeManagerModules.plasma-manager ];
+          }
+          disko.nixosModules.disko
+          ./disko/disko-config.nix
 
-        impermanence.nixosModules.impermanence
-        ./impermanence.nix
+          impermanence.nixosModules.impermanence
+          ./impermanence.nix
 
-        ./persist/persist.nix
-        ./persist/conf.nix
+          ./persist/persist.nix
+          ./persist/conf.nix
 
-        panoptes.nixosModules.x86_64-linux.panoptes-service
-        {
-          environment.systemPackages = [(panoptes.defaultPackage.x86_64-linux)];
-        }
-      ];
-    };
+          panoptes.nixosModules.x86_64-linux.panoptes-service
+          {
+            environment.systemPackages =
+              [ (panoptes.defaultPackage.x86_64-linux) ];
+          }
+        ];
+      };
 
-    nixosConfigurations.base = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ({
-          pkgs,
-          modulesPath,
-          ...
-        }: {
-          imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")];
-          networking.wireless.enable = false;
-          isoImage.squashfsCompression = "zstd";
+      nixosConfigurations.base = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ({ pkgs, modulesPath, ... }: {
+            imports = [
+              (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+            ];
+            networking.wireless.enable = false;
+            isoImage.squashfsCompression = "zstd";
 
-          isoImage.contents = [
-            {
+            isoImage.contents = [{
               source = self;
               target = "/source";
-            }
-          ];
+            }];
 
-          isoImage.storeContents = [
-            self.nixosConfigurations.nixos.config.system.build.toplevel
-          ];
+            isoImage.storeContents =
+              [ self.nixosConfigurations.nixos.config.system.build.toplevel ];
 
-          environment.systemPackages = [
-            disko.packages.x86_64-linux.disko-install
+            environment.systemPackages = [
+              disko.packages.x86_64-linux.disko-install
 
-            (pkgs.writeShellScriptBin
-              "install-with-disko"
-              (builtins.readFile
-                ./scripts/install-with-disko.sh))
-          ];
-        })
-        ./base.nix
-      ];
+              (pkgs.writeShellScriptBin "install-with-disko"
+                (builtins.readFile ./scripts/install-with-disko.sh))
+            ];
+          })
+          ./base.nix
+        ];
+      };
     };
-  };
 }
