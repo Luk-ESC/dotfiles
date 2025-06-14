@@ -1,1 +1,1 @@
-nix run -L '.#nixosConfigurations.nixos.config.system.build.vmWithDisko'
+nix run -L 'path:.#nixosConfigurations.nixos.config.system.build.vmWithDisko'
