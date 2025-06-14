@@ -6,6 +6,8 @@
     ./starship.nix
     ./cursor.nix
     ./plasma.nix
+    ./git.nix
+    ./ssh.nix
   ];
 
   home.username = "eschb";
