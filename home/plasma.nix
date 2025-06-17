@@ -17,7 +17,9 @@
     }];
 
     shortcuts = { };
-    configFile = { };
+    configFile = {
+      "baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
+    };
     dataFile = { };
   };
 
