@@ -14,6 +14,7 @@
           signingKey = "D0C8FD2AB19DAAE6E658C40E780881B3A960B391";
         };
         commit.gpgSign = true;
+        init.defaultBranch = "main";
       };
     }];
   };
