@@ -65,7 +65,15 @@
     isNormalUser = true;
     initialPassword = "lol";
     extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ ];
+    packages = with pkgs; [
+      (vesktop.overrideAttrs (finalAttrs: oldAttrs: {
+        postUnpack = ''
+          cp ${./custom_vesktop.gif} $sourceRoot/static/shiggy.gif
+
+          ${oldAttrs.postUnpack or ""}
+        '';
+      }))
+    ];
   };
 
   # List packages installed in system profile. To search, run:
