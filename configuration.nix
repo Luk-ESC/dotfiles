@@ -3,12 +3,10 @@
 
   networking.hostName = lib.mkForce "nixos";
 
-  persist.users.sddm = "/var/lib/sddm";
-  services.displayManager = {
-    sddm.enable = true;
-    sddm.wayland.enable = true;
-  };
-  services.desktopManager.plasma6.enable = true;
+  services.getty.autologinUser = "eschb";
+  programs.hyprland.enable = true;
+  programs.hyprland.withUWSM  = true;
+
 
   systemd.services."set-etc-nixos-perms" = {
     description = "Set /etc/nixos permissions for wheel group";
@@ -33,22 +31,6 @@
     vmVariant = options;
     vmVariantWithDisko = options;
   };
-
-  environment.plasma6.excludePackages = with pkgs.kdePackages;
-    [
-      ark
-      elisa
-      plasma-browser-integration
-      gwenview
-      okular
-      kate
-      khelpcenter
-      dolphin
-      baloo-widgets
-      dolphin-plugins
-      ffmpegthumbs
-      xwaylandvideobridge
-    ] ++ (lib.optionals (!(options.virtualisation ? qemu)) [ konsole ]);
 
   services.speechd.enable = lib.mkForce false;
 
