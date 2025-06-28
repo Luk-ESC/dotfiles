@@ -13,12 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
     impermanence.url = "github:nix-community/impermanence";
     panoptes = {
       url = "github:Luk-ESC/panoptes";
@@ -26,8 +20,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, disko, impermanence, plasma-manager
-    , panoptes, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, disko, impermanence, panoptes, ... }@inputs: {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -39,8 +32,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.eschb = ./home;
-            home-manager.sharedModules =
-              [ plasma-manager.homeManagerModules.plasma-manager ];
+            home-manager.sharedModules = [  ];
           }
           disko.nixosModules.disko
           ./disko/disko-config.nix

@@ -5,7 +5,7 @@
     ./zsh.nix
     ./starship.nix
     ./cursor.nix
-    ./plasma.nix
+    ./hyprland.nix
     ./git.nix
     ./ssh.nix
   ];
