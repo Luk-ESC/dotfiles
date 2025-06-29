@@ -32,6 +32,9 @@
 
     # ZSH
     ".zcompdump"
+
+    # HYPRLAND
+    ".local/share/hyprland/lastVersion"
   ];
 
   persist.location.logs.contents = [
