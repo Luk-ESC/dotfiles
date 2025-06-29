@@ -1,9 +1,9 @@
 { config, pkgs, ... }: {
   home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
+    package = pkgs.rose-pine-hyprcursor;
+    name = "rose-pine-hyprcursor";
     size = 24;
     gtk.enable = true;
-    x11.enable = true;
+    hyprcursor.enable = true;
   };
 }
