@@ -13,6 +13,9 @@
   networking.hostName = "nixos_base";
   networking.networkmanager = {
     enable = true;
+    # Bloat that is only needed for vpns, pulls in webkit2gtk for some reason
+    # FIXME(2025.11) enableDefaultPlugins = true;
+    plugins = lib.mkForce [];
     ensureProfiles.profiles = {
       "L Diablo" = {
         connection = {
