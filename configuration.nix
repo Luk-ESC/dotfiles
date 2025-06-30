@@ -5,21 +5,7 @@
 
   services.getty.autologinUser = "eschb";
   programs.hyprland.enable = true;
-  programs.hyprland.withUWSM  = true;
-
-
-  systemd.services."set-etc-nixos-perms" = {
-    description = "Set /etc/nixos permissions for wheel group";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "local-fs.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = pkgs.writeShellScript "set-etc-nixos-perms" ''
-        chgrp -R wheel /etc/nixos
-        chmod -R 770 /etc/nixos
-      '';
-    };
-  };
+  programs.hyprland.withUWSM = true;
 
   virtualisation = let
     options = {
@@ -47,15 +33,16 @@
     isNormalUser = true;
     initialPassword = "lol";
     extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      (vesktop.overrideAttrs (finalAttrs: oldAttrs: {
-        postUnpack = ''
-          cp ${./custom_vesktop.gif} $sourceRoot/static/shiggy.gif
+    packages = with pkgs;
+      [
+        (vesktop.overrideAttrs (finalAttrs: oldAttrs: {
+          postUnpack = ''
+            cp ${./custom_vesktop.gif} $sourceRoot/static/shiggy.gif
 
-          ${oldAttrs.postUnpack or ""}
-        '';
-      }))
-    ];
+            ${oldAttrs.postUnpack or ""}
+          '';
+        }))
+      ];
   };
 
   # List packages installed in system profile. To search, run:
