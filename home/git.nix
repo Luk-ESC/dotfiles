@@ -15,7 +15,6 @@
         };
         commit.gpgSign = true;
         init.defaultBranch = "main";
-        safe.directory = "/etc/nixos";
       };
     }];
   };

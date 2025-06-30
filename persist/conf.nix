@@ -4,7 +4,6 @@
   persist.location.data.contents = [
     # System
     "/var/lib/nixos/"
-    "/etc/nixos/"
     "/etc/machine-id"
 
     # User data
@@ -13,6 +12,9 @@
     "Documents/"
     "Videos/"
 
+    # NixOS config
+    "nixcfg/"
+
     # Keys (TODO: Fix permissions)
     ".gnupg/"
     ".ssh/"
@@ -20,7 +22,6 @@
 
     # ZEDITOR:
     ".local/share/zed/"
-
   ];
 
   persist.location.caches.contents = [
