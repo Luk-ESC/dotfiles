@@ -1,5 +1,4 @@
-{ config, pkgs, ... }: {
-  home.packages = with pkgs; [ nil nixd alejandra ];
+{ config, pkgs, lib, ... }: {
 
   programs.zed-editor = {
     enable = true;
@@ -18,8 +17,13 @@
       terminal.env.TERM = "alacritty";
 
       lsp = {
-        nil = { initialization_options.formatting.command = [ "alejandra" ]; };
+        nil = {
+          binary.path = lib.getExe pkgs.nil;
+          initialization_options.formatting.command =
+            [ (lib.getExe pkgs.nixfmt-classic) ];
+        };
         nixd = {
+          binary.path = lib.getExe pkgs.nixd;
           initialization_options = {
             options = {
               home-manager = {
