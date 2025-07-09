@@ -18,9 +18,15 @@
       url = "github:Luk-ESC/panoptes";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, disko, impermanence, panoptes, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, disko, impermanence, panoptes, stylix
+    , ... }@inputs: {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -29,10 +35,9 @@
           ./configuration.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.eschb = ./home;
-            home-manager.sharedModules = [  ];
+            home-manager.sharedModules = [ stylix.homeModules.stylix ];
           }
           disko.nixosModules.disko
           ./disko/disko-config.nix
