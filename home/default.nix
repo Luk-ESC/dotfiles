@@ -6,6 +6,7 @@
     ./starship.nix
     ./cursor.nix
     ./hyprland.nix
+    ./hyprlock.nix
     ./git.nix
     ./ssh.nix
     ./stylix.nix
