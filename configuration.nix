@@ -7,6 +7,8 @@
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
 
+  security.pam.services.hyprlock = {};
+
   virtualisation = let
     options = {
       virtualisation.memorySize = 8192;
