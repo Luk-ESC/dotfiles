@@ -8,6 +8,7 @@
     ./hyprland.nix
     ./git.nix
     ./ssh.nix
+    ./stylix.nix
   ];
 
   home.username = "eschb";
