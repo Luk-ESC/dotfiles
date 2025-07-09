@@ -15,7 +15,7 @@
           ]) 9));
       input = {
         kb_layout = "de";
-        touchpad = { natural_scroll = false; };
+        touchpad.natural_scroll = true;
       };
     };
   };
