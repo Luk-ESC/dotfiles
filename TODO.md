@@ -44,6 +44,3 @@ persist.nix: Make an entry optionally tied to a package, if that package is not 
 hosts/: Hosts directory with hardware configs
 assets/: Assets directory for images and gifs
 Modules instead of enabling everything by default
-
-## Bugs
-Fix Hyprland crashing on startup on real hardware
