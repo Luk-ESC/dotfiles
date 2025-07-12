@@ -61,6 +61,7 @@
     profileExtra = ''
       # Start hyprland from tty
       if uwsm check may-start; then
+          udevadm settle
           exec uwsm start hyprland-uwsm.desktop
       fi
     '';
