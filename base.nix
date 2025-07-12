@@ -15,7 +15,7 @@
     enable = true;
     # Bloat that is only needed for vpns, pulls in webkit2gtk for some reason
     # FIXME(2025.11) enableDefaultPlugins = true;
-    plugins = lib.mkForce [];
+    plugins = lib.mkForce [ ];
     ensureProfiles.profiles = {
       "L Diablo" = {
         connection = {
@@ -83,9 +83,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Disable the firewall altogether.
-  networking.firewall.enable = false;
 
   system.stateVersion = "25.05"; # Dont change idiot
 }
