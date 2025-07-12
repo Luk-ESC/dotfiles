@@ -39,7 +39,7 @@
       [
         (vesktop.overrideAttrs (finalAttrs: oldAttrs: {
           postUnpack = ''
-            cp ${./custom_vesktop.gif} $sourceRoot/static/shiggy.gif
+            cp ${./assets/custom_vesktop.gif} $sourceRoot/static/shiggy.gif
 
             ${oldAttrs.postUnpack or ""}
           '';
