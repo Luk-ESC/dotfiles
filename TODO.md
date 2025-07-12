@@ -1,0 +1,49 @@
+# TODO
+## Applications
+- Firefox
+- Binary Ninja
+- Burp Suite
+- Cheese
+- Datagrip
+- Dbeaver
+- Baobab
+- Geogebra
+- Google Chrome
+- Gimp
+- Heaptrack
+- Hotspot
+- Hyprlock
+- JD-GUI
+- kdeconnect
+- Libreoffice
+- Lutris
+- mpv
+- Mysql workbench
+- Network Miner
+- OBS
+- Obsidian
+- Packet Tracer
+- Popsicle
+- Postman
+- Prismlauncher
+- Pycharm
+- qFlipper
+- Rider
+- Steam
+- Teams for Linux
+- WLC
+- Warp
+- Webstorm
+- Wireshark
+
+## Special
+Rewrite stylix to use Material You instead of Base16 colors
+
+## Meta
+persist.nix: Make an entry optionally tied to a package, if that package is not installed, output an error
+hosts/: Hosts directory with hardware configs
+assets/: Assets directory for images and gifs
+Modules instead of enabling everything by default
+
+## Bugs
+Fix Hyprland crashing on startup on real hardware
