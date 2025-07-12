@@ -3,7 +3,7 @@
     enable = true;
     systemd.enable = false;
     settings = {
-      "$mod" = "CTRL_SHIFT";
+      "$mod" = "SUPER";
       bind = [
         "$mod, Q, exec, alacritty"
         "$mod, C, killactive"
@@ -32,13 +32,9 @@
         rounding = 10;
 
         blur = {
-          enable = true;
           size = 3;
           passes = 1;
         };
-        drop_shadow = "yes";
-        shadow_range = 4;
-        shadow_render_power = 3;
       };
 
       animations = {
