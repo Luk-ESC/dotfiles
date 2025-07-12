@@ -5,7 +5,6 @@
 - Cheese
 - Datagrip
 - Dbeaver
-- Baobab
 - Geogebra
 - Ghidra
 - Google Chrome

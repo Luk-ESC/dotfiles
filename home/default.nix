@@ -3,6 +3,7 @@
     ./zed.nix
     ./alacritty.nix
     ./binja.nix
+    ./baobab.nix
     ./zsh.nix
     ./starship.nix
     ./cursor.nix
