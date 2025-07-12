@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
@@ -53,6 +53,9 @@
       };
     };
   };
+
+  home.file."${config.xdg.configHome}/uwsm/env".text =
+    "export QT_QPA_PLATFORM=wayland";
 
   programs.bash = {
     enable = true;
