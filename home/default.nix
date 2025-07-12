@@ -2,6 +2,7 @@
   imports = [
     ./zed.nix
     ./alacritty.nix
+    ./binja.nix
     ./zsh.nix
     ./starship.nix
     ./cursor.nix
