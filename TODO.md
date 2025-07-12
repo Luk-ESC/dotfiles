@@ -1,13 +1,13 @@
 # TODO
 ## Applications
 - Firefox
-- Binary Ninja
 - Burp Suite
 - Cheese
 - Datagrip
 - Dbeaver
 - Baobab
 - Geogebra
+- Ghidra
 - Google Chrome
 - Gimp
 - Heaptrack
