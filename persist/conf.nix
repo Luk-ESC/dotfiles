@@ -36,6 +36,9 @@
 
     # HYPRLAND
     ".local/share/hyprland/lastVersion"
+
+    # sudo: saves first time using sudo
+    "/var/db/sudo/lectured/"
   ];
 
   persist.location.logs.contents = [
