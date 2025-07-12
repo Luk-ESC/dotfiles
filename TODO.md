@@ -42,5 +42,4 @@ Rewrite stylix to use Material You instead of Base16 colors
 ## Meta
 persist.nix: Make an entry optionally tied to a package, if that package is not installed, output an error
 hosts/: Hosts directory with hardware configs
-assets/: Assets directory for images and gifs
 Modules instead of enabling everything by default
