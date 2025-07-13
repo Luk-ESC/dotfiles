@@ -24,7 +24,7 @@
     '';
 
     shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake path:/home/eschb/nixcfg";
+      nrs = "sudo nixos-rebuild switch --flake /home/eschb/nixcfg";
       ls = "ls --color=auto";
       reload = "source ~/.zshrc; rehash";
       m = "${
