@@ -22,6 +22,10 @@
 
     # ZEDITOR:
     ".local/share/zed/"
+
+    # Binary ninja:
+    ".config/Vector 35/Binary Ninja.conf"
+    ".binaryninja/"
   ];
 
   persist.location.caches.contents = [
