@@ -10,6 +10,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  documentation = {
+    enable = false;
+    doc.enable = false;
+    info.enable = false;
+    nixos.enable = false;
+  };
+
   networking.hostName = "nixos_base";
   networking.networkmanager = {
     enable = true;
