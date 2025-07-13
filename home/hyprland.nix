@@ -7,6 +7,7 @@
       bind = [
         "$mod, Q, exec, alacritty"
         "$mod, C, killactive"
+        "$mod, E, exec, fuzzel"
       ] ++ (
         # workspaces
         # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
@@ -53,6 +54,8 @@
       };
     };
   };
+
+  programs.fuzzel.enable = true;
 
   home.file."${config.xdg.configHome}/uwsm/env".text =
     "export QT_QPA_PLATFORM=wayland";
