@@ -26,6 +26,9 @@
     # Binary ninja:
     ".config/Vector 35/Binary Ninja.conf"
     ".binaryninja/"
+
+    # Firefox
+    ".mozilla/"
   ];
 
   persist.location.caches.contents = [
