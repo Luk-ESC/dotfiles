@@ -29,6 +29,10 @@
 
     # Firefox
     ".mozilla/"
+
+    # GeoGebra
+    ".pki/"
+    ".config/GeoGebra/"
   ];
 
   persist.location.caches.contents = [

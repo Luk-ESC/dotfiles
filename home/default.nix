@@ -10,6 +10,7 @@
     ./firefox.nix
     ./hyprland.nix
     ./hyprlock.nix
+    ./geogebra.nix
     ./git.nix
     ./ssh.nix
     ./stylix.nix
