@@ -4,7 +4,6 @@
 - Cheese
 - Datagrip
 - Dbeaver
-- Geogebra
 - Ghidra
 - Google Chrome
 - Gimp
