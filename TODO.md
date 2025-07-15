@@ -1,6 +1,5 @@
 # TODO
 ## Applications
-- Firefox
 - Burp Suite
 - Cheese
 - Datagrip

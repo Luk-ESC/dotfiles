@@ -7,6 +7,7 @@
     ./zsh.nix
     ./starship.nix
     ./cursor.nix
+    ./firefox.nix
     ./hyprland.nix
     ./hyprlock.nix
     ./git.nix
