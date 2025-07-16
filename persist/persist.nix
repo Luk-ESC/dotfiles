@@ -12,8 +12,8 @@ in {
   options.persist = with types; {
     users = mkOption {
       description = "users to persist";
-      default = { };
-      type = attrsOf types.str;
+      default = [];
+      type = listOf types.str;
     };
     location = mkOption {
       description = "submodule example";
@@ -61,9 +61,8 @@ in {
               directories =
                 map stripTrailing (filter2 (not isSystem) isDirectory contents);
               files = filter2 (not isSystem) (not isDirectory) contents;
-              home = cfg.users.${name};
             };
-          }) (builtins.attrNames cfg.users));
+          }) cfg.users);
         };
       }) (builtins.attrNames loc));
   })

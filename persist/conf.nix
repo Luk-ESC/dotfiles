@@ -1,5 +1,5 @@
 {
-  persist.users.eschb = "/home/eschb";
+  persist.users = [ "eschb" ];
 
   persist.location.data.contents = [
     # System
