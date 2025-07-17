@@ -1,4 +1,8 @@
 { config, ... }: {
+  persist.caches.contents = [
+    ".local/share/hyprland/lastVersion"
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;

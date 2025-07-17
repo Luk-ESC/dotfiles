@@ -14,5 +14,10 @@
     '';
   };
 
+  persist.data.contents = [
+    # TODO: fix permissions
+    ".ssh/"
+  ];
+
   programs.ssh.enable = true;
 }

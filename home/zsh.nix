@@ -1,4 +1,8 @@
 { config, pkgs, lib, ... }: {
+  persist.caches.contents = [
+    ".zcompdump"
+  ];
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
