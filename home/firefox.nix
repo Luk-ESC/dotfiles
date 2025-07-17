@@ -1,4 +1,8 @@
 { config, ... }: {
+  persist.data.contents = [
+    ".mozilla/"
+  ];
+
   programs.firefox = {
     enable = true;
     languagePacks = [ "en-US" ];

@@ -19,6 +19,20 @@
   home.username = "eschb";
   home.homeDirectory = "/home/eschb";
 
+  persist.data.contents = [
+    "Music/"
+    "Pictures/"
+    "Documents/"
+    "Videos/"
+
+    # NixOS config
+    "nixcfg/"
+  ];
+
+  persist.caches.contents = [
+    ".cache/"
+  ];
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards

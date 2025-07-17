@@ -1,5 +1,18 @@
 { config, pkgs, lib, ... }: {
 
+  persist.data.contents = [
+    ".local/share/zed/"
+  ];
+
+  persist.caches.contents = [
+    ".local/share/zed/node/cache/"
+  ];
+
+  persist.logs.contents = [
+    ".local/share/zed/node/cache/_logs/"
+    ".local/share/zed/logs/"
+  ];
+
   programs.zed-editor = {
     enable = true;
     extensions = [ "nix" "toml" ];

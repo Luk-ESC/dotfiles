@@ -1,1 +1,7 @@
-{ pkgs, ... }: { home.packages = [ pkgs.geogebra6 ]; }
+{ pkgs, ... }: {
+  persist.data.contents = [
+    ".pki/"
+    ".config/GeoGebra/"
+  ];
+  home.packages = [ pkgs.geogebra6 ];
+}

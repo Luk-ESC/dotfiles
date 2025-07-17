@@ -41,7 +41,13 @@
           home-manager.nixosModules.home-manager
           {
             home-manager.useUserPackages = true;
-            home-manager.users.eschb = ./home;
+            home-manager.users.eschb = {...}: {
+              imports = [
+                ./home
+                ./persist/home.nix
+                impermanence.homeManagerModules.impermanence
+              ];
+            };
             home-manager.sharedModules = [ stylix.homeModules.stylix ];
           }
           disko.nixosModules.disko
