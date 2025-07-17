@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ pkgs, lib, ... }: {
   persist.caches.contents = [
     ".zcompdump"
   ];

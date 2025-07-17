@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{  pkgs, ... }: {
   home.pointerCursor = {
     package = pkgs.rose-pine-hyprcursor;
     name = "rose-pine-hyprcursor";

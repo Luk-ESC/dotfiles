@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ lib, pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix # TODO: Does this make sense here??
   ];
@@ -81,7 +81,7 @@
     isNormalUser = true;
     initialPassword = "lol";
     extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ ];
+    packages = [ ];
   };
 
   # List packages installed in system profile. To search, run:
