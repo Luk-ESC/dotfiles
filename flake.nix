@@ -31,7 +31,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, disko, impermanence, panoptes, stylix
-    , ... }@inputs: {
+    , ... }: {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ pkgs, lib, ... }: {
 
   persist.data.contents = [
     ".local/share/zed/"

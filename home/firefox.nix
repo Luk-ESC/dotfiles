@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ ... }: {
   persist.data.contents = [
     ".mozilla/"
   ];

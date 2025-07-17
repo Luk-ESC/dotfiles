@@ -1,4 +1,4 @@
-{ config, lib, options, pkgs, ... }: {
+{ lib, pkgs, ... }: {
   imports = [ ./base.nix ./persist/persist.nix ];
 
   networking.hostName = lib.mkForce "nixos";
