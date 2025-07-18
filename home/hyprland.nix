@@ -1,4 +1,9 @@
-{ config, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   persist.caches.contents = [
     ".local/share/hyprland/lastVersion"
@@ -31,9 +36,34 @@
             ) 9
           )
         );
+
+      binde =
+        let
+          amixer = lib.getExe' pkgs.alsa-utils "amixer";
+          brightnessctl = lib.getExe pkgs.brightnessctl;
+          splitColon = lib.splitString ": ";
+        in
+        (map
+          (
+            l: ", XF86Audio${builtins.elemAt (splitColon l) 0}, execr, ${amixer} set ${lib.last (splitColon l)}"
+          )
+          [
+            "RaiseVolume: Master 5%+"
+            "LowerVolume: Master 5%-"
+            "Mute: Master toggle"
+            "MicMute: Capture toggle"
+          ]
+        )
+        ++ [
+          ", XF86MonBrightnessUp, execr, ${brightnessctl} s 5%+"
+          ", XF86MonBrightnessDown, execr, ${brightnessctl} s 5%-"
+        ];
+
       input = {
         kb_layout = "de";
         touchpad.natural_scroll = true;
+        repeat_delay = 500;
+        repeat_rate = 25;
       };
 
       general = {
