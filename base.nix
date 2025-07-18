@@ -76,6 +76,8 @@
 
   services.speechd.enable = lib.mkForce false;
 
+  system.rebuild.enableNg = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.eschb = {
     isNormalUser = true;
