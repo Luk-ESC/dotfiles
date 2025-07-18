@@ -30,8 +30,18 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, disko, impermanence, panoptes, stylix
-    , ... }: {
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      disko,
+      impermanence,
+      panoptes,
+      stylix,
+      ...
+    }:
+    {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -41,13 +51,15 @@
           home-manager.nixosModules.home-manager
           {
             home-manager.useUserPackages = true;
-            home-manager.users.eschb = {...}: {
-              imports = [
-                ./home
-                ./persist/home.nix
-                impermanence.homeManagerModules.impermanence
-              ];
-            };
+            home-manager.users.eschb =
+              { ... }:
+              {
+                imports = [
+                  ./home
+                  ./persist/home.nix
+                  impermanence.homeManagerModules.impermanence
+                ];
+              };
             home-manager.sharedModules = [ stylix.homeModules.stylix ];
           }
           disko.nixosModules.disko
@@ -61,8 +73,7 @@
 
           panoptes.nixosModules.x86_64-linux.panoptes-service
           {
-            environment.systemPackages =
-              [ (panoptes.defaultPackage.x86_64-linux) ];
+            environment.systemPackages = [ (panoptes.defaultPackage.x86_64-linux) ];
           }
         ];
       };
@@ -70,28 +81,31 @@
       nixosConfigurations.base = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ({ pkgs, modulesPath, ... }: {
-            imports = [
-              (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
-            ];
-            networking.wireless.enable = false;
-            isoImage.squashfsCompression = "zstd";
+          (
+            { pkgs, modulesPath, ... }:
+            {
+              imports = [
+                (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+              ];
+              networking.wireless.enable = false;
+              isoImage.squashfsCompression = "zstd";
 
-            isoImage.contents = [{
-              source = self;
-              target = "/source";
-            }];
+              isoImage.contents = [
+                {
+                  source = self;
+                  target = "/source";
+                }
+              ];
 
-            isoImage.storeContents =
-              [ self.nixosConfigurations.nixos.config.system.build.toplevel ];
+              isoImage.storeContents = [ self.nixosConfigurations.nixos.config.system.build.toplevel ];
 
-            environment.systemPackages = [
-              disko.packages.x86_64-linux.disko-install
+              environment.systemPackages = [
+                disko.packages.x86_64-linux.disko-install
 
-              (pkgs.writeShellScriptBin "install-with-disko"
-                (builtins.readFile ./scripts/install-with-disko.sh))
-            ];
-          })
+                (pkgs.writeShellScriptBin "install-with-disko" (builtins.readFile ./scripts/install-with-disko.sh))
+              ];
+            }
+          )
           ./base.nix
         ];
       };

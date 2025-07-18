@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   persist.data.contents = [
     ".pki/"
     ".config/GeoGebra/"
