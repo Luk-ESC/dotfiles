@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   persist.caches.contents = [
     ".zcompdump"
   ];
@@ -31,9 +32,7 @@
       nrs = "sudo nixos-rebuild switch --flake /home/eschb/nixcfg";
       ls = "ls --color=auto";
       reload = "source ~/.zshrc; rehash";
-      m = "${
-          lib.getExe pkgs.erdtree
-        } --level=1 --sort=size -H --hidden --no-ignore";
+      m = "${lib.getExe pkgs.erdtree} --level=1 --sort=size -H --hidden --no-ignore";
       cat = "${lib.getExe pkgs.bat} --paging=never";
       df = "df -h";
       du = "du -h";
@@ -44,7 +43,10 @@
 
     history = {
       append = true;
-      ignorePatterns = [ "poweroff" "reboot" ];
+      ignorePatterns = [
+        "poweroff"
+        "reboot"
+      ];
       path = "/persistent/data/home/eschb/.zsh_history";
       size = 100000;
     };

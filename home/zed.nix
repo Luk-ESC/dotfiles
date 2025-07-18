@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
 
   persist.data.contents = [
     ".local/share/zed/"
@@ -15,7 +16,10 @@
 
   programs.zed-editor = {
     enable = true;
-    extensions = [ "nix" "toml" ];
+    extensions = [
+      "nix"
+      "toml"
+    ];
 
     userSettings = {
       inlay_hints.enabled = true;
@@ -32,16 +36,14 @@
       lsp = {
         nil = {
           binary.path = lib.getExe pkgs.nil;
-          initialization_options.formatting.command =
-            [ (lib.getExe pkgs.nixfmt-classic) ];
+          initialization_options.formatting.command = [ (lib.getExe pkgs.nixfmt-rfc-style) ];
         };
         nixd = {
           binary.path = lib.getExe pkgs.nixd;
           initialization_options = {
             options = {
               home-manager = {
-                expr =
-                  "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.nixos.options.home-manager.users.type.getSubOptions []";
+                expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.nixos.options.home-manager.users.type.getSubOptions []";
               };
             };
           };

@@ -1,10 +1,14 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+{
   imports = [
     ./hardware-configuration.nix # TODO: Does this make sense here??
   ];
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   nix.channel.enable = false;
 
@@ -31,7 +35,7 @@
           id = "L Diablo";
           type = "wifi";
         };
-        ipv4 = { method = "auto"; };
+        ipv4.method = "auto";
         ipv6 = {
           addr-gen-mode = "default";
           method = "auto";
@@ -60,19 +64,21 @@
     # useXkbConfig = true; # use xkb.options in tty.
   };
 
-  virtualisation = let
-    options = {
-      virtualisation.memorySize = 8192;
-      virtualisation.graphics = true;
-      virtualisation.cores = 6;
+  virtualisation =
+    let
+      options = {
+        virtualisation.memorySize = 8192;
+        virtualisation.graphics = true;
+        virtualisation.cores = 6;
+      };
+    in
+    {
+      vmVariant = options;
+      # TODO: Make this work, iso image does not have disko
+      #vmVariantWithDisko = {
+      #  imports = [options];
+      #};
     };
-  in {
-    vmVariant = options;
-    # TODO: Make this work, iso image does not have disko
-    #vmVariantWithDisko = {
-    #  imports = [options];
-    #};
-  };
 
   services.speechd.enable = lib.mkForce false;
 
@@ -83,13 +89,20 @@
   users.users.eschb = {
     isNormalUser = true;
     initialPassword = "lol";
-    extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "video"
+    ]; # Enable ‘sudo’ for the user.
     packages = [ ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ nano git wget ];
+  environment.systemPackages = with pkgs; [
+    nano
+    git
+    wget
+  ];
 
   environment.variables.EDITOR = "nano";
 
