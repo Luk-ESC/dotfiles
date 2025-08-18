@@ -15,6 +15,7 @@
     ./git.nix
     ./ssh.nix
     ./stylix.nix
+    ./vesktop.nix
   ];
 
   home.username = "eschb";

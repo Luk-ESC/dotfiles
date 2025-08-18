@@ -44,17 +44,7 @@
       "wheel"
       "video"
     ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      (vesktop.overrideAttrs (
-        finalAttrs: oldAttrs: {
-          postUnpack = ''
-            cp ${./assets/custom_vesktop.gif} $sourceRoot/static/shiggy.gif
-
-            ${oldAttrs.postUnpack or ""}
-          '';
-        }
-      ))
-    ];
+    packages = [ ];
   };
 
   # List packages installed in system profile. To search, run:
