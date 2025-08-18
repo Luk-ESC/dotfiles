@@ -1,3 +1,4 @@
+{ lib, ... }:
 let
   reasonable_subvolume = name: extraOptions: {
     ${name} = {
@@ -5,6 +6,10 @@ let
       mountOptions = [ "noatime" ] ++ extraOptions;
     };
   };
+
+  reasonable_subvolumes =
+    opts:
+    lib.mergeAttrsList (map (x: reasonable_subvolume ("/" + x.name) x.value) (lib.attrsToList opts));
 in
 {
   disko.devices.disk.main = {
@@ -41,12 +46,15 @@ in
                   mountOptions = [ "noatime" ];
                 };
               }
-              // (reasonable_subvolume "/persistent" [ ])
-              // (reasonable_subvolume "/persistent/data" [ "compress=zstd" ])
-              // (reasonable_subvolume "/persistent/old_roots" [ "compress=zstd:15" ])
-              // (reasonable_subvolume "/persistent/logs" [ "compress=zstd:15" ])
-              // (reasonable_subvolume "/persistent/caches" [ ])
-              // (reasonable_subvolume "/nix" [ "compress=zstd" ]);
+              // reasonable_subvolumes {
+                "persistent" = [ ];
+                "persistent/data" = [ "compress=zstd" ];
+                "persistent/old_roots" = [ "compress=zstd:15" ];
+                "persistent/logs" = [ "compress=zstd:15" ];
+                "persistent/caches" = [ ];
+                "persistent/session" = [ ];
+                "nix" = [ "compress=zstd" ];
+              };
           };
         };
       };
