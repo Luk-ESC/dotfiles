@@ -33,6 +33,22 @@
 - Webstorm
 - Wireshark
 
+## Tools
+- updog
+- hyfetch
+- podman/docker
+- batman
+
+## Language Toolchains
+- python
+- c#
+- rust
+- go
+- php
+- angular
+- c
+- haskell
+
 ## Special
 Rewrite stylix to use Material You instead of Base16 colors
 
@@ -40,3 +56,7 @@ Rewrite stylix to use Material You instead of Base16 colors
 persist.nix: Make an entry optionally tied to a package, if that package is not installed, output an error
 hosts/: Hosts directory with hardware configs
 Modules instead of enabling everything by default
+
+# Life
+Helix Editor
+Niri
