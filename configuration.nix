@@ -7,6 +7,11 @@
 
   networking.hostName = lib.mkForce "nixos";
 
+  hardware.bluetooth.enable = true;
+  persist.location.session.contents = [
+    "/var/lib/bluetooth/"
+  ];
+
   services.getty.autologinUser = "eschb";
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
