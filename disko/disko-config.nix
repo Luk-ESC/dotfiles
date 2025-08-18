@@ -45,6 +45,10 @@ in
                   mountpoint = "/";
                   mountOptions = [ "noatime" ];
                 };
+                "/swap" = {
+                  mountpoint = "/.swapvol";
+                  swap.swapfile.size = "20G"; # no hibernation >:()
+                };
               }
               // reasonable_subvolumes {
                 "persistent" = [ ];
