@@ -1,6 +1,6 @@
 { ... }:
 {
-  persist.data.contents = [
+  persist.session.contents = [
     ".mozilla/"
   ];
 

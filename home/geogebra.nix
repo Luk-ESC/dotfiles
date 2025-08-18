@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  persist.data.contents = [
+  persist.session.contents = [
     ".pki/"
     ".config/GeoGebra/"
   ];

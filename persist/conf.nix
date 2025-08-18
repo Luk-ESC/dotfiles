@@ -8,12 +8,14 @@
 
   persist.location.caches.contents = [
     "/var/cache/"
-
-    # sudo: saves first time using sudo
-    "/var/db/sudo/lectured/"
   ];
 
   persist.location.logs.contents = [
     "/var/log/"
+  ];
+
+  persist.location.session.contents = [
+    # sudo: saves first time using sudo
+    "/var/db/sudo/lectured/"
   ];
 }
