@@ -16,9 +16,9 @@
       "$mod" = "SUPER";
       bind =
         [
-          "$mod, Q, exec, alacritty"
+          "$mod, Q, exec, uwsm app -- alacritty"
           "$mod, C, killactive"
-          "$mod, E, exec, fuzzel"
+          "$mod, E, exec,  uwsm app -- fuzzel"
         ]
         ++ (
           # workspaces
