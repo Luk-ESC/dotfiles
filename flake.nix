@@ -24,6 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    firefox-extensions = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix = {
       url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +44,7 @@
       impermanence,
       panoptes,
       stylix,
+      firefox-extensions,
       ...
     }:
     {
@@ -60,6 +66,11 @@
                   impermanence.homeManagerModules.impermanence
                 ];
               };
+
+            home-manager.extraSpecialArgs = {
+              extensions = firefox-extensions.packages.x86_64-linux;
+            };
+
             home-manager.sharedModules = [ stylix.homeModules.stylix ];
           }
           disko.nixosModules.disko

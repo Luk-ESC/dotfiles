@@ -1,4 +1,4 @@
-{ ... }:
+{ extensions, ... }:
 {
   persist.session.contents = [
     ".mozilla/"
@@ -18,13 +18,22 @@
       OfferToSaveLogins = false;
       PasswordManagerEnabled = false;
 
-      #ExtensionSettings = { "*".installation_mode = "blocked"; };
+      ExtensionSettings = {
+        "*".installation_mode = "force_installed";
+      };
     };
 
     profiles.default = {
       #bookmarks.force = true;
       containersForce = true;
-      extensions.force = true;
+      extensions = {
+        force = true;
+        packages = with extensions; [
+          ublock-origin
+          firefox-color
+          tree-style-tab
+        ];
+      };
       search.force = true;
     };
   };
