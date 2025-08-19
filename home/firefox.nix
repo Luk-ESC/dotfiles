@@ -15,6 +15,8 @@
       DisableAccounts = true;
       DontCheckDefaultBrowser = true;
       DisplayBookmarksToolbar = "always";
+      OfferToSaveLogins = false;
+      PasswordManagerEnabled = false;
 
       #ExtensionSettings = { "*".installation_mode = "blocked"; };
     };
