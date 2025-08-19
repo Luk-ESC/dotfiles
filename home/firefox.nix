@@ -32,6 +32,7 @@
           ublock-origin
           firefox-color
           tree-style-tab
+          darkreader
         ];
       };
       search.force = true;
