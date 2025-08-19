@@ -24,7 +24,42 @@
     };
 
     profiles.default = {
-      #bookmarks.force = true;
+      bookmarks = {
+        force = true;
+        settings = [
+          {
+            name = "wikipedia";
+            tags = [ "wiki" ];
+            keyword = "+wiki";
+            url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+          }
+          {
+            name = "nixpkgs";
+            tags = [
+              "nixpkgs"
+              "package"
+            ];
+            keyword = "+np";
+            url = "https://search.nixos.org/packages?channel=25.05&query=%s";
+          }
+          {
+            name = "nixos options";
+            tags = [
+              "nixos"
+              "options"
+            ];
+            keyword = "+no";
+            url = "https://search.nixos.org/options?channel=25.05&query=%s";
+          }
+          {
+            name = "youtube";
+            tags = [ "youtube" ];
+            keyword = "+yt";
+            url = "https://www.youtube.com/results?search_query=%s";
+          }
+        ];
+      };
+
       containersForce = true;
       extensions = {
         force = true;
