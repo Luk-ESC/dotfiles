@@ -7,5 +7,6 @@
     ./ripgrep.nix
     ./ssh.nix
     ./tealdeer.nix
+    ./wl-clipboard.nix
   ];
 }
