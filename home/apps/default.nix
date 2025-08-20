@@ -1,7 +1,6 @@
 {
   # GUI Apps
   imports = [
-    ./baobab.nix
     ./binja.nix
     ./firefox.nix
     ./geogebra.nix
