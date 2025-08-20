@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   stylix.enable = true;
-  stylix.image = ../assets/wallpaper.jpg;
+  stylix.image = ../../assets/wallpaper.jpg;
 
   stylix.fonts.monospace = {
     name = "MesloLGM Nerd Font";

@@ -1,21 +1,10 @@
 { ... }:
 {
   imports = [
-    ./zed.nix
-    ./alacritty.nix
-    ./binja.nix
-    ./baobab.nix
-    ./zsh.nix
-    ./starship.nix
-    ./cursor.nix
-    ./firefox.nix
-    ./hyprland.nix
-    ./hyprlock.nix
-    ./geogebra.nix
-    ./git.nix
-    ./ssh.nix
-    ./stylix.nix
-    ./vesktop.nix
+    ./apps
+    ./term
+    ./tools
+    ./wm
   ];
 
   home.username = "eschb";
