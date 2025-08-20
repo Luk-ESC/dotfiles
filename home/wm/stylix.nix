@@ -10,4 +10,6 @@
 
   stylix.opacity.terminal = 0.5;
   stylix.polarity = "dark";
+
+  stylix.overlays.enable = false;
 }

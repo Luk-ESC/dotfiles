@@ -72,6 +72,7 @@
           ./configuration.nix
           home-manager.nixosModules.home-manager
           {
+            home-manager.useGlobalPkgs = true;
             home-manager.users.eschb =
               { ... }:
               {
@@ -91,6 +92,11 @@
               agenix.homeManagerModules.default
             ];
           }
+
+          {
+            nixpkgs.config.allowUnfree = true;
+          }
+
           disko.nixosModules.disko
           ./disko/disko-config.nix
 
