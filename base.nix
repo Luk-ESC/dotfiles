@@ -100,7 +100,6 @@
       "wheel"
       "video"
     ];
-    packages = [ ];
   };
 
   # List packages installed in system profile. To search, run:
