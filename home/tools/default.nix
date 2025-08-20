@@ -5,5 +5,6 @@
     ./git.nix
     ./ripgrep.nix
     ./ssh.nix
+    ./tealdeer.nix
   ];
 }
