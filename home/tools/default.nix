@@ -3,6 +3,7 @@
   imports = [
     ./bottom.nix
     ./fastfetch.nix
+    ./file.nix
     ./git.nix
     ./ripgrep.nix
     ./ssh.nix
