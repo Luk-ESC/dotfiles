@@ -31,8 +31,6 @@
       vmVariantWithDisko = options;
     };
 
-  services.speechd.enable = lib.mkForce false;
-
   services.pipewire = {
     enable = true;
     pulse.enable = true;
