@@ -5,6 +5,8 @@
     ./term
     ./tools
     ./wm
+
+    ./borgmatic.nix
   ];
 
   home.username = "eschb";
