@@ -68,6 +68,8 @@
           firefox-color
           tree-style-tab
           darkreader
+          bitwarden
+          sponsorblock
         ];
       };
       search.force = true;
