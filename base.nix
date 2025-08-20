@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix # TODO: Does this make sense here??
@@ -29,26 +34,29 @@
     # Bloat that is only needed for vpns, pulls in webkit2gtk for some reason
     # FIXME(2025.11) enableDefaultPlugins = true;
     plugins = lib.mkForce [ ];
-    ensureProfiles.profiles = {
-      "L Diablo" = {
-        connection = {
-          id = "L Diablo";
-          type = "wifi";
-        };
-        ipv4.method = "auto";
-        ipv6 = {
-          addr-gen-mode = "default";
-          method = "auto";
-        };
-        proxy = { };
-        wifi = {
-          mode = "infrastructure";
-          ssid = "L Diablo";
-        };
-        wifi-security = {
-          auth-alg = "open";
-          key-mgmt = "wpa-psk";
-          psk = "ichhabfomo";
+    ensureProfiles = {
+      environmentFiles = [ config.age.secrets.wireless.path ];
+      profiles = {
+        "L Diablo" = {
+          connection = {
+            id = "L Diablo";
+            type = "wifi";
+          };
+          ipv4.method = "auto";
+          ipv6 = {
+            addr-gen-mode = "default";
+            method = "auto";
+          };
+          proxy = { };
+          wifi = {
+            mode = "infrastructure";
+            ssid = "L Diablo";
+          };
+          wifi-security = {
+            auth-alg = "open";
+            key-mgmt = "wpa-psk";
+            psk = "$psk_ldiablo";
+          };
         };
       };
     };
@@ -84,15 +92,14 @@
 
   system.rebuild.enableNg = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.mutableUsers = false;
   users.users.eschb = {
     isNormalUser = true;
-    initialPassword = "lol";
+    hashedPasswordFile = config.age.secrets.linuxpw.path;
     extraGroups = [
       "wheel"
       "video"
-    ]; # Enable ‘sudo’ for the user.
+    ];
     packages = [ ];
   };
 

@@ -33,6 +33,15 @@
       url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      inputs.darwin.follows = "";
+    };
+
+    secrets.url = "git+ssh://git@github.com/Luk-ESC/secrets?ref=main";
   };
 
   outputs =
@@ -45,6 +54,8 @@
       panoptes,
       stylix,
       firefox-extensions,
+      agenix,
+      secrets,
       ...
     }:
     {
@@ -71,7 +82,10 @@
               extensions = firefox-extensions.packages.x86_64-linux;
             };
 
-            home-manager.sharedModules = [ stylix.homeModules.stylix ];
+            home-manager.sharedModules = [
+              stylix.homeModules.stylix
+              agenix.homeManagerModules.default
+            ];
           }
           disko.nixosModules.disko
           ./disko/disko-config.nix
@@ -85,6 +99,13 @@
           panoptes.nixosModules.x86_64-linux.panoptes-service
           {
             environment.systemPackages = [ (panoptes.defaultPackage.x86_64-linux) ];
+          }
+
+          agenix.nixosModules.default
+          secrets.nixosModules.default
+
+          {
+            age.identityPaths = [ "/persistent/data/home/eschb/nixcfg/keys/id_ed25519" ];
           }
         ];
       };

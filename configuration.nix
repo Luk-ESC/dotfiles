@@ -41,17 +41,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.eschb = {
-    isNormalUser = true;
-    initialPassword = "lol";
-    extraGroups = [
-      "wheel"
-      "video"
-    ]; # Enable ‘sudo’ for the user.
-    packages = [ ];
-  };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
