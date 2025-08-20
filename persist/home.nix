@@ -7,7 +7,7 @@
 with lib;
 let
   loc = config.persist;
-  base = (pkgs.callPackage (./base.nix) { });
+  base = (pkgs.callPackage ./base.nix { });
 in
 {
   options.persist = base.persistentOption;

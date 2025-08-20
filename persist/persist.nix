@@ -8,7 +8,7 @@ with lib;
 let
   cfg = config.persist;
   loc = cfg.location;
-  base = (pkgs.callPackage (./base.nix) { });
+  base = (pkgs.callPackage ./base.nix { });
 in
 {
   options.persist = with types; {
