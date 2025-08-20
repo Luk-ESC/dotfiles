@@ -8,6 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    systems.url = "github:nix-systems/x86_64-linux";
+
     disko = {
       url = "github:nix-community/disko/v1.12.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,6 +24,7 @@
     panoptes = {
       url = "github:Luk-ESC/panoptes";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
     };
 
     firefox-extensions = {
@@ -32,12 +35,14 @@
     stylix = {
       url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
     };
 
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
+      inputs.systems.follows = "systems";
       inputs.darwin.follows = "";
     };
 
