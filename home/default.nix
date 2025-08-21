@@ -16,6 +16,7 @@
     "Pictures/"
     "Documents/"
     "Videos/"
+    "ZedProjects/"
 
     # NixOS config
     "nixcfg/"
