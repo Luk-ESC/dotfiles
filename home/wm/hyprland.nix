@@ -101,7 +101,12 @@
 
   programs.fuzzel.enable = true;
 
-  home.file."${config.xdg.configHome}/uwsm/env".text = "export QT_QPA_PLATFORM=wayland";
+  home.file."${config.xdg.configHome}/uwsm/env".text = ''
+    export QT_QPA_PLATFORM=wayland
+
+    # Hint electron apps to use wayland
+    export NIXOS_OZONE_WL=1
+  '';
 
   programs.bash = {
     enable = true;
