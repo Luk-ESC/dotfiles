@@ -58,6 +58,28 @@
             psk = "$psk_ldiablo";
           };
         };
+
+        mfzsguest = {
+          connection = {
+            id = "mfzsguest";
+            type = "wifi";
+          };
+          ipv4.method = "auto";
+          ipv6 = {
+            addr-gen-mode = "default";
+            method = "auto";
+          };
+          proxy = { };
+          wifi = {
+            mode = "infrastructure";
+            ssid = "mfzsguest";
+          };
+          wifi-security = {
+            auth-alg = "open";
+            key-mgmt = "wpa-psk";
+            psk = "$psk_hannah";
+          };
+        };
       };
     };
   };
