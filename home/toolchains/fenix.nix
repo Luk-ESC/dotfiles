@@ -8,6 +8,7 @@ let
   cargo_config = {
     build = {
       build-dir = "${config.xdg.cacheHome}/cargo_build_dir/{workspace-root}/";
+      rustc-wrapper = lib.getExe pkgs.sccache;
       rustflags = [
         "-C"
         "link-arg=-fuse-ld=${lib.getExe pkgs.mold}"

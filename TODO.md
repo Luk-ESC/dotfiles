@@ -42,7 +42,6 @@
 ## Language Toolchains
 - python
 - c#
-- sccache
 - go
 - php
 - angular
