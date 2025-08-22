@@ -42,7 +42,7 @@
 ## Language Toolchains
 - python
 - c#
-- rust
+- sccache
 - go
 - php
 - angular

@@ -47,6 +47,11 @@
     };
 
     secrets.url = "git+ssh://git@github.com/Luk-ESC/secrets?ref=main";
+
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -61,6 +66,7 @@
       firefox-extensions,
       agenix,
       secrets,
+      fenix,
       ...
     }:
     {
@@ -95,6 +101,7 @@
 
           {
             nixpkgs.config.allowUnfree = true;
+            nixpkgs.overlays = [ fenix.overlays.default ];
           }
 
           disko.nixosModules.disko
