@@ -36,7 +36,6 @@
 ## Tools
 - updog
 - hyfetch
-- podman/docker
 - batman
 
 ## Language Toolchains

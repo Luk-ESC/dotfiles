@@ -5,6 +5,7 @@
     ./fastfetch.nix
     ./file.nix
     ./git.nix
+    ./podman.nix
     ./ripgrep.nix
     ./ssh.nix
     ./tealdeer.nix
