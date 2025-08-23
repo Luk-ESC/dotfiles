@@ -5,6 +5,7 @@
     ./firefox.nix
     ./geogebra.nix
     ./vesktop.nix
+    ./warp.nix
     ./zed.nix
   ];
 }

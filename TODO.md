@@ -29,7 +29,6 @@
 - Steam
 - Teams for Linux
 - WLC
-- Warp
 - Webstorm
 - Wireshark
 
