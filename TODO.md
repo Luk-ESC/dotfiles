@@ -40,7 +40,6 @@
 - batman
 
 ## Language Toolchains
-- python
 - c#
 - go
 - php
