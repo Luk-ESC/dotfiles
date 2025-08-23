@@ -9,6 +9,7 @@
     ./ripgrep.nix
     ./ssh.nix
     ./tealdeer.nix
+    ./wine.nix
     ./wl-clipboard.nix
   ];
 }
