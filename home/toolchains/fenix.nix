@@ -18,11 +18,13 @@ let
     };
   };
 
+  toolchain = pkgs.fenix.complete;
+
   toml = pkgs.formats.toml { };
 in
 {
   home.packages = [
-    (pkgs.fenix.complete.withComponents [
+    (toolchain.withComponents [
       "cargo"
       "rust-src"
       "rustc"
@@ -33,6 +35,9 @@ in
       "miri"
     ])
   ];
+
+  programs.zed-editor.userSettings.lsp.rust-analyzer.binary.path =
+    lib.getExe' toolchain.rust-analyzer "rust-analyzer";
 
   home.file.".cargo/config.toml".source = toml.generate "config.toml" cargo_config;
 }
