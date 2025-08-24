@@ -10,6 +10,7 @@ let
       pwntools
       requests
       angr
+      flask
     ]
   );
 in
