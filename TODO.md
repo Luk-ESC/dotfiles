@@ -56,3 +56,9 @@ Modules instead of enabling everything by default
 # Life
 Helix Editor
 Niri
+
+
+# CTF
+imagemagick
+xxd
+imhex
