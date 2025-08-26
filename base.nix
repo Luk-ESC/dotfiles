@@ -124,11 +124,6 @@
     ];
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = [ pkgs.nano ];
-  environment.variables.EDITOR = lib.getExe pkgs.nano;
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 

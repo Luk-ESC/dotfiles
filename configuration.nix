@@ -36,6 +36,9 @@
     pulse.enable = true;
   };
 
+  # Disable nano
+  programs.nano.enable = false;
+
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 }
