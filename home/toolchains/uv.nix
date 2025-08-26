@@ -24,6 +24,11 @@ in
     settings.cache-dir = config.xdg.cacheHome + "/ruff";
   };
 
+  programs.helix.extraPackages = [
+    pkgs.ruff
+    pkgs.pyright
+  ];
+
   programs.zed-editor = {
     extensions = [ "ruff" ];
     userSettings = {

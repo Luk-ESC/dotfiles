@@ -36,6 +36,7 @@ in
     ])
   ];
 
+  programs.helix.extraPackages = [ toolchain.rust-analyzer ];
   programs.zed-editor.userSettings.lsp.rust-analyzer.binary.path =
     lib.getExe' toolchain.rust-analyzer "rust-analyzer";
 
