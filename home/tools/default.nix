@@ -11,5 +11,6 @@
     ./tealdeer.nix
     ./wine.nix
     ./wl-clipboard.nix
+    ./zellij.nix
   ];
 }
