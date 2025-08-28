@@ -35,6 +35,12 @@ in
     package = pkgs.nerd-fonts.meslo-lg;
   };
 
+  stylix.cursor = {
+    name = "rose-pine-hyprcursor";
+    package = pkgs.rose-pine-hyprcursor;
+    size = 32;
+  };
+
   stylix.opacity.terminal = 0.5;
   stylix.polarity = "dark";
 
