@@ -57,6 +57,15 @@
       url = "github:Luk-ESC/wallpapers";
       flake = false;
     };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.niri-stable.follows = "";
+      inputs.niri-unstable.follows = "";
+      inputs.xwayland-satellite-unstable.follows = "";
+    };
   };
 
   outputs =
@@ -73,6 +82,7 @@
       secrets,
       fenix,
       wallpapers,
+      niri,
       ...
     }:
     {
@@ -110,6 +120,8 @@
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [ fenix.overlays.default ];
           }
+
+          niri.nixosModules.niri
 
           disko.nixosModules.disko
           ./disko/disko-config.nix

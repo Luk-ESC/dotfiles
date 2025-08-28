@@ -14,28 +14,27 @@
     systemd.enable = false;
     settings = {
       "$mod" = "SUPER";
-      bind =
-        [
-          "$mod, Q, exec, uwsm app -- alacritty"
-          "$mod, C, killactive"
-          "$mod, E, exec,  uwsm app -- fuzzel"
-        ]
-        ++ (
-          # workspaces
-          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-          builtins.concatLists (
-            builtins.genList (
-              i:
-              let
-                ws = i + 1;
-              in
-              [
-                "$mod, code:1${toString i}, workspace, ${toString ws}"
-                "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-              ]
-            ) 9
-          )
-        );
+      bind = [
+        "$mod, Q, exec, uwsm app -- alacritty"
+        "$mod, C, killactive"
+        "$mod, E, exec,  uwsm app -- fuzzel"
+      ]
+      ++ (
+        # workspaces
+        # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+        builtins.concatLists (
+          builtins.genList (
+            i:
+            let
+              ws = i + 1;
+            in
+            [
+              "$mod, code:1${toString i}, workspace, ${toString ws}"
+              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            ]
+          ) 9
+        )
+      );
 
       binde =
         let
@@ -114,7 +113,7 @@
       # Start hyprland from tty
       if uwsm check may-start; then
           udevadm settle
-          exec uwsm start hyprland-uwsm.desktop
+          # exec uwsm start hyprland-uwsm.desktop
       fi
     '';
   };

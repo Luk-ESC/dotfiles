@@ -5,5 +5,6 @@
     ./hyprland.nix
     ./hyprlock.nix
     ./stylix.nix
+    ./niri.nix
   ];
 }

@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./base.nix
@@ -17,6 +17,12 @@
   services.getty.autologinUser = "eschb";
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
+
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri;
+  };
+  niri-flake.cache.enable = false;
 
   security.pam.services.hyprlock = { };
 
