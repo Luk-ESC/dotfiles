@@ -52,6 +52,11 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wallpapers = {
+      url = "github:Luk-ESC/wallpapers";
+      flake = false;
+    };
   };
 
   outputs =
@@ -67,6 +72,7 @@
       agenix,
       secrets,
       fenix,
+      wallpapers,
       ...
     }:
     {
@@ -90,6 +96,7 @@
               };
 
             home-manager.extraSpecialArgs = {
+              inherit wallpapers;
               extensions = firefox-extensions.packages.x86_64-linux;
             };
 

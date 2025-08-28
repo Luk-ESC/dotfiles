@@ -394,7 +394,8 @@
         "panoptes": "panoptes",
         "secrets": "secrets",
         "stylix": "stylix",
-        "systems": "systems"
+        "systems": "systems",
+        "wallpapers": "wallpapers"
       }
     },
     "rust-analyzer-src": {
@@ -582,6 +583,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756242739,
+        "narHash": "sha256-ckonot97V0R4si2MjyNEk5b9WGTqGUa5bywU1PqQ4OA=",
+        "owner": "Luk-ESC",
+        "repo": "wallpapers",
+        "rev": "c8050442c585ddce3a5db61cc26b6f4aa3439f9a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Luk-ESC",
+        "repo": "wallpapers",
         "type": "github"
       }
     }
