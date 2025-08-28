@@ -112,6 +112,7 @@
 
             home-manager.sharedModules = [
               stylix.homeModules.stylix
+              niri.homeModules.stylix
               agenix.homeManagerModules.default
             ];
           }
