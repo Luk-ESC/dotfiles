@@ -12,6 +12,8 @@
     "/var/lib/bluetooth/"
   ];
 
+  programs.nix-ld.enable = true;
+
   services.getty.autologinUser = "eschb";
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
