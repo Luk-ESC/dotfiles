@@ -36,9 +36,9 @@ in
   };
 
   stylix.cursor = {
-    name = "rose-pine-hyprcursor";
-    package = pkgs.rose-pine-hyprcursor;
-    size = 32;
+    name = "Bibata-Modern-Classic";
+    package = pkgs.bibata-cursors;
+    size = 24;
   };
 
   stylix.opacity.terminal = 0.5;
