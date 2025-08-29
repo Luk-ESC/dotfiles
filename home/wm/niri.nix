@@ -43,10 +43,10 @@
           "Mod+C".action = close-window;
 
           # Audio
-          XF86AudioRaiseVolume.action = spawn amixer "set" "Master 5%+";
-          XF86AudioLowerVolume.action = spawn amixer "set" "Master 5%-";
-          XF86AudioMute.action = spawn amixer "set" "Master toggle";
-          XF86AudioMicMute.action = spawn amixer "set" "Capture toggle";
+          XF86AudioRaiseVolume.action = spawn amixer "set" "Master" "5%+";
+          XF86AudioLowerVolume.action = spawn amixer "set" "Master" "5%-";
+          XF86AudioMute.action = spawn amixer "set" "Master" "toggle";
+          XF86AudioMicMute.action = spawn amixer "set" "Capture" "toggle";
 
           # Brightness
           XF86MonBrightnessUp.action = spawn brightnessctl "s" "5%+";
