@@ -96,7 +96,7 @@
         };
 
       layout = {
-        border.enable = true;
+        border.enable = false;
         shadow.enable = true;
       };
 
