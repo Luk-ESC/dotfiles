@@ -9,6 +9,10 @@
   ];
 
   persist.data.contents = [
+    ".local/share/containers/storage/volumes/"
+  ];
+
+  persist.session.contents = [
     ".local/share/containers/storage/"
   ];
 }
