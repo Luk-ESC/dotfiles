@@ -3,6 +3,12 @@
   programs.git = {
     enable = true;
 
+    aliases = {
+      dc = "diff --cached";
+      s = "status";
+      l = "log";
+    };
+
     userName = "Luk-ESC";
     userEmail = "eschbacher.lukas@gmail.com";
     signing = {
