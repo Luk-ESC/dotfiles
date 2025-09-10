@@ -64,6 +64,7 @@
       inputs.nixpkgs-stable.follows = "nixpkgs";
       inputs.niri-stable.follows = "";
       inputs.niri-unstable.follows = "";
+      inputs.xwayland-satellite-stable.follows = "";
       inputs.xwayland-satellite-unstable.follows = "";
     };
   };
