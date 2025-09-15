@@ -11,6 +11,7 @@ let
       requests
       angr
       flask
+      (callPackage ../../pkgs/libdebug.nix { })
     ]
   );
 in
