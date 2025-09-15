@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   # Terminal tools
   imports = [
@@ -13,5 +14,13 @@
     ./wine.nix
     ./wl-clipboard.nix
     ./zellij.nix
+  ];
+
+  home.packages = with pkgs; [
+    unp
+    unzip
+    snicat
+    netcat
+    wireguard-tools
   ];
 }
