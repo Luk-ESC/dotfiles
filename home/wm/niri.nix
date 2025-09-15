@@ -9,6 +9,8 @@
     pkgs.xwayland-satellite
   ];
 
+  programs.fuzzel.enable = true;
+
   programs.niri = {
     package = pkgs.niri;
     settings = {
@@ -37,7 +39,7 @@
       binds =
         with config.lib.niri.actions;
         let
-          amixer = lib.getExe' pkgs.alsa-utils "amixer";
+          wpctl = lib.getExe' pkgs.wireplumber "wpctl";
           brightnessctl = lib.getExe pkgs.brightnessctl;
         in
         {
@@ -47,10 +49,10 @@
           "Mod+C".action = close-window;
 
           # Audio
-          XF86AudioRaiseVolume.action = spawn amixer "set" "Master" "5%+";
-          XF86AudioLowerVolume.action = spawn amixer "set" "Master" "5%-";
-          XF86AudioMute.action = spawn amixer "set" "Master" "toggle";
-          XF86AudioMicMute.action = spawn amixer "set" "Capture" "toggle";
+          XF86AudioRaiseVolume.action = spawn wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+";
+          XF86AudioLowerVolume.action = spawn wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-";
+          XF86AudioMute.action = spawn wpctl "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
+          XF86AudioMicMute.action = spawn wpctl "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
 
           # Brightness
           XF86MonBrightnessUp.action = spawn brightnessctl "s" "5%+";

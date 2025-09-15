@@ -3,6 +3,5 @@
   home.pointerCursor = {
     x11.enable = true;
     gtk.enable = true;
-    hyprcursor.enable = true;
   };
 }
