@@ -14,7 +14,7 @@
     settings = {
       input = {
         keyboard = {
-          xkb.layout = "de";
+          xkb.layout = "at(nodeadkeys)";
           repeat-delay = 500;
           repeat-rate = 25;
         };
