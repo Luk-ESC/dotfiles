@@ -10,6 +10,7 @@
   ];
 
   programs.fuzzel.enable = true;
+  services.hyprpaper.enable = true;
 
   programs.niri = {
     package = pkgs.niri;
