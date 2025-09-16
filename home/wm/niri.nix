@@ -102,7 +102,14 @@
         };
 
       layout = {
-        border.enable = false;
+        border.width = 2.0;
+        gaps = 10;
+        struts = {
+          bottom = 3;
+          top = 3;
+          right = 3;
+          left = 3;
+        };
         shadow.enable = true;
       };
 
@@ -110,6 +117,25 @@
         QT_QPA_PLATFORM = "wayland";
         NIXOS_OZONE_WL = "1";
       };
+
+      prefer-no-csd = true;
+      window-rules = [
+        {
+          matches = [
+            {
+              app-id = ".*";
+            }
+          ];
+
+          clip-to-geometry = true;
+          geometry-corner-radius = {
+            bottom-left = 10.0;
+            bottom-right = 10.0;
+            top-left = 10.0;
+            top-right = 10.0;
+          };
+        }
+      ];
     };
   };
 }
