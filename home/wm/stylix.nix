@@ -41,7 +41,7 @@ in
     size = 24;
   };
 
-  stylix.opacity.terminal = 0.5;
+  stylix.opacity.terminal = 0.6;
   stylix.polarity = "dark";
 
   stylix.overlays.enable = false;
