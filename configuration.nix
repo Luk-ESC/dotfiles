@@ -5,6 +5,10 @@
     ./persist/persist.nix
   ];
 
+  xdg.portal.extraPortals = lib.mkForce [
+    pkgs.xdg-desktop-portal-gtk
+  ];
+
   services.dbus.implementation = "broker";
   networking.hostName = lib.mkForce "nixos";
 
