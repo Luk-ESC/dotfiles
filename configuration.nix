@@ -20,6 +20,7 @@
   programs.nix-ld.enable = true;
 
   services.getty.autologinUser = "eschb";
+  services.getty.autologinOnce = true;
 
   programs.niri = {
     enable = true;
