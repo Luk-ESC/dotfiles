@@ -4,6 +4,9 @@
     enable = true;
 
     aliases = {
+      d = "diff";
+      cm = "commit -m";
+      p = "push";
       dc = "diff --cached";
       s = "status";
       l = "log";
