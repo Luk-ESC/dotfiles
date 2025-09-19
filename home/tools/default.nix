@@ -5,6 +5,7 @@
     ./bottom.nix
     ./fastfetch.nix
     ./file.nix
+    ./fzf.nix
     ./git.nix
     ./helix.nix
     ./podman.nix
