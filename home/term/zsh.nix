@@ -39,6 +39,7 @@
       free = "free -h";
       diff = "diff --color=auto";
       yoink = "${lib.getExe pkgs.git} clone --depth 1";
+      b = "${../../pkgs/bunny/bunny.sh}";
     };
 
     history = {
