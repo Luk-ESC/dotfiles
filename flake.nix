@@ -21,12 +21,6 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    panoptes = {
-      url = "github:Luk-ESC/panoptes";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-    };
-
     firefox-extensions = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -81,7 +75,6 @@
       home-manager,
       disko,
       impermanence,
-      panoptes,
       stylix,
       firefox-extensions,
       agenix,
@@ -140,11 +133,6 @@
 
           ./persist/persist.nix
           ./persist/conf.nix
-
-          panoptes.nixosModules.x86_64-linux.panoptes-service
-          {
-            environment.systemPackages = [ (panoptes.defaultPackage.x86_64-linux) ];
-          }
 
           agenix.nixosModules.default
           secrets.nixosModules.default
