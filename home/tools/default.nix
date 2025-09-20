@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pwndbg, ... }:
 {
   # Terminal tools
   imports = [
@@ -25,5 +25,6 @@
     wireguard-tools
     qemu
     gcc
+    pwndbg
   ];
 }

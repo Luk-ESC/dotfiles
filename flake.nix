@@ -67,6 +67,11 @@
       inputs.xwayland-satellite-stable.follows = "";
       inputs.xwayland-satellite-unstable.follows = "";
     };
+
+    pwndbg = {
+      url = "github:pwndbg/pwndbg";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -84,6 +89,7 @@
       fenix,
       wallpapers,
       niri,
+      pwndbg,
       ...
     }:
     {
@@ -109,6 +115,7 @@
             home-manager.extraSpecialArgs = {
               inherit wallpapers;
               extensions = firefox-extensions.packages.x86_64-linux;
+              pwndbg = pwndbg.packages.x86_64-linux.default;
             };
 
             home-manager.sharedModules = [
