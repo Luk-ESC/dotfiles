@@ -23,5 +23,6 @@
     snicat
     netcat
     wireguard-tools
+    qemu
   ];
 }
