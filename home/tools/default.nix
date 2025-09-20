@@ -24,5 +24,6 @@
     netcat
     wireguard-tools
     qemu
+    gcc
   ];
 }
