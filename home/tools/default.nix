@@ -26,5 +26,6 @@
     qemu
     gcc
     pwndbg
+    xxd
   ];
 }
