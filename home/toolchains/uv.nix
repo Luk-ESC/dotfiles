@@ -11,6 +11,8 @@ let
       requests
       angr
       flask
+      z3-solver
+
       (callPackage ../../pkgs/libdebug.nix { })
     ]
   );
