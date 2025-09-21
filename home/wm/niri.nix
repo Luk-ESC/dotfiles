@@ -11,6 +11,7 @@
 
   programs.fuzzel.enable = true;
   services.hyprpaper.enable = true;
+  services.mako.enable = true;
 
   programs.niri = {
     package = pkgs.niri;
