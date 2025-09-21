@@ -45,5 +45,4 @@ hosts/: Hosts directory with hardware configs
 Modules instead of enabling everything by default
 
 # CTF
-imagemagick
 imhex
