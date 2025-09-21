@@ -8,6 +8,7 @@
     ./fzf.nix
     ./git.nix
     ./helix.nix
+    ./ni.nix
     ./podman.nix
     ./ripgrep.nix
     ./ssh.nix
