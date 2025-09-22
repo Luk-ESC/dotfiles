@@ -29,5 +29,9 @@
     pwndbg
     xxd
     imagemagick
+    nmap
+    gobuster
+    nikto
+    metasploit
   ];
 }
