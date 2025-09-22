@@ -7,6 +7,7 @@
     ./wm
 
     ./borgmatic.nix
+    ./wlsunset.nix
   ];
 
   home.username = "eschb";
