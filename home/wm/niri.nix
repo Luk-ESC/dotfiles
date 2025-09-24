@@ -13,9 +13,27 @@
   services.hyprpaper.enable = true;
   services.mako.enable = true;
 
+  programs.bash.enable = true;
+  programs.bash.profileExtra = ''
+    LOCKFILE="$HOME/.niri-session.lock"
+
+    if [ ! -f "$LOCKFILE" ]; then
+        echo $! > "$LOCKFILE"
+        niri-session
+    fi
+  '';
+
   programs.niri = {
     package = pkgs.niri;
     settings = {
+      spawn-at-startup = [
+        {
+          argv = [
+            (lib.getExe pkgs.hyprlock)
+          ];
+        }
+      ];
+
       input = {
         keyboard = {
           xkb.layout = "at(nodeadkeys)";
