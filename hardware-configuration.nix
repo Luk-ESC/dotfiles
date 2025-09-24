@@ -35,6 +35,8 @@
   persist.location.caches.contents = [ "/var/lib/chrony/" ];
   services.timesyncd.enable = false;
 
+  systemd.shutdownRamfs.enable = false;
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
