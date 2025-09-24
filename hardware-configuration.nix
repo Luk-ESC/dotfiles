@@ -2,6 +2,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 {
+  pkgs,
   config,
   lib,
   modulesPath,
@@ -33,6 +34,13 @@
   services.chrony.enable = true;
   persist.location.caches.contents = [ "/var/lib/chrony/" ];
   services.timesyncd.enable = false;
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 
   services.power-profiles-daemon.enable = true;
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
