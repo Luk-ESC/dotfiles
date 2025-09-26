@@ -34,6 +34,7 @@
         }
       ];
 
+      gestures.hot-corners.enable = false;
       input = {
         keyboard = {
           xkb.layout = "at(nodeadkeys)";
