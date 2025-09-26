@@ -12,6 +12,8 @@ let
       angr
       flask
       z3-solver
+      numpy
+      opencv-python
 
       (callPackage ../../pkgs/libdebug.nix { })
     ]
