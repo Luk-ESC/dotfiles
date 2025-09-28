@@ -3,6 +3,7 @@ let
   packages = with pkgs.rPackages; [
     languageserver
     tidyverse
+    ggplot2
   ];
   wrapper = pkgs.rWrapper.override {
     inherit packages;
