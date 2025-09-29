@@ -23,7 +23,6 @@
     unzip
     snicat
     netcat
-    wireguard-tools
     qemu
     gcc
     pwndbg
