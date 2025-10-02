@@ -14,6 +14,7 @@ let
       z3-solver
       numpy
       opencv-python
+      tqdm
 
       (callPackage ../../pkgs/libdebug.nix { })
     ]
