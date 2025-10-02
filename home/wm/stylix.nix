@@ -35,11 +35,20 @@ in
     package = pkgs.nerd-fonts.meslo-lg;
   };
 
-  stylix.cursor = {
-    name = "Bibata-Modern-Classic";
-    package = pkgs.bibata-cursors;
-    size = 24;
-  };
+  stylix.cursor =
+    with config.lib.stylix.colors.withHashtag;
+    let
+      themeName = "Bibata-Stylix-" + (specName config.stylix.image);
+    in
+    {
+      name = themeName;
+      package = pkgs.callPackage ../../pkgs/bibata.nix {
+        baseColor = base00;
+        outlineColor = base0C;
+        cursorThemeName = themeName;
+      };
+      size = 24;
+    };
 
   stylix.opacity.terminal = 0.6;
   stylix.polarity = "dark";
