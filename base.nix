@@ -33,7 +33,7 @@
     enable = true;
     # Bloat that is only needed for vpns, pulls in webkit2gtk for some reason
     # FIXME(2025.11) enableDefaultPlugins = true;
-    plugins = lib.mkForce [ ];
+    plugins = lib.mkForce [ pkgs.networkmanager-openvpn ];
     ensureProfiles = {
       environmentFiles = [ config.age.secrets.wireless.path ];
       profiles = {
