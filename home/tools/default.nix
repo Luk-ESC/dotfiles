@@ -12,6 +12,7 @@
     ./podman.nix
     ./ripgrep.nix
     ./ssh.nix
+    ./switchwall.nix
     ./tealdeer.nix
     ./wine.nix
     ./wl-clipboard.nix
