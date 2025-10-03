@@ -52,6 +52,25 @@
             url = "https://search.nixos.org/options?channel=25.05&query=%s";
           }
           {
+            name = "nixos wiki";
+            tags = [
+              "nixos"
+              "wiki"
+            ];
+            keyword = "+nw";
+            url = "https://wiki.nixos.org/w/index.php?search=%s";
+          }
+          {
+            name = "home-manager options";
+            tags = [
+              "nixos"
+              "home-manager"
+              "options"
+            ];
+            keyword = "@ho";
+            url = "https://home-manager-options.extranix.com/?channel=25.05&query=%s";
+          }
+          {
             name = "youtube";
             tags = [ "youtube" ];
             keyword = "+yt";
