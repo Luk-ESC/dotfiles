@@ -34,6 +34,13 @@
         }
       ];
 
+      layer-rules = [
+        {
+          matches = [ { namespace = "hyprpaper"; } ];
+          place-within-backdrop = true;
+        }
+      ];
+
       gestures.hot-corners.enable = false;
       input = {
         keyboard = {
@@ -122,6 +129,10 @@
           "Mod+W".action = center-column;
         };
 
+      overview = {
+        workspace-shadow.enable = false;
+      };
+
       layout = {
         border.width = 2.0;
         gaps = 10;
@@ -132,6 +143,7 @@
           left = 3;
         };
         shadow.enable = true;
+        background-color = "transparent";
       };
 
       environment = {
