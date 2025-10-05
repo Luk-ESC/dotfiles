@@ -14,7 +14,7 @@ let
 in
 {
   stylix.enable = true;
-  stylix.image = lib.mkDefault ../../assets/wallpaper.jpg;
+  stylix.image = lib.mkDefault (wallpapers.outPath + "/default");
 
   specialisation = lib.mergeAttrsList (
     map (x: {

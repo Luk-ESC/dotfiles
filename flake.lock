@@ -648,11 +648,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1759504581,
-        "narHash": "sha256-tzPFVSzy86ytoQy17qV1A59YOIZZAwjahMAsqjJre9Q=",
+        "lastModified": 1759679060,
+        "narHash": "sha256-PhfV2SSTSCsJnNzJr2z1NXis649bb5IZZ5SOoszV+EE=",
         "owner": "Luk-ESC",
         "repo": "wallpapers",
-        "rev": "99e908498c1c70e72a5108078883fbbb5452a423",
+        "rev": "5426b78723fef6b134702351baccbcc4a1170639",
         "type": "github"
       },
       "original": {
