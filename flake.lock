@@ -342,6 +342,27 @@
         "type": "github"
       }
     },
+    "private": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760536716,
+        "narHash": "sha256-Dg6fBPcX33b9X/Tr1dFbecVaIwxvs0I0NxycBDZ+L+U=",
+        "ref": "main",
+        "rev": "6030a973e83c169701751d30e07b568dd26a7137",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/Luk-ESC/private_config"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/Luk-ESC/private_config"
+      }
+    },
     "pwndbg": {
       "inputs": {
         "nixpkgs": [
@@ -425,6 +446,7 @@
         "impermanence": "impermanence",
         "niri": "niri",
         "nixpkgs": "nixpkgs",
+        "private": "private",
         "pwndbg": "pwndbg",
         "secrets": "secrets",
         "stylix": "stylix",

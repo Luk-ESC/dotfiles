@@ -5,6 +5,7 @@
     ./dbeaver.nix
     ./firefox.nix
     ./geogebra.nix
+    ./ida.nix
     ./mysql-workbench.nix
     ./vesktop.nix
     ./packettracer.nix

@@ -41,6 +41,10 @@
     };
 
     secrets.url = "git+ssh://git@github.com/Luk-ESC/secrets?ref=main";
+    private = {
+      url = "git+ssh://git@github.com/Luk-ESC/private_config?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     fenix = {
       url = "github:nix-community/fenix";
@@ -79,6 +83,7 @@
       firefox-extensions,
       agenix,
       secrets,
+      private,
       fenix,
       wallpapers,
       niri,
@@ -109,6 +114,7 @@
               inherit wallpapers;
               extensions = firefox-extensions.packages.x86_64-linux;
               pwndbg = pwndbg.packages.x86_64-linux.default;
+              ida91 = private.packages.x86_64-linux.ida91;
             };
 
             home-manager.sharedModules = [
