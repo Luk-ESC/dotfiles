@@ -8,7 +8,7 @@
     [
       wl-clipboard
       (writeShellScriptBin "cope" ''
-        realpath $1 | ${wl-copy}
+        realpath $1 | tr -d '\n' | ${wl-copy}
       '')
     ];
 }
