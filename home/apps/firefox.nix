@@ -67,7 +67,7 @@
               "home-manager"
               "options"
             ];
-            keyword = "@ho";
+            keyword = "+ho";
             url = "https://home-manager-options.extranix.com/?channel=25.05&query=%s";
           }
           {
