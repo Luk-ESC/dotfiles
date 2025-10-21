@@ -10,6 +10,7 @@
   ];
 
   programs.fuzzel.enable = true;
+  programs.waybar.enable = true;
   services.hyprpaper.enable = true;
   services.mako.enable = true;
 
