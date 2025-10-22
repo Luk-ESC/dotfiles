@@ -70,10 +70,12 @@
         let
           wpctl = lib.getExe' pkgs.wireplumber "wpctl";
           brightnessctl = lib.getExe pkgs.brightnessctl;
+          alacritty = lib.getExe pkgs.alacritty;
         in
         {
           # Apps
-          "Mod+Q".action = spawn (lib.getExe pkgs.alacritty);
+          "Mod+Q".action = spawn alacritty;
+          "Mod+B".action = spawn alacritty "-e" "${../../pkgs/bunny}/bunny.sh";
           "Mod+E".action = spawn (lib.getExe pkgs.fuzzel);
           "Mod+C".action = close-window;
 
