@@ -2,8 +2,7 @@
 
 # Code stolen from https://github.com/victor-falcon/zellij-sessionizer
 
-SEARCH_PATHS=("$HOME/ZedProjects" "$HOME/Documents/School/4EHIF")
-SPECIFIC_PATHS=("$HOME/nixcfg")
+SEARCH_PATHS=("$HOME/ZedProjects" "$HOME/Documents/School/4EHIF" "$HOME/nixcfg")
 
 script_path="$(realpath "$0")"
 script_dir="$(dirname "$script_path")"
@@ -12,21 +11,25 @@ LAYOUT_FILE="$script_dir/layout.kdl"
 # Collect all directories
 all_dirs=()
 
-# Add first-level directories from SEARCH_PATHS
+# Recursive function to process a directory
+process_dir() {
+  local dir="$1"
+
+  if [[ -f "$dir/.parent" ]]; then
+    # If .parent exists, recurse into subdirectories
+    for subdir in "$dir"/*/; do
+      [[ -d "$subdir" ]] && process_dir "$subdir"
+    done
+  else
+    # If no .parent file, add this directory
+    all_dirs+=("$dir")
+  fi
+}
+
+# Process each search path
 for search_path in "${SEARCH_PATHS[@]}"; do
   if [[ -d "$search_path" ]]; then
-    for dir in "$search_path"/*; do
-      if [[ -d "$dir" ]]; then
-        all_dirs+=("$dir")
-      fi
-    done
-  fi
-done
-
-# Add SPECIFIC_PATHS
-for specific_path in "${SPECIFIC_PATHS[@]}"; do
-  if [[ -d "$specific_path" ]]; then
-    all_dirs+=("$specific_path")
+    process_dir "$search_path"
   fi
 done
 
@@ -48,5 +51,9 @@ if [[ -v "$ZELLIJ" ]]; then
 else
   # if we are not in a zellij session
   cd "$selected_dir"
-  zellij attach "$session_name" || zellij -n $LAYOUT_FILE -s "$session_name"
+  if nix develop -c true; then
+    nix develop -c sh -c "zellij attach '$session_name' || zellij -n $LAYOUT_FILE -s '$session_name'"
+  else
+    zellij attach "$session_name" || zellij -n $LAYOUT_FILE -s "$session_name"
+  fi
 fi
