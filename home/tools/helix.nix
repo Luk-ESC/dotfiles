@@ -15,6 +15,9 @@
         mouse = false;
         middle-click-paste = false;
 
+        preview-completion-insert = false;
+        color-modes = true;
+
         lsp.display-inlay-hints = true;
         lsp.inlay-hints-length-limit = 80;
       };
