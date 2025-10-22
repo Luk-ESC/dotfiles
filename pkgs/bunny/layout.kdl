@@ -1,11 +1,20 @@
 layout {
-    pane size=1 borderless=true {
-        plugin location="tab-bar"
+    tab name="Helix" focus=true {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane edit="." name="Helix" focus=true
+        pane size=1 borderless=true {
+            plugin location="status-bar"
+        }
     }
-    pane command="hx" name="Helix" focus=true {
-        args "."
-    }
-    pane size=1 borderless=true {
-        plugin location="status-bar"
+    new_tab_template {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane focus=true
+        pane size=1 borderless=true {
+            plugin location="status-bar"
+        }
     }
 }
