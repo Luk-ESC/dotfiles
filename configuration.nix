@@ -22,6 +22,11 @@
   services.getty.autologinUser = "eschb";
   services.getty.autologinOnce = true;
 
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+  };
+
   programs.niri = {
     enable = true;
     package = pkgs.niri;
