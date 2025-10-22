@@ -22,7 +22,10 @@
         AlwaysTrust.enable = true;
         BetterGifPicker.enable = true;
         ClearURLs.enable = true;
-        CustomIdle.idleTimeout = 0;
+        CustomIdle = {
+          enabled = true;
+          idleTimeout = 0;
+        };
         FakeNitro.enabled = true;
 
         ShikiCodeblocks.enable = true;
