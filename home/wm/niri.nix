@@ -75,7 +75,7 @@
         {
           # Apps
           "Mod+Q".action = spawn alacritty;
-          "Mod+B".action = spawn alacritty "-e" "${../../pkgs/bunny}/bunny.sh";
+          "Mod+B".action = spawn alacritty "-T" "Bunny" "-e" "${../../pkgs/bunny}/bunny.sh";
           "Mod+E".action = spawn (lib.getExe pkgs.fuzzel);
           "Mod+C".action = close-window;
 
@@ -171,6 +171,11 @@
             top-left = 10.0;
             top-right = 10.0;
           };
+        }
+        {
+          matches = [ { title = "Bunny"; } ];
+
+          open-maximized = true;
         }
       ];
     };
