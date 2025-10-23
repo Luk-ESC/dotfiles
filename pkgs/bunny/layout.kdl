@@ -3,7 +3,7 @@ layout {
         pane size=1 borderless=true {
             plugin location="tab-bar"
         }
-        pane edit="." name="Helix" focus=true
+        pane edit="." name="Helix" focus=true borderless=true
         pane size=1 borderless=true {
             plugin location="status-bar"
         }
