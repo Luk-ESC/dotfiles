@@ -42,12 +42,6 @@
             id = "L Diablo";
             type = "wifi";
           };
-          ipv4.method = "auto";
-          ipv6 = {
-            addr-gen-mode = "default";
-            method = "auto";
-          };
-          proxy = { };
           wifi = {
             mode = "infrastructure";
             ssid = "L Diablo";
@@ -64,12 +58,6 @@
             id = "mfzsguest";
             type = "wifi";
           };
-          ipv4.method = "auto";
-          ipv6 = {
-            addr-gen-mode = "default";
-            method = "auto";
-          };
-          proxy = { };
           wifi = {
             mode = "infrastructure";
             ssid = "mfzsguest";
