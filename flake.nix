@@ -115,6 +115,7 @@
               extensions = firefox-extensions.packages.x86_64-linux;
               pwndbg = pwndbg.packages.x86_64-linux.default;
               ida91 = private.packages.x86_64-linux.ida91;
+              age = agenix.packages.x86_64-linux.default;
             };
 
             home-manager.sharedModules = [

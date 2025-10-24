@@ -1,3 +1,4 @@
+{ age, ... }:
 {
   imports = [
     ./apps
@@ -9,6 +10,8 @@
     ./borgmatic.nix
     ./wlsunset.nix
   ];
+
+  home.packages = [ age ];
 
   home.username = "eschb";
   home.homeDirectory = "/home/eschb";
