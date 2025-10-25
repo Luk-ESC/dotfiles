@@ -10,5 +10,6 @@
     ./vesktop.nix
     ./packettracer.nix
     ./warp.nix
+    ./prismlauncher.nix
   ];
 }
