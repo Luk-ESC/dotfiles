@@ -6,6 +6,7 @@
     ./js.nix
     ./qml.nix
     ./r.nix
+    ./lua.nix
     ./uv.nix
   ];
 }
