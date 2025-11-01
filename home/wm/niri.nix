@@ -54,7 +54,7 @@
           natural-scroll = true;
         };
 
-        mouse.natural-scroll = true;
+        mouse.natural-scroll = false;
       };
 
       outputs.eDP-1 = {
