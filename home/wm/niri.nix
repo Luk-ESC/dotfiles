@@ -74,6 +74,7 @@
         in
         {
           # Apps
+          "Mod+L".action = spawn (lib.getExe pkgs.hyprlock);
           "Mod+Q".action = spawn alacritty;
           "Mod+B".action = spawn alacritty "-T" "Bunny" "-e" "${../../pkgs/bunny}/bunny.sh";
           "Mod+E".action = spawn (lib.getExe pkgs.fuzzel);
