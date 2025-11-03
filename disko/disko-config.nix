@@ -1,15 +1,13 @@
 { lib, ... }:
 let
-  reasonable_subvolume = name: extraOptions: {
+  reasonable_subvolume = name: {
     ${name} = {
       mountpoint = name;
-      mountOptions = [ "noatime" ] ++ extraOptions;
+      mountOptions = [ "noatime" ];
     };
   };
 
-  reasonable_subvolumes =
-    opts:
-    lib.mergeAttrsList (map (x: reasonable_subvolume ("/" + x.name) x.value) (lib.attrsToList opts));
+  reasonable_subvolumes = opts: lib.mergeAttrsList (map (x: reasonable_subvolume ("/" + x)) opts);
 in
 {
   disko.devices.disk.main = {
@@ -38,27 +36,26 @@ in
             extraArgs = [ "-f" ]; # Override existing partition
             # Subvolumes must set a mountpoint in order to be mounted,
             # unless their parent is mounted
-            subvolumes =
-              {
-                # Subvolume name is different from mountpoint
-                "/root" = {
-                  mountpoint = "/";
-                  mountOptions = [ "noatime" ];
-                };
-                "/swap" = {
-                  mountpoint = "/.swapvol";
-                  swap.swapfile.size = "20G"; # no hibernation >:()
-                };
-              }
-              // reasonable_subvolumes {
-                "persistent" = [ ];
-                "persistent/data" = [ "compress=zstd" ];
-                "persistent/old_roots" = [ "compress=zstd:15" ];
-                "persistent/logs" = [ "compress=zstd:15" ];
-                "persistent/caches" = [ ];
-                "persistent/session" = [ ];
-                "nix" = [ "compress=zstd" ];
+            subvolumes = {
+              # Subvolume name is different from mountpoint
+              "/root" = {
+                mountpoint = "/";
+                mountOptions = [ "noatime" ];
               };
+              "/swap" = {
+                mountpoint = "/.swapvol";
+                swap.swapfile.size = "20G"; # no hibernation >:()
+              };
+            }
+            // reasonable_subvolumes [
+              "persistent"
+              "persistent/data"
+              "persistent/old_roots"
+              "persistent/logs"
+              "persistent/caches"
+              "persistent/session"
+              "nix"
+            ];
           };
         };
       };
