@@ -33,6 +33,11 @@
             (lib.getExe pkgs.hyprlock)
           ];
         }
+        {
+          argv = [
+            (lib.getExe pkgs.waybar)
+          ];
+        }
       ];
 
       layer-rules = [
