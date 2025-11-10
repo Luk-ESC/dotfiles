@@ -2,6 +2,7 @@
   # GUI Apps
   imports = [
     ./binja.nix
+    ./burpsuite.nix
     ./dbeaver.nix
     ./firefox.nix
     ./geogebra.nix
