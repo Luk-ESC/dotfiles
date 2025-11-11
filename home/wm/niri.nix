@@ -118,9 +118,9 @@
 
           "Mod+V".action = toggle-window-floating;
 
-          # Screenshots
-          Print.action = screenshot;
-          "Alt+Print".action = screenshot-window;
+          # Screenshots (FIXME: sodiboo/niri-flake#1380)
+          Print.action.screenshot = [ ];
+          "Alt+Print".action.screenshot-window = [ ];
 
           # Workspaces
           "Mod+1".action = focus-workspace 1;
