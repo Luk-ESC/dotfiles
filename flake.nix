@@ -120,7 +120,6 @@
 
             home-manager.sharedModules = [
               stylix.homeModules.stylix
-              niri.homeModules.stylix
               agenix.homeManagerModules.default
             ];
           }
@@ -130,6 +129,11 @@
             nixpkgs.overlays = [ fenix.overlays.default ];
           }
 
+          {
+            stylix.image = (wallpapers.outPath + "/default");
+          }
+
+          stylix.nixosModules.stylix
           niri.nixosModules.niri
 
           disko.nixosModules.disko
