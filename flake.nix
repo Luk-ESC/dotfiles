@@ -147,6 +147,7 @@
 
           agenix.nixosModules.default
           secrets.nixosModules.default
+          private.nixosModules.default
 
           {
             age.identityPaths = [ "/persistent/data/home/eschb/nixcfg/keys/id_ed25519" ];

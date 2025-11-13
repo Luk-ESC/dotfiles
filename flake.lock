@@ -350,11 +350,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760536716,
-        "narHash": "sha256-Dg6fBPcX33b9X/Tr1dFbecVaIwxvs0I0NxycBDZ+L+U=",
+        "lastModified": 1763071226,
+        "narHash": "sha256-DN5Xdq4ge6PMU8nCRe+scuH/W7ojDHn/fbYpOgXCRys=",
         "ref": "main",
-        "rev": "6030a973e83c169701751d30e07b568dd26a7137",
-        "revCount": 1,
+        "rev": "0bb8c68a14a1bdf3bd492b54c151431779196ea6",
+        "revCount": 2,
         "type": "git",
         "url": "ssh://git@github.com/Luk-ESC/private_config"
       },
@@ -474,11 +474,11 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1755776762,
-        "narHash": "sha256-ySriDUnSp4zYA8z8Gd4pSw7lGR0RG5sg5OL/J9aPLbw=",
+        "lastModified": 1763070222,
+        "narHash": "sha256-LimE/CfkUr7N2GYEytpV06trFTjlLZM+PWKUZa1LjUg=",
         "ref": "main",
-        "rev": "66cd166e579b5c0c847c3b01eb71a8a6c16d28c7",
-        "revCount": 3,
+        "rev": "9705a9428db4ac8d05148d4a90f637a0b1690e29",
+        "revCount": 4,
         "type": "git",
         "url": "ssh://git@github.com/Luk-ESC/secrets"
       },
@@ -671,11 +671,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1762849107,
-        "narHash": "sha256-V8RXhvqs+om/V6orNXlF1/2Q35bE+XQCrrvAPKe7QtE=",
+        "lastModified": 1763045819,
+        "narHash": "sha256-LmI8d1buPxtZH6awDRK+h8YsMNbTD4ObcSeUrCokRTs=",
         "owner": "Luk-ESC",
         "repo": "wallpapers",
-        "rev": "203f0dad468d5779507c5f09dfa40ce89e051865",
+        "rev": "2095b0b5868a9e5b0500c7c6f91f2a01e70f0605",
         "type": "github"
       },
       "original": {
