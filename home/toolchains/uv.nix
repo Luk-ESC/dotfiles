@@ -15,6 +15,8 @@ let
       numpy
       opencv-python
       tqdm
+      pillow
+      matplotlib
 
       (callPackage ../../pkgs/libdebug.nix { })
     ]
