@@ -27,6 +27,9 @@
           idleTimeout = 0;
         };
         FakeNitro.enabled = true;
+        WhoReacted.enabled = true;
+        VolumeBooster.enabled = true;
+        MessageLogger.enabled = true;
 
         ShikiCodeblocks.enable = true;
         MessageClickActions = {
