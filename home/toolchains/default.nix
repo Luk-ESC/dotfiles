@@ -9,5 +9,6 @@
     ./r.nix
     ./lua.nix
     ./uv.nix
+    ./c.nix
   ];
 }
