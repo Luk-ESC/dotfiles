@@ -12,5 +12,6 @@
     ./packettracer.nix
     ./warp.nix
     ./prismlauncher.nix
+    ./retroarch.nix
   ];
 }
