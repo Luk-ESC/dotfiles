@@ -70,9 +70,7 @@
   networking.hostName = "nixos_base";
   networking.networkmanager = {
     enable = true;
-    # Bloat that is only needed for vpns, pulls in webkit2gtk for some reason
-    # FIXME(2025.11) enableDefaultPlugins = true;
-    plugins = lib.mkForce [ pkgs.networkmanager-openvpn ];
+    plugins = [ pkgs.networkmanager-openvpn ];
     ensureProfiles = {
       environmentFiles = [ config.age.secrets.wireless.path ];
       profiles = {
@@ -138,8 +136,6 @@
     };
 
   services.speechd.enable = lib.mkForce false;
-
-  system.rebuild.enableNg = true;
 
   users.mutableUsers = false;
   users.users.eschb = {

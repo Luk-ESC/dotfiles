@@ -15,10 +15,10 @@
   libpulseaudio,
   libudev0-shim,
   libxkbcommon,
-  libxml2,
   libxslt,
   nspr,
   wayland,
+  libxml2_13,
   nss,
   xorg,
   dpkg,
@@ -69,11 +69,11 @@ let
       libpulseaudio
       libudev0-shim
       libxkbcommon
-      libxml2
       libxslt
       nspr
       nss
       wayland
+      libxml2_13
     ]
     ++ (with xorg; [
       libICE
@@ -113,8 +113,8 @@ let
         fetchFromGitHub {
           owner = "hannahfluch";
           repo = "patchpt";
-          tag = "v0.1.0";
-          hash = "sha256-2eQ+3z6f2KkxWeRbvu+1QR/ZN/31LfEcPIDce5eUUD8=";
+          tag = "v0.1.1";
+          hash = "sha256-68Gt+07DieKYJnRTGgReQ5/HlVoPVFXAjSxKEXtHAek=";
         }
       }/patch.sh "$out/opt/pt/bin/PacketTracer"
     '';
