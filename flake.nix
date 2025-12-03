@@ -91,7 +91,7 @@
       ...
     }:
     {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
           # Import the previous configuration.nix we used,
@@ -112,10 +112,10 @@
 
             home-manager.extraSpecialArgs = {
               inherit wallpapers;
-              extensions = firefox-extensions.packages.x86_64-linux;
-              pwndbg = pwndbg.packages.x86_64-linux.default;
-              ida91 = private.packages.x86_64-linux.ida91;
-              age = agenix.packages.x86_64-linux.default;
+              extensions = firefox-extensions.packages.${system};
+              pwndbg = pwndbg.packages.${system}.default;
+              ida91 = private.packages.${system}.ida91;
+              age = agenix.packages.${system}.default;
             };
 
             home-manager.sharedModules = [
@@ -155,7 +155,7 @@
         ];
       };
 
-      nixosConfigurations.base = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.base = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
           (
@@ -177,7 +177,7 @@
               isoImage.storeContents = [ self.nixosConfigurations.nixos.config.system.build.toplevel ];
 
               environment.systemPackages = [
-                disko.packages.x86_64-linux.disko-install
+                disko.packages.${system}.disko-install
 
                 (pkgs.writeShellScriptBin "install-with-disko" (builtins.readFile ./scripts/install-with-disko.sh))
               ];
