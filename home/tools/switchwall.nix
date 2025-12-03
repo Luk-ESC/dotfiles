@@ -7,7 +7,7 @@
       activated=0
 
       # Iterate over home-manager generations
-      ${lib.getExe pkgs.home-manager} generations | while IFS= read -r line; do
+      tac ~/.cache/hm_generations | while IFS= read -r line; do
         # Extract the first /nix/store/... path from the line
         path="$(grep -oE '/nix/store/[^ ]+' <<<"$line" | head -n1 || true)"
 
@@ -29,6 +29,8 @@
             activated=1
             exit 0
           fi
+
+          exit 0
         fi
       done
       exit 1

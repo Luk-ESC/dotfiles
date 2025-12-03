@@ -22,13 +22,9 @@ in
     }) images
   );
 
-  home.shellAliases = lib.mergeAttrsList (
-    map (x: {
-      "switch-${specName x}" =
-        config.home.homeDirectory
-        + "/.local/state/home-manager/gcroots/current-home/specialisation/${specName x}/activate";
-    }) images
-  );
+  home.activation.writeGenerationPath = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run dirname "$0" >> ~/.cache/hm_generations
+  '';
 
   stylix.fonts.monospace = {
     name = "MesloLGM Nerd Font";
