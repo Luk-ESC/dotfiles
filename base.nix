@@ -71,42 +71,6 @@
   networking.networkmanager = {
     enable = true;
     plugins = [ pkgs.networkmanager-openvpn ];
-    ensureProfiles = {
-      environmentFiles = [ config.age.secrets.wireless.path ];
-      profiles = {
-        "L Diablo" = {
-          connection = {
-            id = "L Diablo";
-            type = "wifi";
-          };
-          wifi = {
-            mode = "infrastructure";
-            ssid = "L Diablo";
-          };
-          wifi-security = {
-            auth-alg = "open";
-            key-mgmt = "wpa-psk";
-            psk = "$psk_ldiablo";
-          };
-        };
-
-        mfzsguest = {
-          connection = {
-            id = "mfzsguest";
-            type = "wifi";
-          };
-          wifi = {
-            mode = "infrastructure";
-            ssid = "mfzsguest";
-          };
-          wifi-security = {
-            auth-alg = "open";
-            key-mgmt = "wpa-psk";
-            psk = "$psk_hannah";
-          };
-        };
-      };
-    };
   };
 
   time.timeZone = "Europe/Vienna";
