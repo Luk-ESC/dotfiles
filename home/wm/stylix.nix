@@ -22,6 +22,8 @@ in
     }) images
   );
 
+  stylix.targets.blender.enable = false;
+
   home.activation.writeGenerationPath = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     run dirname "$0" >> ~/.cache/hm_generations
   '';
