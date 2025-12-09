@@ -13,5 +13,6 @@
     ./warp.nix
     ./prismlauncher.nix
     ./retroarch.nix
+    ./maltego.nix
   ];
 }
