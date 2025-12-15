@@ -70,6 +70,12 @@
       url = "github:pwndbg/pwndbg";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    copai = {
+      url = "github:inet4/copai";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.firefox-extensions.follows = "firefox-extensions";
+    };
   };
 
   outputs =
@@ -88,6 +94,7 @@
       wallpapers,
       niri,
       pwndbg,
+      copai,
       ...
     }:
     {
@@ -116,6 +123,7 @@
               pwndbg = pwndbg.packages.${system}.default;
               ida91 = private.packages.${system}.ida91;
               age = agenix.packages.${system}.default;
+              copai = copai.packages.${system}.default;
             };
 
             home-manager.sharedModules = [

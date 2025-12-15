@@ -95,6 +95,29 @@
         "type": "github"
       }
     },
+    "copai": {
+      "inputs": {
+        "firefox-extensions": [
+          "firefox-extensions"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765792776,
+        "narHash": "sha256-M7VDV8IxXNQ3x2JCyZ2tFNrZ4G6hP7u1rVY0xY2XmzE=",
+        "owner": "inet4",
+        "repo": "copai",
+        "rev": "6cccfd35932754df51253cd018051231823fbe64",
+        "type": "github"
+      },
+      "original": {
+        "owner": "inet4",
+        "repo": "copai",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -442,6 +465,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "copai": "copai",
         "disko": "disko",
         "fenix": "fenix",
         "firefox-extensions": "firefox-extensions",

@@ -9,6 +9,7 @@
 
     ./borgmatic.nix
     ./wlsunset.nix
+    ./lockin.nix
   ];
 
   home.packages = [ age ];
