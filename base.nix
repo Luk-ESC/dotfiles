@@ -101,7 +101,11 @@
 
   services.speechd.enable = lib.mkForce false;
 
+  programs.bash.enable = false;
+  programs.zsh.enable = true;
+
   users.mutableUsers = false;
+  users.defaultUserShell = pkgs.zsh;
   users.users.eschb = {
     isNormalUser = true;
     hashedPasswordFile = config.age.secrets.linuxpw.path;

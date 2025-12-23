@@ -14,8 +14,7 @@
   services.hyprpaper.enable = true;
   services.mako.enable = true;
 
-  programs.bash.enable = true;
-  programs.bash.profileExtra = ''
+  programs.zsh.profileExtra = ''
     LOCKFILE="$HOME/.niri-session.lock"
 
     if [ ! -f "$LOCKFILE" ]; then
