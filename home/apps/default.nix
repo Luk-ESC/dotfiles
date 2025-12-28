@@ -14,5 +14,6 @@
     ./prismlauncher.nix
     ./retroarch.nix
     ./maltego.nix
+    ./mattermost.nix
   ];
 }
