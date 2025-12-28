@@ -39,4 +39,12 @@ in
   programs.helix.extraPackages = [ toolchain.rust-analyzer ];
 
   home.file.".cargo/config.toml".source = toml.generate "config.toml" cargo_config;
+
+  persist.caches.contents = [
+    ".cargo/registry/cache/"
+  ];
+
+  persist.session.contents = [
+    ".cargo/"
+  ];
 }
