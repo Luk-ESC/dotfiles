@@ -182,6 +182,26 @@
 
           open-maximized = true;
         }
+        {
+          matches = [
+            {
+              app-id = "^firefox$";
+              title = "^Picture-in-Picture$";
+            }
+          ];
+
+          open-floating = true;
+          default-floating-position = {
+            relative-to = "bottom-right";
+            x = 32;
+            y = 32;
+          };
+
+          default-column-width.proportion = 0.25;
+          default-window-height.proportion = 0.25;
+          focus-ring.enable = false;
+          border.enable = false;
+        }
       ];
     };
   };
