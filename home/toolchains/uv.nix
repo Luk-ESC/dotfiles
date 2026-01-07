@@ -24,7 +24,10 @@ let
 in
 {
   home.packages = [ python ];
-  home.shellAliases.py = lib.getExe python;
+  home.shellAliases = rec {
+    py = lib.getExe python;
+    mkvenv = "${lib.getExe pkgs.uv} venv -p ${py}";
+  };
 
   programs.uv.enable = true;
   programs.ruff = {
