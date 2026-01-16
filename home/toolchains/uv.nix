@@ -27,6 +27,7 @@ in
   home.shellAliases = rec {
     py = lib.getExe python;
     mkvenv = "${lib.getExe pkgs.uv} venv -p ${py}";
+    actvenv = "source .venv/bin/activate";
   };
 
   programs.uv.enable = true;
