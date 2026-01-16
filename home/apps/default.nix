@@ -7,14 +7,14 @@
     ./firefox.nix
     ./geogebra.nix
     ./ida.nix
+    ./maltego.nix
+    ./mattermost.nix
     ./mysql-workbench.nix
-    ./vesktop.nix
     ./packettracer.nix
-    ./warp.nix
     ./prismlauncher.nix
     ./retroarch.nix
     ./teams-for-linux.nix
-    ./maltego.nix
-    ./mattermost.nix
+    ./vesktop.nix
+    ./warp.nix
   ];
 }

@@ -3,7 +3,7 @@
   imports = [
     ./cursor.nix
     ./hyprlock.nix
-    ./stylix.nix
     ./niri.nix
+    ./stylix.nix
   ];
 }

@@ -8,8 +8,8 @@
     ./wm
 
     ./borgmatic.nix
-    ./wlsunset.nix
     ./lockin.nix
+    ./wlsunset.nix
   ];
 
   home.packages = [ age ];
