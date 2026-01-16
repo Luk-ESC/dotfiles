@@ -13,6 +13,7 @@
     ./warp.nix
     ./prismlauncher.nix
     ./retroarch.nix
+    ./teams-for-linux.nix
     ./maltego.nix
     ./mattermost.nix
   ];
