@@ -135,6 +135,7 @@
 
           "Mod+O".action = toggle-overview;
           "Mod+F".action = maximize-column;
+          "Mod+Shift+F".action = fullscreen-window;
           "Mod+W".action = center-column;
         };
 
