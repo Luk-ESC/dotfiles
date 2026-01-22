@@ -3,6 +3,7 @@ let
   packages = with pkgs.rPackages; [
     languageserver
     tidyverse
+    patchwork
     ggplot2
   ];
   wrapper = pkgs.rWrapper.override {
