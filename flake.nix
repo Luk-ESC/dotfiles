@@ -76,6 +76,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.firefox-extensions.follows = "firefox-extensions";
     };
+
+    leaves = {
+      url = "github:Luk-ESC/leaves";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.fenix.follows = "fenix";
+    };
   };
 
   outputs =
@@ -95,6 +101,7 @@
       niri,
       pwndbg,
       copai,
+      leaves,
       ...
     }:
     {
@@ -142,6 +149,8 @@
 
           stylix.nixosModules.stylix
           niri.nixosModules.niri
+
+          leaves.nixosModules.${system}.default
 
           disko.nixosModules.disko
           ./disko/disko-config.nix
