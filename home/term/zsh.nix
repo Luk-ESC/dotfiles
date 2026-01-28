@@ -1,17 +1,19 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   persist.caches.contents = [
-    ".zcompdump"
+    ".config/zsh/.zcompdump"
   ];
 
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-
-    completionInit = ''
-      autoload -U compinit && compinit -d /persistent/caches/home/eschb/.zcompdump
-    '';
+    dotDir = "${config.xdg.configHome}/zsh";
 
     initContent = ''
       bindkey "^[[1;5D" backward-word
@@ -31,7 +33,7 @@
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake /home/eschb/nixcfg";
       ls = "ls --color=auto";
-      reload = "source ~/.zshrc; rehash";
+      reload = "source ~/.config/zsh/.zshrc; rehash";
       m = "${lib.getExe pkgs.erdtree} --level=1 --sort=size -H --hidden --no-ignore";
       cat = "${lib.getExe pkgs.bat} --paging=never";
       df = "df -h";
