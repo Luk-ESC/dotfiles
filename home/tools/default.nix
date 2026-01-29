@@ -20,6 +20,7 @@
 
   home.packages = with pkgs; [
     unp
+    unixtools.netstat
     file
     unzip
     snicat
