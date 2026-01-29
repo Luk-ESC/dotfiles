@@ -4,7 +4,6 @@
   imports = [
     ./bottom.nix
     ./fastfetch.nix
-    ./file.nix
     ./fzf.nix
     ./git.nix
     ./helix.nix
@@ -21,6 +20,7 @@
 
   home.packages = with pkgs; [
     unp
+    file
     unzip
     snicat
     netcat

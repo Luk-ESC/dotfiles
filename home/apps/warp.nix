@@ -3,6 +3,7 @@
   home.packages = [
     pkgs.warp
   ];
+
   # supress hello message
   home.file."${config.xdg.configHome}/warp/config.json".text = builtins.toJSON {
     window = {

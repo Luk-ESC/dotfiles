@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
-  programs.helix = {
-    extraPackages = [
-      pkgs.lua-language-server
-    ];
-  };
+  programs.helix.extraPackages = [
+    pkgs.lua-language-server
+  ];
 }

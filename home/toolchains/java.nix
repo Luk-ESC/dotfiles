@@ -4,9 +4,7 @@
     ".m2/repository/"
   ];
 
-  programs.helix = {
-    extraPackages = [
-      pkgs.jdt-language-server
-    ];
-  };
+  programs.helix.extraPackages = [
+    pkgs.jdt-language-server
+  ];
 }
