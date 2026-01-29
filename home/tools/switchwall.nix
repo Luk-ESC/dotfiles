@@ -25,7 +25,7 @@
           activate="$path/$wallpaper/activate"
           if [[ -x "$activate" ]]; then
             echo "activating now"
-            "$activate"
+            "$activate" --driver-version 1
             activated=1
             exit 0
           fi

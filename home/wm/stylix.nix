@@ -23,6 +23,7 @@ in
   );
 
   stylix.targets.blender.enable = false;
+  stylix.targets.kde.enable = false;
 
   home.activation.writeGenerationPath = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     run dirname "$0" >> ~/.cache/hm_generations
