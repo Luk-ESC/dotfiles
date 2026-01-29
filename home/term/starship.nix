@@ -1,61 +1,39 @@
+let
+  lyt = "base07";
+  mid = "base04";
+  drk = "base01";
+  blk = "base00";
+  s_icon = "(bg:${lyt} fg:${blk})";
+  s_1 = "(fg:${blk} bg:${mid})";
+  s_2 = "(fg:${mid} bg:${drk})";
+in
 {
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
 
-    settings = builtins.fromTOML ''
-      format = """
-      [╭─\ue0b6](#a3aed2)\
-      [ \uf303 ](bg:#a3aed2 fg:#090c0c)\
-      [](bg:#769ff0 fg:#a3aed2)\
-      $directory\
-      $sudo\
-      [](fg:#769ff0 bg:#394260)\
-      $git_branch\
-      $git_status\
-      [](fg:#394260 bg:#212736)\
-      $rust\
-      [](fg:#212736 bg:#1d2230)\
-      $time\
-      [ ](fg:#1d2230)\
-      \n╰─ """
+    settings = {
+      directory = {
+        format = "[ $path ]${s_1}";
+        truncate_to_repo = false;
+        truncation_length = 0;
+      };
+      sudo = {
+        disabled = false;
+        format = "[ 󱑷 ]${s_1}";
+      };
 
-      [character] # The name of the module we are configuring is 'character'
-      success_symbol = '[╰─](bold green)'
+      git_branch.format = "[  $branch ]${s_2}";
+      git_status.format = "[($all_status$ahead_behind )]${s_2}";
+      rust.format = "[  ($version) ]${s_2}";
 
-      [directory]
-      style = "fg:#e3e5e5 bg:#769ff0"
-      format = "[ $path ]($style)"
-      truncation_length = 0
-      truncate_to_repo = false
+      format = "[╭─](${lyt})[  ]${s_icon}[](fg:${lyt} bg:${mid})$directory$sudo[]${s_2}$git_branch$git_status$rust[](fg:${drk} bg:${blk})$time[ ](${blk})\n╰─ ";
 
-
-      [git_branch]
-      symbol = ""
-      style = "bg:#394260"
-      format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
-
-      [git_status]
-      style = "bg:#394260"
-      format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
-
-      [rust]
-      symbol = ""
-      style = "bg:#212736"
-      format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-      [time]
-      disabled = false
-      time_format = "%R" # Hour:Minute Format
-      style = "bg:#1d2230"
-      format = '[[ $time ](fg:#a0a9cb bg:#1d2230)]($style)'
-
-
-      [sudo]
-      disabled = false
-      style = "fg:#e3e5e5 bg:#769ff0"
-      format = '[ $symbol]($style)'
-      symbol = '󱑷 '
-    '';
+      time = {
+        disabled = false;
+        format = "[ $time ](fg:${mid} bg:${blk})";
+        time_format = "%R";
+      };
+    };
   };
 }
