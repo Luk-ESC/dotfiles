@@ -50,6 +50,7 @@
       ignorePatterns = [
         "poweroff"
         "reboot"
+        "rm -rf *"
       ];
       path = "/persistent/data/home/eschb/.zsh_history";
       size = 100000;
