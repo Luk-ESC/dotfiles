@@ -27,7 +27,7 @@ in
       git_status.format = "[($all_status$ahead_behind )]${s_2}";
       rust.format = "[  ($version) ]${s_2}";
 
-      format = "[╭─](${lyt})[  ]${s_icon}[](fg:${lyt} bg:${mid})$directory$sudo[]${s_2}$git_branch$git_status$rust[](fg:${drk} bg:${blk})$time[ ](${blk})\n╰─ ";
+      format = "[╭─](${lyt})[  ]${s_icon}[](fg:${lyt} bg:${mid})$directory$sudo[]${s_2}$git_branch$git_status$rust[](fg:${drk} bg:${blk})$time[ ](${blk})\n[╰─ ](${lyt})";
 
       time = {
         disabled = false;
