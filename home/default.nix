@@ -7,7 +7,6 @@
     ./tools
     ./wm
 
-    ./borgmatic.nix
     ./lockin.nix
     ./wlsunset.nix
   ];
