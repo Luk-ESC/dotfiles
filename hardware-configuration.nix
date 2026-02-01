@@ -3,13 +3,13 @@
 # to /etc/nixos/configuration.nix instead.
 {
   pkgs,
-  config,
   lib,
   modulesPath,
   ...
 }:
 
 {
+  # hello
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];

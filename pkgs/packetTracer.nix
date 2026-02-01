@@ -134,7 +134,7 @@ let
   fhs-env = buildFHSEnv {
     name = "ciscoPacketTracer8-fhs-env";
     runScript = lib.getExe' unwrapped "packettracer8";
-    targetPkgs = pkgs: [ libudev0-shim ];
+    targetPkgs = _: [ libudev0-shim ];
   };
 in
 

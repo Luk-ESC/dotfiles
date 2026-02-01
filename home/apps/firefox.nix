@@ -1,4 +1,4 @@
-{ lib, extensions, ... }:
+{ extensions, ... }:
 {
   persist.session.contents = [
     ".mozilla/"
@@ -89,10 +89,10 @@
           darkreader
           bitwarden
           sponsorblock
-          (youtube-recommended-videos.overrideAttrs (prev: {
+          (youtube-recommended-videos.overrideAttrs {
             # HACK: for some reason, this extension can't be added if it has an unfree license.
             meta.license = bitwarden.meta.license;
-          }))
+          })
         ];
       };
       search.force = true;
