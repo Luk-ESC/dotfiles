@@ -17,7 +17,7 @@ process_dir() {
 
   if [[ -f "$dir/.parent" ]]; then
     # If .parent exists, recurse into subdirectories
-    for subdir in "$dir"/*/; do
+    for subdir in "$dir"/*; do
       [[ -d "$subdir" ]] && process_dir "$subdir"
     done
   else
