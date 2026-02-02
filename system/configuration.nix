@@ -2,7 +2,6 @@
 {
   imports = [
     ./base.nix
-    ./persist/persist.nix
   ];
 
   xdg.portal.extraPortals = lib.mkForce [

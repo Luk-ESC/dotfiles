@@ -110,7 +110,9 @@
         modules = [
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
-          ./configuration.nix
+          ./system/configuration.nix
+          ./hardware-configuration.nix
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -157,7 +159,7 @@
           ./disko/disko-config.nix
 
           impermanence.nixosModules.impermanence
-          ./impermanence.nix
+          ./system/impermanence.nix
 
           ./persist/persist.nix
           ./persist/conf.nix
@@ -200,7 +202,8 @@
               ];
             }
           )
-          ./base.nix
+          ./system/base.nix
+          ./hardware-configuration.nix
         ];
       };
     };
