@@ -19,10 +19,11 @@
   ];
 
   home.packages = with pkgs; [
-    unp
+    (unp.override {
+      extraBackends = [ unrar ];
+    })
     unixtools.netstat
     file
-    unzip
     snicat
     netcat
     qemu
