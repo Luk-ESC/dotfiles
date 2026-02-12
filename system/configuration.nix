@@ -1,8 +1,64 @@
-{ lib, pkgs, ... }:
+{
+  minimal,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./base.nix
   ];
+
+  services.chrony.enable = true;
+  persist.location.caches.contents = [ "/var/lib/chrony/" ];
+
+  users.users.eschb = {
+    isNormalUser = true;
+    hashedPasswordFile = config.age.secrets.linuxpw.path;
+    extraGroups = [
+      "wheel"
+      "video"
+      "wireshark"
+      "networkmanager"
+    ];
+  };
+
+  boot.loader.limine.style =
+    let
+      inherit (config.lib.stylix) colors;
+      opacity = "c0";
+    in
+    {
+      wallpapers = [ config.stylix.image ];
+      interface.branding = "you wouldnt steal a car";
+      graphicalTerminal = {
+        palette = lib.concatStringsSep ";" [
+          colors.base00
+          colors.red
+          colors.green
+          colors.brown
+          colors.blue
+          colors.magenta
+          colors.cyan
+          colors.base04
+        ];
+        brightPalette = lib.concatStringsSep ";" [
+          colors.base01
+          colors.bright-red
+          colors.bright-green
+          colors.yellow
+          colors.bright-blue
+          colors.bright-magenta
+          colors.bright-cyan
+          colors.base07
+        ];
+        foreground = colors.base05;
+        background = "${opacity}${colors.base00}";
+        brightForeground = colors.base06;
+        brightBackground = colors.base02;
+      };
+    };
 
   xdg.portal.extraPortals = lib.mkForce [
     pkgs.xdg-desktop-portal-gtk
@@ -22,7 +78,7 @@
   services.getty.autologinOnce = true;
 
   programs.wireshark = {
-    enable = true;
+    enable = !minimal;
     package = pkgs.wireshark;
   };
 

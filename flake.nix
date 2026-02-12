@@ -104,76 +104,82 @@
       leaves,
       ...
     }:
-    {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        modules = [
-          # Import the previous configuration.nix we used,
-          # so the old configuration file still takes effect
-          ./system/configuration.nix
-          ./hardware-configuration.nix
+    let
+      mkSystem =
+        minimal:
+        nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          specialArgs = { inherit minimal; };
+          modules = [
+            # Import the previous configuration.nix we used,
+            # so the old configuration file still takes effect
+            ./system/configuration.nix
+            ./hardware-configuration.nix
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.eschb =
-              { ... }:
-              {
-                imports = [
-                  ./home
-                  ./persist/home.nix
-                ];
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.eschb =
+                { ... }:
+                {
+                  imports = [
+                    ./home
+                    ./persist/home.nix
+                  ];
+                };
+
+              home-manager.extraSpecialArgs = {
+                inherit wallpapers minimal;
+                extensions = firefox-extensions.packages.${system};
+                pwndbg = pwndbg.packages.${system}.default;
+                ida91 = private.packages.${system}.ida91;
+                age = agenix.packages.${system}.default;
+                copai = copai.packages.${system}.default;
               };
 
-            home-manager.extraSpecialArgs = {
-              inherit wallpapers;
-              extensions = firefox-extensions.packages.${system};
-              pwndbg = pwndbg.packages.${system}.default;
-              ida91 = private.packages.${system}.ida91;
-              age = agenix.packages.${system}.default;
-              copai = copai.packages.${system}.default;
-            };
+              home-manager.sharedModules = [
+                stylix.homeModules.stylix
+                agenix.homeManagerModules.default
+              ];
+            }
 
-            home-manager.sharedModules = [
-              stylix.homeModules.stylix
-              agenix.homeManagerModules.default
-            ];
-          }
+            {
+              nixpkgs.config.allowUnfree = true;
+              nixpkgs.overlays = [ fenix.overlays.default ];
+            }
 
-          {
-            nixpkgs.config.allowUnfree = true;
-            nixpkgs.overlays = [ fenix.overlays.default ];
-          }
+            {
+              stylix.image = (wallpapers.outPath + "/default");
+            }
 
-          {
-            stylix.image = (wallpapers.outPath + "/default");
-          }
+            stylix.nixosModules.stylix
+            niri.nixosModules.niri
 
-          stylix.nixosModules.stylix
-          niri.nixosModules.niri
+            leaves.nixosModules.${system}.default
 
-          leaves.nixosModules.${system}.default
+            disko.nixosModules.disko
+            ./disko/disko-config.nix
 
-          disko.nixosModules.disko
-          ./disko/disko-config.nix
+            impermanence.nixosModules.impermanence
+            ./system/impermanence.nix
 
-          impermanence.nixosModules.impermanence
-          ./system/impermanence.nix
+            ./persist/persist.nix
+            ./persist/conf.nix
 
-          ./persist/persist.nix
-          ./persist/conf.nix
+            agenix.nixosModules.default
+            secrets.nixosModules.default
+            private.nixosModules.default
 
-          agenix.nixosModules.default
-          secrets.nixosModules.default
-          private.nixosModules.default
-
-          {
-            age.identityPaths = [ "/persistent/data/home/eschb/nixcfg/keys/id_ed25519" ];
-          }
-        ];
-      };
-
+            {
+              age.identityPaths = [ "/persistent/data/home/eschb/nixcfg/keys/id_ed25519" ];
+            }
+          ];
+        };
+    in
+    {
+      nixosConfigurations.nixos = mkSystem false;
+      nixosConfigurations.minimal = mkSystem true;
       nixosConfigurations.base = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
@@ -193,7 +199,7 @@
                 }
               ];
 
-              isoImage.storeContents = [ self.nixosConfigurations.nixos.config.system.build.toplevel ];
+              isoImage.storeContents = [ self.nixosConfigurations.minimal.config.system.build.toplevel ];
 
               environment.systemPackages = [
                 disko.packages.${system}.disko-install
@@ -203,7 +209,6 @@
             }
           )
           ./system/base.nix
-          ./hardware-configuration.nix
         ];
       };
     };

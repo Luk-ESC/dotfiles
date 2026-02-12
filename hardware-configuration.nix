@@ -33,8 +33,6 @@
   boot.initrd.luks.devices = lib.mkForce { };
 
   # Switch to chrony since it's preferred for laptops
-  services.chrony.enable = true;
-  persist.location.caches.contents = [ "/var/lib/chrony/" ];
   services.timesyncd.enable = false;
 
   systemd.shutdownRamfs.enable = false;

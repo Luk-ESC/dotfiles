@@ -12,7 +12,7 @@ lsblk
 echo Select what disk you want to install to:
 echo WARNING: THIS WILL ERASE EVERYTHING!!
 read mydisk
-sudo disko-install --write-efi-boot-entries --flake disko_install/#nixos --disk main $mydisk
+sudo disko-install --write-efi-boot-entries --flake disko_install/#minimal --disk main $mydisk
 
 echo Copying config to system...
 sudo mount /dev/disk/by-partlabel/disk-main-root lol -m

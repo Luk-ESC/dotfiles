@@ -1,6 +1,7 @@
+{ minimal, lib, ... }:
 {
   # Programming toolchains
-  imports = [
+  imports = lib.optionals (!minimal) [
     ./c.nix
     ./fenix.nix
     ./go.nix

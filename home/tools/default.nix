@@ -1,4 +1,10 @@
-{ pkgs, pwndbg, ... }:
+{
+  minimal,
+  lib,
+  pkgs,
+  pwndbg,
+  ...
+}:
 {
   # Terminal tools
   imports = [
@@ -8,15 +14,17 @@
     ./git.nix
     ./helix.nix
     ./ni.nix
-    ./podman.nix
     ./ripgrep.nix
     ./ssh.nix
     ./switchwall.nix
     ./tealdeer.nix
-    ./wine.nix
     ./wl-clipboard.nix
     ./zellij.nix
-  ];
+  ]
+  ++ (lib.optionals (!minimal) [
+    ./podman.nix
+    ./wine.nix
+  ]);
 
   home.packages = with pkgs; [
     (unp.override {
