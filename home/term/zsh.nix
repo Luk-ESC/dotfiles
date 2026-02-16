@@ -35,7 +35,7 @@
       nrt = "sudo nixos-rebuild test --flake /home/eschb/nixcfg";
       ls = "ls --color=auto";
       reload = "source ~/.config/zsh/.zshrc; rehash";
-      m = "${lib.getExe pkgs.erdtree} --level=1 --sort=size -H --hidden --no-ignore";
+      erm = "${lib.getExe pkgs.erdtree} --level=1 --sort=size -H --hidden --no-ignore";
       cat = "${lib.getExe pkgs.bat} --paging=never";
       df = "df -h";
       du = "du -h";
