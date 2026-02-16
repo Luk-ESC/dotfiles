@@ -27,6 +27,7 @@
         right = "no_op";
         down = "no_op";
         up = "no_op";
+        space.B = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}";
       };
     };
 
