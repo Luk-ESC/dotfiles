@@ -43,5 +43,6 @@
     gobuster
     nikto
     metasploit
+    pulsemixer
   ];
 }
