@@ -14,5 +14,6 @@
 
   persist.session.contents = [
     "pt/"
+    ".local/share/Cisco Packet Tracer/"
   ];
 }
