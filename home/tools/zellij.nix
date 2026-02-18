@@ -5,6 +5,7 @@
     settings = {
       show_startup_tips = false;
       show_release_notes = false;
+      session_serialization = false;
       default_shell = "zsh";
 
       on_force_close = "quit";
