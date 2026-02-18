@@ -22,8 +22,11 @@ in
     }) images
   );
 
-  stylix.targets.blender.enable = false;
-  stylix.targets.kde.enable = false;
+  stylix.targets = {
+    blender.enable = false;
+    kde.enable = false;
+    gtk.flatpakSupport.enable = false; # edits ~/.themes/adw-gtk3
+  };
 
   home.activation.writeGenerationPath = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     run dirname "$0" >> ~/.cache/hm_generations

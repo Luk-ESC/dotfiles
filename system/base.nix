@@ -10,6 +10,8 @@
     "flakes"
   ];
 
+  nix.settings.use-xdg-base-directories = true;
+
   nix.channel.enable = false;
 
   boot.loader.limine = {

@@ -15,7 +15,7 @@
   services.mako.enable = true;
 
   programs.zsh.profileExtra = ''
-    LOCKFILE="$HOME/.niri-session.lock"
+    LOCKFILE="$XDG_RUNTIME_DIR/.niri-session.lock"
 
     if [ ! -f "$LOCKFILE" ]; then
         echo $! > "$LOCKFILE"
