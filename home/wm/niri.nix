@@ -69,6 +69,8 @@
         };
       };
 
+      hotkey-overlay.skip-at-startup = true;
+
       binds =
         with config.lib.niri.actions;
         let
