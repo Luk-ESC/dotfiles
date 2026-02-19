@@ -8,6 +8,7 @@
 {
   imports = [
     ./base.nix
+    ./waydroid.nix
   ];
 
   services.chrony.enable = true;
