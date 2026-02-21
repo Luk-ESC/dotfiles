@@ -3,13 +3,13 @@
   # Programming toolchains
   imports = lib.optionals (!minimal) [
     ./c.nix
-    ./fenix.nix
+    ./rust.nix
     ./go.nix
     ./java.nix
     ./js.nix
     ./lua.nix
     ./qml.nix
     ./r.nix
-    ./uv.nix
+    ./python.nix
   ];
 }
