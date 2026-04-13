@@ -33,8 +33,8 @@ in
   '';
 
   stylix.fonts.monospace = {
-    name = "MesloLGM Nerd Font";
-    package = pkgs.nerd-fonts.meslo-lg;
+    name = "MesloLGSNF";
+    package = pkgs.meslo-lgs-nf;
   };
 
   stylix.cursor =
