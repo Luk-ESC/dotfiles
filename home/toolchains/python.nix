@@ -17,6 +17,9 @@ let
       tqdm
       pillow
       matplotlib
+      pycryptodomex
+      fpylll
+      trimesh
 
       (callPackage ../../pkgs/libdebug.nix { })
     ]
