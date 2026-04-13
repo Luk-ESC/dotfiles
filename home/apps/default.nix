@@ -18,6 +18,7 @@
     ./prismlauncher.nix
     ./retroarch.nix
     ./teams-for-linux.nix
+    ./steam.nix
     ./warp.nix
   ]);
 }
