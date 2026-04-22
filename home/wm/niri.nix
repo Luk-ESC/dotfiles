@@ -2,17 +2,13 @@
   pkgs,
   lib,
   config,
+  noctalia,
   ...
 }:
 {
   home.packages = [
     pkgs.xwayland-satellite
   ];
-
-  programs.fuzzel.enable = true;
-  programs.waybar.enable = true;
-  services.hyprpaper.enable = true;
-  services.mako.enable = true;
 
   programs.zsh.profileExtra = ''
     LOCKFILE="$XDG_RUNTIME_DIR/.niri-session.lock"
@@ -27,21 +23,12 @@
     package = pkgs.niri;
     settings = {
       spawn-at-startup = [
-        {
-          argv = [
-            (lib.getExe pkgs.hyprlock)
-          ];
-        }
-        {
-          argv = [
-            (lib.getExe pkgs.waybar)
-          ];
-        }
+        { argv = [ (lib.getExe noctalia) ]; }
       ];
 
       layer-rules = [
         {
-          matches = [ { namespace = "hyprpaper"; } ];
+          matches = [ { namespace = "^noctalia-wallpaper*"; } ];
           place-within-backdrop = true;
         }
       ];
@@ -70,32 +57,46 @@
       };
 
       hotkey-overlay.skip-at-startup = true;
+      debug.honor-xdg-activation-with-invalid-serial = true;
 
       binds =
         with config.lib.niri.actions;
         let
-          wpctl = lib.getExe' pkgs.wireplumber "wpctl";
-          brightnessctl = lib.getExe pkgs.brightnessctl;
           alacritty = lib.getExe pkgs.alacritty;
+          spawnIpc = a: {
+            spawn = [
+              (lib.getExe noctalia)
+              "ipc"
+              "call"
+            ]
+            ++ (lib.splitString " " a);
+          };
         in
         {
           # Apps
-          "Mod+L".action = spawn (lib.getExe pkgs.hyprlock);
+          "Mod+L".action = spawnIpc "lockScreen lock";
           "Mod+Q".action = spawn alacritty;
           "Mod+B".action = spawn alacritty "-T" "Bunny" "-e" "${../../pkgs/bunny}/bunny.sh";
           "Mod+R".action = spawn (lib.getExe pkgs.firefox);
-          "Mod+E".action = spawn (lib.getExe pkgs.fuzzel);
+          "Mod+E".action = spawnIpc "launcher toggle";
+          "Mod+A".action = spawnIpc "wallpaper toggle";
+          "Mod+V".action = spawnIpc "launcher clipboard";
           "Mod+C".action = close-window;
 
           # Audio
-          XF86AudioRaiseVolume.action = spawn wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+";
-          XF86AudioLowerVolume.action = spawn wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-";
-          XF86AudioMute.action = spawn wpctl "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
-          XF86AudioMicMute.action = spawn wpctl "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
+          XF86AudioRaiseVolume.action = spawnIpc "volume increase";
+          XF86AudioLowerVolume.action = spawnIpc "volume decrease";
+          XF86AudioMute.action = spawnIpc "volume muteOutput";
+          XF86AudioMicMute.action = spawnIpc "volume muteInput";
 
           # Brightness
-          XF86MonBrightnessUp.action = spawn brightnessctl "s" "5%+";
-          XF86MonBrightnessDown.action = spawn brightnessctl "s" "5%-";
+          XF86MonBrightnessUp.action = spawnIpc "brightness increase";
+          XF86MonBrightnessDown.action = spawnIpc "brightness decrease";
+
+          # Media
+          XF86AudioPlay.action = spawnIpc "media playPause";
+          XF86AudioNext.action = spawnIpc "media next";
+          XF86AudioPrev.action = spawnIpc "media previous";
 
           # Movement
           "Mod+Left".action = focus-column-left;
@@ -118,7 +119,7 @@
           "Mod+Shift+Left".action = set-column-width "-5%";
           "Mod+Shift+Right".action = set-column-width "+5%";
 
-          "Mod+V".action = toggle-window-floating;
+          "Mod+Shift+V".action = toggle-window-floating;
 
           # Screenshots (FIXME: sodiboo/niri-flake#1380)
           Print.action.screenshot = [ ];

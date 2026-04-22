@@ -11,6 +11,7 @@
     ./waydroid.nix
   ];
 
+  services.upower.enable = true; # Noctalia
   services.chrony.enable = true;
   persist.location.caches.contents = [ "/var/lib/chrony/" ];
 
@@ -95,8 +96,6 @@
     nssmdns4 = true;
     openFirewall = true;
   };
-
-  security.pam.services.hyprlock = { };
 
   virtualisation =
     let

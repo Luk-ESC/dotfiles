@@ -53,6 +53,7 @@ in
     };
 
   stylix.opacity.terminal = 0.6;
+  stylix.opacity.desktop = 0.93;
   stylix.polarity = "dark";
 
   stylix.overlays.enable = false;

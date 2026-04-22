@@ -8,7 +8,6 @@
     ./wm
 
     ./lockin.nix
-    ./wlsunset.nix
   ];
 
   home.packages = [ age ];

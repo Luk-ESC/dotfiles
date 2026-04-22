@@ -82,6 +82,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.fenix.follows = "fenix";
     };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.noctalia-qs.inputs.systems.follows = "systems";
+      inputs.noctalia-qs.inputs.treefmt-nix.follows = "";
+    };
   };
 
   outputs =
@@ -98,6 +105,7 @@
       private,
       fenix,
       wallpapers,
+      noctalia,
       niri,
       pwndbg,
       copai,
@@ -136,11 +144,13 @@
                 ida91 = private.packages.${system}.ida91;
                 age = agenix.packages.${system}.default;
                 copai = copai.packages.${system}.default;
+                noctalia = noctalia.packages.${system}.default;
               };
 
               home-manager.sharedModules = [
                 stylix.homeModules.stylix
                 agenix.homeManagerModules.default
+                noctalia.homeModules.default
               ];
             }
 
