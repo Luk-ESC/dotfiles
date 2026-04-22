@@ -9,6 +9,7 @@
   # Terminal tools
   imports = [
     ./bottom.nix
+    ./codex.nix
     ./fastfetch.nix
     ./fzf.nix
     ./git.nix

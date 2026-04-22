@@ -1,5 +1,11 @@
 { pkgs, ... }:
 {
+  home.packages = [ pkgs.bun ];
+
+  persist.caches.contents = [
+    ".bun/install/cache/"
+  ];
+
   programs.helix = {
     extraPackages = [
       (pkgs.callPackage ../../pkgs/angular_language_server.nix { })
