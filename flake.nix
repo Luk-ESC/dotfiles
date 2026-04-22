@@ -81,6 +81,7 @@
       url = "github:Luk-ESC/leaves";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.fenix.follows = "fenix";
+      inputs.flake-utils.inputs.systems.follows = "systems";
     };
 
     noctalia = {
