@@ -22,6 +22,8 @@
         dc = "diff --cached";
         s = "status";
         l = "log";
+        a = "add";
+        rbi = "rebase -i";
       };
     };
   };
