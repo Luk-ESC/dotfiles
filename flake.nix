@@ -51,8 +51,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    wallpapers = {
-      url = "github:Luk-ESC/wallpapers";
+    assets = {
+      url = "github:Luk-ESC/assets";
       flake = false;
     };
 
@@ -104,7 +104,7 @@
       secrets,
       private,
       fenix,
-      wallpapers,
+      assets,
       noctalia,
       niri,
       pwndbg,
@@ -138,7 +138,7 @@
                 };
 
               home-manager.extraSpecialArgs = {
-                inherit wallpapers minimal;
+                inherit assets minimal;
                 extensions = firefox-extensions.packages.${system};
                 pwndbg = pwndbg.packages.${system}.default;
                 ida91 = private.packages.${system}.ida91;
@@ -160,7 +160,7 @@
             }
 
             {
-              stylix.image = (wallpapers.outPath + "/default");
+              stylix.image = (assets.outPath + "/wallpapers/default");
             }
 
             stylix.nixosModules.stylix

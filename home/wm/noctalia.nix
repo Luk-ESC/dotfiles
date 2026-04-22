@@ -1,6 +1,6 @@
 {
   lib,
-  wallpapers,
+  assets,
   noctalia,
   ...
 }:
@@ -45,7 +45,7 @@ in
         };
       };
       general = {
-        avatarImage = ""; # TODO: assets/ repo?
+        avatarImage = assets.outPath + "/pfp.png";
         showScreenCorners = true;
         forceBlackScreenCorners = true;
         screenRadiusRatio = 0.45;
@@ -65,7 +65,7 @@ in
       };
 
       wallpaper = {
-        directory = wallpapers.outPath;
+        directory = assets.outPath + "/wallpapers";
         showHiddenFiles = false;
         transitionDuration = 2500;
         panelPosition = "center";

@@ -27,6 +27,22 @@
         "type": "github"
       }
     },
+    "assets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1776840316,
+        "narHash": "sha256-iw4r2VEsO4Ilzef3iftUEqBUurbNXtQ6KGG5x72uTpQ=",
+        "owner": "Luk-ESC",
+        "repo": "assets",
+        "rev": "0ff1b9da1192b75069095acc6992d09045c45935",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Luk-ESC",
+        "repo": "assets",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -577,6 +593,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "assets": "assets",
         "copai": "copai",
         "disko": "disko",
         "fenix": "fenix",
@@ -591,8 +608,7 @@
         "pwndbg": "pwndbg",
         "secrets": "secrets",
         "stylix": "stylix",
-        "systems": "systems_2",
-        "wallpapers": "wallpapers"
+        "systems": "systems_2"
       }
     },
     "rust-analyzer-src": {
@@ -798,22 +814,6 @@
       "original": {
         "owner": "pyproject-nix",
         "repo": "uv2nix",
-        "type": "github"
-      }
-    },
-    "wallpapers": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1763045819,
-        "narHash": "sha256-LmI8d1buPxtZH6awDRK+h8YsMNbTD4ObcSeUrCokRTs=",
-        "owner": "Luk-ESC",
-        "repo": "wallpapers",
-        "rev": "2095b0b5868a9e5b0500c7c6f91f2a01e70f0605",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Luk-ESC",
-        "repo": "wallpapers",
         "type": "github"
       }
     }

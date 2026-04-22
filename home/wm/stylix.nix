@@ -2,7 +2,7 @@
   pkgs,
   lib,
   config,
-  wallpapers,
+  assets,
   ...
 }:
 let
@@ -10,11 +10,11 @@ let
     a:
     "wallpaper-"
     + builtins.head (lib.splitString "." (builtins.baseNameOf (builtins.unsafeDiscardStringContext a)));
-  images = lib.filesystem.listFilesRecursive wallpapers.outPath;
+  images = lib.filesystem.listFilesRecursive (assets.outPath + "/wallpapers");
 in
 {
   stylix.enable = true;
-  stylix.image = lib.mkDefault (wallpapers.outPath + "/default");
+  stylix.image = lib.mkDefault (assets.outPath + "/wallpapers/default");
 
   specialisation = lib.mergeAttrsList (
     map (x: {
