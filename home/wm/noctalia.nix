@@ -30,8 +30,11 @@ in
             "SystemMonitor"
             "ActiveWindow"
           ];
-          center = idArray [
-            "Workspace"
+          center = [
+            {
+              id = "Workspace";
+              focusedColor = "tertiary";
+            }
           ];
           right = idArray [
             "MediaMini"
