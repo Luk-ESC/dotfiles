@@ -7,24 +7,17 @@
 - Gimp
 - Heaptrack
 - Hotspot
-- Hyprlock
 - JD-GUI
 - kdeconnect
 - Libreoffice
 - Lutris
 - mpv
-- Mysql workbench
 - Network Miner
-- OBS
 - Obsidian
 - Popsicle
 - Postman
-- Prismlauncher
 - qFlipper
-- Steam
-- Teams for Linux
 - WLC
-- Wireshark
 
 ## Tools
 - updog
