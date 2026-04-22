@@ -1,5 +1,12 @@
 { pkgs, ... }:
 {
+  # FIXME(26.05): merged upstream
+  xdg.configFile."helix/themes/stylix.toml".onChange =
+    let
+      prefix = if pkgs.stdenv.hostPlatform.isDarwin then "/usr" else pkgs.procps;
+    in
+    "${prefix}/bin/pkill -u $USER -x -USR1 .hx-wrapped || true";
+
   programs.helix = {
     enable = true;
     defaultEditor = true;
