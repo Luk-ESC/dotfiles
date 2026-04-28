@@ -40,11 +40,5 @@ in
 
   home.file.".cargo/config.toml".source = toml.generate "config.toml" cargo_config;
 
-  persist.caches.contents = [
-    ".cargo/registry/cache/"
-  ];
-
-  persist.session.contents = [
-    ".cargo/"
-  ];
+  atlas.cargo.enable = true;
 }

@@ -1,9 +1,5 @@
 { extensions, ... }:
 {
-  persist.session.contents = [
-    ".mozilla/"
-  ];
-
   programs.firefox = {
     enable = true;
     languagePacks = [ "en-US" ];

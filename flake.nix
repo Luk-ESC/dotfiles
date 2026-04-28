@@ -15,8 +15,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence = {
-      url = "github:nix-community/impermanence";
+    atlas = {
+      url = "github:Luk-ESC/atlas";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
@@ -98,7 +98,7 @@
       nixpkgs,
       home-manager,
       disko,
-      impermanence,
+      atlas,
       stylix,
       firefox-extensions,
       agenix,
@@ -134,7 +134,6 @@
                 {
                   imports = [
                     ./home
-                    ./persist/home.nix
                   ];
                 };
 
@@ -172,11 +171,9 @@
             disko.nixosModules.disko
             ./disko/disko-config.nix
 
-            impermanence.nixosModules.impermanence
+            atlas.nixosModules.default
             ./system/impermanence.nix
-
-            ./persist/persist.nix
-            ./persist/conf.nix
+            ./system/persist.nix
 
             agenix.nixosModules.default
             secrets.nixosModules.default

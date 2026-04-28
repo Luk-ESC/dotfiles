@@ -33,7 +33,7 @@ in
     actvenv = "source .venv/bin/activate";
   };
 
-  home.sessionVariables.PYTHON_HISTORY = "/persistent/data/home/eschb/.python_history";
+  atlas.python.enable = true;
 
   programs.uv.enable = true;
   programs.ruff = {

@@ -13,7 +13,6 @@
 
   services.upower.enable = true; # Noctalia
   services.chrony.enable = true;
-  persist.location.caches.contents = [ "/var/lib/chrony/" ];
 
   users.users.eschb = {
     isNormalUser = true;
@@ -70,9 +69,6 @@
   networking.hostName = lib.mkForce "nixos";
 
   hardware.bluetooth.enable = true;
-  persist.location.session.contents = [
-    "/var/lib/bluetooth/"
-  ];
 
   programs.nix-ld.enable = true;
 

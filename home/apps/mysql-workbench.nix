@@ -2,11 +2,5 @@
 {
   home.packages = [ pkgs.mysql-workbench ];
 
-  persist.logs.contents = [
-    ".mysql/workbench/log/"
-  ];
-
-  persist.session.contents = [
-    ".mysql/workbench/"
-  ];
+  atlas.mysql-workbench.enable = true;
 }

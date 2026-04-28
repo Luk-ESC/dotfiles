@@ -43,6 +43,30 @@
         "type": "github"
       }
     },
+    "atlas": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "impermanence": "impermanence",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777359918,
+        "narHash": "sha256-0iGJqghyLd/oyUHchVLcZMS/wt7oGriwXaSTRCSqKVc=",
+        "owner": "Luk-ESC",
+        "repo": "atlas",
+        "rev": "ed538d3815fb2953f8eff5d2ad71b0dc6e9522e1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Luk-ESC",
+        "repo": "atlas",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -314,9 +338,11 @@
     "impermanence": {
       "inputs": {
         "home-manager": [
+          "atlas",
           "home-manager"
         ],
         "nixpkgs": [
+          "atlas",
           "nixpkgs"
         ]
       },
@@ -596,12 +622,12 @@
       "inputs": {
         "agenix": "agenix",
         "assets": "assets",
+        "atlas": "atlas",
         "copai": "copai",
         "disko": "disko",
         "fenix": "fenix",
         "firefox-extensions": "firefox-extensions",
         "home-manager": "home-manager",
-        "impermanence": "impermanence",
         "leaves": "leaves",
         "niri": "niri",
         "nixpkgs": "nixpkgs",

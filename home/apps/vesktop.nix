@@ -1,8 +1,4 @@
 {
-  persist.session.contents = [
-    ".config/vesktop/"
-  ];
-
   programs.vesktop = {
     enable = true;
     settings = {

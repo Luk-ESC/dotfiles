@@ -20,8 +20,5 @@ in
     rstudio
   ];
 
-  persist.session.contents = [
-    ".config/RStudio/"
-    ".local/share/rstudio/"
-  ];
+  atlas.rstudio.enable = true;
 }
