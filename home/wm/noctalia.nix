@@ -1,15 +1,15 @@
 {
   lib,
   assets,
-  noctalia,
+  config,
   ...
 }:
 
 let
   idArray = l: builtins.map (x: { id = x; }) l;
+  noctalia = config.programs.noctalia-shell.package;
 in
 {
-  home.packages = [ noctalia ];
   programs.noctalia-shell = {
     enable = true;
     settings = {

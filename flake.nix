@@ -144,7 +144,6 @@
                 ida91 = private.packages.${system}.ida91;
                 age = agenix.packages.${system}.default;
                 copai = copai.packages.${system}.default;
-                noctalia = noctalia.packages.${system}.default;
               };
 
               home-manager.sharedModules = [

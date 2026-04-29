@@ -2,9 +2,11 @@
   pkgs,
   lib,
   config,
-  noctalia,
   ...
 }:
+let
+  noctalia = config.programs.noctalia-shell.package;
+in
 {
   home.packages = [
     pkgs.xwayland-satellite
