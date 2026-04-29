@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
-  persist.caches.contents = [
-    ".m2/repository/"
-  ];
+  atlas.maven.enable = true;
 
   programs.helix.extraPackages = [
     pkgs.jdt-language-server

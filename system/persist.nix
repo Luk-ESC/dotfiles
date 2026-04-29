@@ -14,9 +14,4 @@
   persist.location.logs.contents = [
     "/var/log/"
   ];
-
-  persist.location.session.contents = [
-    # sudo: saves first time using sudo
-    "/var/db/sudo/lectured/"
-  ];
 }
