@@ -162,7 +162,7 @@ stdenvNoCC.mkDerivation {
       name = "cisco-pt8";
       desktopName = "Cisco Packet Tracer 8";
       icon = "${unwrapped}/opt/pt/art/app.png";
-      exec = "packettracer8 %f";
+      exec = "packettracer8 %u";
       mimeTypes = [
         "x-scheme-handler/pttp" # patch: enable pttp protocol
         "application/x-pkt"
