@@ -18,6 +18,7 @@
     ./ripgrep.nix
     ./ssh.nix
     ./switchwall.nix
+    ./s.nix
     ./tealdeer.nix
     ./wl-clipboard.nix
     ./zellij.nix
