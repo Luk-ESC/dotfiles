@@ -33,8 +33,6 @@ in
     actvenv = "source .venv/bin/activate";
   };
 
-  atlas.python.enable = true;
-
   programs.uv.enable = true;
   programs.ruff = {
     enable = true;
