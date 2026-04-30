@@ -5,15 +5,15 @@
   ...
 }:
 {
-  persist.caches.contents = [
-    ".config/zsh/.zcompdump"
-  ];
-
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
+
+    completionInit = ''
+      autoload -U compinit && compinit -d /persistent/caches/home/eschb/.config/zsh/.zcompdump
+    '';
 
     initContent = ''
       bindkey "^[[1;5D" backward-word
