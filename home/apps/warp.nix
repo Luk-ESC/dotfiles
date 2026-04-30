@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   home.packages = [
     pkgs.warp
   ];
 
   # supress hello message
-  home.file."${config.xdg.configHome}/warp/config.json".text = builtins.toJSON {
+  xdg.configFile."warp/config.json".text = builtins.toJSON {
     window = {
       width = 460;
       height = 600;
