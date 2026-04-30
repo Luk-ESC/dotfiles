@@ -172,7 +172,7 @@
 
             atlas.nixosModules.default
             ./system/impermanence.nix
-            ./system/persist.nix
+            { persist.users = [ "eschb" ]; }
 
             agenix.nixosModules.default
             secrets.nixosModules.default
