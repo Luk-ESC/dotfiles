@@ -31,8 +31,8 @@
     '';
 
     shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake /home/eschb/nixcfg";
-      nrt = "sudo nixos-rebuild test --flake /home/eschb/nixcfg";
+      nrs = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nixcfg";
+      nrt = "sudo nixos-rebuild test --flake ${config.home.homeDirectory}/nixcfg";
       ls = "ls --color=auto";
       reload = "source ~/.config/zsh/.zshrc; rehash";
       erm = "${lib.getExe pkgs.erdtree} --level=1 --sort=size -H --hidden --no-ignore";
