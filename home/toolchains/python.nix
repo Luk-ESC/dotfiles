@@ -27,6 +27,8 @@ let
 in
 {
   home.packages = [ python ];
+  atlas.python.enable = true;
+
   home.shellAliases = rec {
     py = lib.getExe python;
     mkvenv = "${lib.getExe pkgs.uv} venv -p ${py}";
