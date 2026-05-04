@@ -42,9 +42,6 @@
     xxd
     imagemagick
     nmap
-    gobuster
-    nikto
-    metasploit
     pulsemixer
   ];
 }
