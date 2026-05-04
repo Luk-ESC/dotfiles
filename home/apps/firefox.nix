@@ -85,6 +85,7 @@
           darkreader
           bitwarden
           sponsorblock
+          leechblock-ng
           (youtube-recommended-videos.overrideAttrs {
             # HACK: for some reason, this extension can't be added if it has an unfree license.
             meta.license = bitwarden.meta.license;
