@@ -54,11 +54,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777576436,
-        "narHash": "sha256-vAmx8Znk+gnWRA0ieORwTooMRkqsjH/NdMOw0KGBXDI=",
+        "lastModified": 1777964651,
+        "narHash": "sha256-bmCXBoE8dmH5VrmM5zXMNxeMJEZyxdwa1kVsYjEo2/k=",
         "owner": "Luk-ESC",
         "repo": "atlas",
-        "rev": "4c320e344212ff51e0e3f32d17c1fd89ed723572",
+        "rev": "6def89d4a59520b7d387651acc5f988928a89b8a",
         "type": "github"
       },
       "original": {
@@ -372,11 +372,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769630213,
-        "narHash": "sha256-OjtGbATn/zCSLT6rPA1Wg9IFJYc4xYyXDiao+iEfwNQ=",
+        "lastModified": 1777843294,
+        "narHash": "sha256-AKxsKh+MXRi7BUzpaEOU9KzUKkCG1TPabQ/W7cjCdWo=",
         "owner": "Luk-ESC",
         "repo": "leaves",
-        "rev": "21cca34900e2a0fc8290fea17b6ed4b49049b5dd",
+        "rev": "15c015e28ff43840909689da108fa3fda4bc3b82",
         "type": "github"
       },
       "original": {

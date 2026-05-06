@@ -11,10 +11,6 @@
     syntaxHighlighting.enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
 
-    completionInit = ''
-      autoload -U compinit && compinit -d /persistent/caches/home/eschb/.config/zsh/.zcompdump
-    '';
-
     initContent = ''
       bindkey "^[[1;5D" backward-word
       bindkey "^[[1;5C" forward-word
@@ -52,7 +48,6 @@
         "reboot"
         "rm -rf *"
       ];
-      path = "/persistent/data/home/eschb/.zsh_history";
       size = 100000;
     };
   };
