@@ -1,4 +1,10 @@
-{ lib, minimal, ... }:
+{
+  ida91,
+  pkgs,
+  lib,
+  minimal,
+  ...
+}:
 {
   # GUI Apps
   imports = [
@@ -6,19 +12,25 @@
     ./vesktop.nix
   ]
   ++ (lib.optionals (!minimal) [
-    ./binja.nix
-    ./burpsuite.nix
-    ./dbeaver.nix
-    ./geogebra.nix
-    ./ida.nix
-    ./maltego.nix
-    ./mattermost.nix
-    ./mysql-workbench.nix
-    ./packettracer.nix
-    ./prismlauncher.nix
-    ./retroarch.nix
-    ./teams-for-linux.nix
-    ./steam.nix
     ./warp.nix
   ]);
+
+  home.packages = lib.optionals (!minimal) (
+    with pkgs;
+    [
+      steam
+      teams-for-linux
+      retroarch-free
+      prismlauncher
+      (callPackage ../../pkgs/packetTracer.nix { })
+      mysql-workbench
+      mattermost-desktop
+      maltego
+      ida91
+      geogebra6
+      dbeaver-bin
+      burpsuite
+      binaryninja-free
+    ]
+  );
 }
