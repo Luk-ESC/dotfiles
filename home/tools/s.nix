@@ -32,11 +32,12 @@
         return 1
       fi
 
+      OCTET1=$(echo "$IP" | cut -d. -f1)
       OCTET2=$(echo "$IP" | cut -d. -f2)
       OCTET3=$(echo "$IP" | cut -d. -f3)
 
       # 3. SSH
-      TARGET="10.$OCTET2.$OCTET3.63"
+      TARGET="$OCTET1.$OCTET2.$OCTET3.63"
       echo "Connecting to hannah@$TARGET ..."
       ssh hannah@"$TARGET"
     '')
