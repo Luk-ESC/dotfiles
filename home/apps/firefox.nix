@@ -1,4 +1,4 @@
-{ extensions, ... }:
+{ extensions, lib, ... }:
 {
   programs.firefox = {
     enable = true;
@@ -22,57 +22,24 @@
     profiles.default = {
       bookmarks = {
         force = true;
-        settings = [
-          {
-            name = "wikipedia";
-            tags = [ "wiki" ];
-            keyword = "+wiki";
-            url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-          }
-          {
-            name = "nixpkgs";
-            tags = [
-              "nixpkgs"
-              "package"
-            ];
-            keyword = "+np";
-            url = "https://search.nixos.org/packages?channel=25.11&query=%s";
-          }
-          {
-            name = "nixos options";
-            tags = [
-              "nixos"
-              "options"
-            ];
-            keyword = "+no";
-            url = "https://search.nixos.org/options?channel=25.11&query=%s";
-          }
-          {
-            name = "nixos wiki";
-            tags = [
-              "nixos"
-              "wiki"
-            ];
-            keyword = "+nw";
-            url = "https://wiki.nixos.org/w/index.php?search=%s";
-          }
-          {
-            name = "home-manager options";
-            tags = [
-              "nixos"
-              "home-manager"
-              "options"
-            ];
-            keyword = "+ho";
-            url = "https://home-manager-options.extranix.com/?channel=25.11&query=%s";
-          }
-          {
-            name = "youtube";
-            tags = [ "youtube" ];
-            keyword = "+yt";
-            url = "https://www.youtube.com/results?search_query=%s";
-          }
-        ];
+        settings =
+          let
+            search = d: "${d}?channel=${lib.trivial.release}&query=%s";
+            bookmarks = lib.mapAttrsToList (
+              k: u: {
+                keyword = k;
+                url = "https://" + u;
+              }
+            );
+          in
+          bookmarks {
+            "+wiki" = "en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+            "+np" = search "search.nixos.org/packages";
+            "+no" = search "search.nixos.org/options";
+            "+nw" = "wiki.nixos.org/w/index.php?search=%s";
+            "+ho" = search "home-manager-options.extranix.com";
+            "+yt" = "www.youtube.com/results?search_query=%s";
+          };
       };
 
       containersForce = true;
