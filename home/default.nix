@@ -16,15 +16,18 @@
   home.homeDirectory = "/home/eschb";
 
   persist.data.contents = [
-    "Music/"
-    "Pictures/"
-    "Documents/"
-    "Videos/"
     "ZedProjects/"
 
     # NixOS config
     "nixcfg/"
   ];
+
+  xdg.userDirs = {
+    enable = true;
+    desktop = null;
+    publicShare = null;
+    templates = null;
+  };
 
   persist.session.contents = [
     # Audio

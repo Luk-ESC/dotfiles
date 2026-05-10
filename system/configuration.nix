@@ -11,6 +11,7 @@
     ./waydroid.nix
   ];
 
+  atlas.networkmanager.enable = false;
   services.upower.enable = true; # Noctalia
   services.chrony.enable = true;
 
