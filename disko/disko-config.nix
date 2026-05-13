@@ -10,6 +10,16 @@ let
   reasonable_subvolumes = opts: lib.mergeAttrsList (map (x: reasonable_subvolume ("/" + x)) opts);
 in
 {
+  fileSystems."/" = {
+    device = "/dev/disk/by-partlabel/disk-main-root";
+    enable = true;
+    fsType = "btrfs";
+    options = [
+      "noatime"
+      # Disko wants a subvol=? here, but we don't know this... its set in initrd
+    ];
+  };
+
   disko.devices.disk.main = {
     type = "disk";
     device = "/dev/vda"; # TODO: make dynamic
@@ -37,11 +47,6 @@ in
             # Subvolumes must set a mountpoint in order to be mounted,
             # unless their parent is mounted
             subvolumes = {
-              # Subvolume name is different from mountpoint
-              "/root" = {
-                mountpoint = "/";
-                mountOptions = [ "noatime" ];
-              };
               "/swap" = {
                 mountpoint = "/.swapvol";
                 swap.swapfile.size = "20G"; # no hibernation >:()
