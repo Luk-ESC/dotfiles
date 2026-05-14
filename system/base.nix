@@ -10,6 +10,14 @@
     "flakes"
   ];
 
+  i18n.glibcLocales = pkgs.glibcLocales.override {
+    allLocales = false;
+    locales = [
+      "C.UTF-8/UTF-8"
+      "en_US.UTF-8/UTF-8"
+    ];
+  };
+
   nix.settings.use-xdg-base-directories = true;
 
   nix.channel.enable = false;
