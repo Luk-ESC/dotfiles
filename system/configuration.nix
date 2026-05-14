@@ -17,6 +17,7 @@
 
   users.users.eschb = {
     isNormalUser = true;
+    uid = 1000;
     hashedPasswordFile = config.age.secrets.linuxpw.path;
     extraGroups = [
       "wheel"
