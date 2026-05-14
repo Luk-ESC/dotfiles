@@ -10,6 +10,7 @@ let
   reasonable_subvolumes = opts: lib.mergeAttrsList (map (x: reasonable_subvolume ("/" + x)) opts);
 in
 {
+  boot.tmp.useTmpfs = true;
   fileSystems."/" = {
     device = "/dev/disk/by-partlabel/disk-main-root";
     enable = true;
