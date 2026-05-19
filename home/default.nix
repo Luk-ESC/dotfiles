@@ -10,6 +10,11 @@
     ./lockin.nix
   ];
 
+  programs.leaves = {
+    enable = true;
+    settings.exclude_current = "current";
+  };
+
   home.packages = [ age ];
 
   home.username = "eschb";
@@ -28,12 +33,6 @@
     publicShare = null;
     templates = null;
   };
-
-  persist.session.contents = [
-    # Audio
-    ".config/pulse/"
-    ".local/state/wireplumber/"
-  ];
 
   gtk.gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
   xresources.path = "${config.xdg.configHome}/.Xresources";
