@@ -1,13 +1,6 @@
-{
-  lib,
-  assets,
-  config,
-  ...
-}:
-
+{ lib, assets, ... }:
 let
   idArray = l: builtins.map (x: { id = x; }) l;
-  noctalia = config.programs.noctalia-shell.package;
 in
 {
   programs.noctalia-shell = {
@@ -76,7 +69,7 @@ in
       };
 
       appLauncher = {
-        enableClipboardHistory = false;
+        enableClipboardHistory = true;
         autoPasteClipboard = false;
         enableClipPreview = true;
         clipboardWrapText = true;
