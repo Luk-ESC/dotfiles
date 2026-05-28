@@ -20,6 +20,7 @@ let
       pycryptodomex
       fpylll
       trimesh
+      jupyter
 
       (callPackage ../../pkgs/libdebug.nix { })
     ]
