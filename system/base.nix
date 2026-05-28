@@ -18,6 +18,10 @@
     ];
   };
 
+  security.sudo.extraConfig = ''
+    Defaults pwfeedback # Make typed password visible as asterisks
+  '';
+
   nix.settings.use-xdg-base-directories = true;
 
   nix.channel.enable = false;
