@@ -5,7 +5,7 @@
 
     signing = {
       signByDefault = true;
-      key = "${config.home.homeDirectory}/nixcfg/keys/id_ed25519.pub";
+      key = "${config.xdg.userDirs.projects}/nixcfg/keys/id_ed25519.pub";
       format = "ssh";
     };
 

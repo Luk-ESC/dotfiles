@@ -20,13 +20,6 @@
   home.username = "eschb";
   home.homeDirectory = "/home/eschb";
 
-  persist.data.contents = [
-    "ZedProjects/"
-
-    # NixOS config
-    "nixcfg/"
-  ];
-
   xdg.enable = true;
   xdg.userDirs = {
     enable = true;

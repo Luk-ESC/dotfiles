@@ -84,7 +84,7 @@ def github_api_request(endpoint: str, use_cache: bool = True):
     return data
 
 
-x = json.load(open("/home/eschb/nixcfg/flake.lock"))
+x = json.load(open("/home/eschb/Projects/nixcfg/flake.lock"))
 x = SimpleNamespace(x)
 
 

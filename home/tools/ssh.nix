@@ -4,7 +4,7 @@
     enable = true;
     enableDefaultConfig = false;
     settings = {
-      "*".identityFile = "${config.home.homeDirectory}/nixcfg/keys/id_ed25519";
+      "*".identityFile = "${config.xdg.userDirs.projects}/nixcfg/keys/id_ed25519";
     };
   };
 }

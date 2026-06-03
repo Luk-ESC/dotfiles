@@ -179,7 +179,7 @@
             private.nixosModules.default
 
             {
-              age.identityPaths = [ "/persistent/data/home/eschb/nixcfg/keys/id_ed25519" ];
+              age.identityPaths = [ "/persistent/data/home/eschb/Projects/nixcfg/keys/id_ed25519" ];
             }
           ];
         };

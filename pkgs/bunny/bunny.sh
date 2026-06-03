@@ -2,7 +2,7 @@
 
 # Code stolen from https://github.com/victor-falcon/zellij-sessionizer
 
-SEARCH_PATHS=("$HOME/ZedProjects" "$HOME/Documents/School/4EHIF" "$HOME/nixcfg")
+SEARCH_PATHS=("$HOME/Projects" "$HOME/Documents/School/4EHIF")
 
 script_path="$(realpath "$0")"
 script_dir="$(dirname "$script_path")"

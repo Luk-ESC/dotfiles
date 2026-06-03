@@ -16,6 +16,6 @@ sudo disko-install --write-efi-boot-entries --flake disko_install/#minimal --dis
 
 echo Copying config to system...
 sudo mount /dev/disk/by-partlabel/disk-main-root lol -m
-sudo rmdir lol/persistent/data/home/eschb/nixcfg
-sudo cp -r disko_install lol/persistent/data/home/eschb/nixcfg
+sudo rmdir lol/persistent/data/home/eschb/Projects/nixcfg
+sudo cp -r disko_install lol/persistent/data/home/eschb/Projects/nixcfg
 sudo umount lol
