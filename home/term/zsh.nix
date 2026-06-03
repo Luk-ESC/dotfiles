@@ -9,7 +9,6 @@
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    dotDir = "${config.xdg.configHome}/zsh";
 
     initContent = ''
       bindkey "^H" backward-kill-word

@@ -3,7 +3,7 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "*".identityFile = "${config.home.homeDirectory}/nixcfg/keys/id_ed25519";
     };
   };

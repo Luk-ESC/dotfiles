@@ -20,7 +20,24 @@
   wayland,
   libxml2_13,
   nss,
-  xorg,
+  libICE,
+  libSM,
+  libX11,
+  libXScrnSaver,
+  libXcomposite,
+  libXcursor,
+  libXdamage,
+  libXext,
+  libXfixes,
+  libXi,
+  libXrandr,
+  libXrender,
+  libXtst,
+  libxcb,
+  xcbutilimage,
+  xcbutilkeysyms,
+  xcbutilrenderutil,
+  xcbutilwm,
   dpkg,
   buildFHSEnv,
   copyDesktopItems,
@@ -74,8 +91,6 @@ let
       nss
       wayland
       libxml2_13
-    ]
-    ++ (with xorg; [
       libICE
       libSM
       libX11
@@ -94,7 +109,7 @@ let
       xcbutilkeysyms
       xcbutilrenderutil
       xcbutilwm
-    ]);
+    ];
 
     nativeBuildInputs = [ unixtools.xxd ];
 

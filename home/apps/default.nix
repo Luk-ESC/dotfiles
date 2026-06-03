@@ -26,7 +26,8 @@
       mysql-workbench
       mattermost-desktop
       maltego
-      ida91
+      # FIXME: Doesn't work since 26.05
+      # ida91
       geogebra6
       dbeaver-bin
       burpsuite

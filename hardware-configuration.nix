@@ -23,19 +23,22 @@
   boot.initrd.includeDefaultModules = false;
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  hardware.enableRedistributableFirmware = true;
   powerManagement.cpuFreqGovernor = "powersave";
   zramSwap.enable = true;
   zramSwap.memoryPercent = 20; # ~3.2 GB on 16 GB RAM
   services.auto-epp.enable = true;
   boot.swraid.enable = lib.mkForce false;
   services.lvm.enable = lib.mkForce false;
-  boot.initrd.services.lvm.enable = lib.mkForce false;
   boot.initrd.luks.devices = lib.mkForce { };
 
   # Switch to chrony since it's preferred for laptops
   services.timesyncd.enable = false;
 
   systemd.shutdownRamfs.enable = false;
+  boot.initrd.compressor = "zstd"; # or "xz" for maximum size reduction
+  boot.initrd.compressorArgs = [ "-19" ]; # higher number = smaller size (but slower building)
 
   hardware.graphics = {
     enable = true;

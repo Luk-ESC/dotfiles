@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.wineWowPackages.waylandFull
+    pkgs.wineWow64Packages.waylandFull
   ];
 }

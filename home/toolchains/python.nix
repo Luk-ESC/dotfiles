@@ -9,7 +9,8 @@ let
     p: with p; [
       pwntools
       requests
-      angr
+      # FIXME(nixos/nixpkgs #501379): doesn't build on 26.05
+      # angr
       flask
       z3-solver
       numpy

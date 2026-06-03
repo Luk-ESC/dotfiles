@@ -1,32 +1,66 @@
-{ lib, ... }:
 {
-  boot.initrd.postResumeCommands = lib.mkAfter ''
-    mkdir /btrfs_tmp
-    mount /dev/disk/by-partlabel/disk-main-root /btrfs_tmp # TODO: this depends on diskos undocumented naming scheme :(
+  pkgs,
+  utils,
+  lib,
+  ...
+}:
+{
+  boot.initrd.systemd.extraBin.sed = lib.getExe pkgs.gnused;
+  boot.initrd.systemd.services.impermanence-setup =
+    let
+      # TODO: this depends on diskos undocumented naming scheme :(
+      disk = "/dev/disk/by-partlabel/disk-main-root";
+    in
+    {
+      # Specify dependencies explicitly
+      unitConfig.DefaultDependencies = true;
+      # The script needs to run to completion before this service is done
+      serviceConfig.Type = "oneshot";
+      # This service is required for boot to succeed
+      requiredBy = [ "initrd.target" ];
+      # Should complete before any file systems are mounted
+      before = [ "sysroot.mount" ];
 
-    delete_subvolume_recursively() {
-        IFS=$'\n'
-        for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
-            delete_subvolume_recursively "/btrfs_tmp/$i"
+      path = with pkgs; [
+        busybox
+        coreutils
+        btrfs-progs
+      ];
+
+      # TODO: are these the right services?
+      after = [
+        "initrd-root-device.target"
+        # Allow hibernation to resume before trying to alter any data
+        "local-fs-pre.target"
+      ];
+
+      description = "Set up new root";
+
+      script = ''
+        mkdir /btrfs_tmp
+        export PATH="/bin:$PATH"
+
+        mount -t btrfs -o subvol=/persistent/old_roots ${disk} /btrfs_tmp
+
+        for i in $(find /btrfs_tmp/ -maxdepth 1 -mtime +30); do
+            btrfs subvolume delete --recursive "$i"
         done
-        btrfs subvolume delete "$1"
-    }
 
-    for i in $(find /btrfs_tmp/persistent/old_roots/ -maxdepth 1 -mtime +30); do
-        delete_subvolume_recursively "$i"
-    done
+        # TODO: fix timezone
+        timestamp=$(date "+%Y-%m-%d_%H:%M:%S")
+        new_root="/btrfs_tmp/$timestamp"
 
-    # TODO: fix timezone
-    timestamp=$(date "+%Y-%m-%d_%H:%M:%S")
-    new_root="/btrfs_tmp/persistent/old_roots/$timestamp"
+        btrfs subvolume create "$new_root"
+        # TODO: can i just use the subvolume path here, instead of goofy sed
+        id="$(btrfs subvolume show "$new_root" | sed -n 's/.*Subvolume ID:[[:space:]]*//p')"
 
-    btrfs subvolume create "$new_root"
-    id="$(btrfs subvolume show "$new_root" | sed -n 's/.*Subvolume ID:[[:space:]]*//p')"
-    # TODO: can i just use the subvolume path here, instead of goofy sed
-    btrfs subvolume set-default "$id" /btrfs_tmp
+        ln -sfn "$timestamp" /btrfs_tmp/current
 
-    ln -sfn "$timestamp" /btrfs_tmp/persistent/old_roots/current
+        umount /btrfs_tmp
 
-    umount /btrfs_tmp
-  '';
+        mount ${disk} /btrfs_tmp
+        btrfs subvolume set-default "$id" /btrfs_tmp
+        umount /btrfs_tmp
+      '';
+    };
 }

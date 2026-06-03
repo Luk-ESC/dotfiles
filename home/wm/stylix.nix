@@ -57,4 +57,7 @@ in
   stylix.polarity = "dark";
 
   stylix.overlays.enable = false;
+
+  # FIXME: nix-community/stylix #2250
+  gtk.gtk4.theme = config.gtk.theme;
 }
