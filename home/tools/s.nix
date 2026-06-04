@@ -4,10 +4,7 @@
     (pkgs.writeShellScriptBin "s" ''
       WIFI_NAME="L Diablo"
 
-      # 1. Check current WiFi
-      CURRENT_WIFI=$(nmcli -t -f active,ssid dev wifi | grep '^yes:' | cut -d: -f2)
-
-      if [[ "$CURRENT_WIFI" != "$WIFI_NAME" ]]; then
+      if ! nmcli -t -f NAME,TYPE conn show --active | grep -Fxq -- "$WIFI_NAME:802-11-wireless"; then
         echo "Not connected to $WIFI_NAME. Connecting..."
         nmcli dev wifi connect "$WIFI_NAME" || {
           echo "Failed to connect to $WIFI_NAME"
@@ -16,9 +13,8 @@
 
         # wait until connection is active
         for i in {1..10}; do
-          sleep 1
-          CURRENT_WIFI=$(nmcli -t -f active,ssid dev wifi | grep '^yes:' | cut -d: -f2)
-          [[ "$CURRENT_WIFI" == "$WIFI_NAME" ]] && break
+          sleep 0.5
+          nmcli -t -f NAME,TYPE connection show --active | grep -Fxq -- "$WIFI_NAME:802-11-wireless" && break
         done
       else
         echo "Already connected to $WIFI_NAME"
