@@ -196,8 +196,10 @@
               imports = [
                 (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
               ];
-              networking.wireless.enable = false;
               isoImage.squashfsCompression = "zstd";
+
+              # FIXME(26.11): this becomes default
+              boot.zfs.forceImportRoot = false;
 
               isoImage.contents = [
                 {
