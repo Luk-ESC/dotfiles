@@ -9,7 +9,6 @@
   # Terminal tools
   imports = [
     ./bottom.nix
-    ./codex.nix
     ./fastfetch.nix
     ./fzf.nix
     ./git.nix
@@ -26,22 +25,27 @@
   ++ (lib.optionals (!minimal) [
     ./podman.nix
     ./wine.nix
+    ./codex.nix
   ]);
 
-  home.packages = with pkgs; [
-    (unp.override {
-      extraBackends = [ unrar ];
-    })
-    unixtools.netstat
-    file
-    snicat
-    netcat
-    qemu
-    gcc
-    pwndbg
-    xxd
-    imagemagick
-    nmap
-    pulsemixer
-  ];
+  home.packages =
+    with pkgs;
+    [
+      (unp.override {
+        extraBackends = [ unrar ];
+      })
+      unixtools.netstat
+      file
+      netcat
+      pulsemixer
+    ]
+    ++ (lib.optionals (!minimal) [
+      snicat
+      qemu
+      gcc
+      pwndbg
+      xxd
+      imagemagick
+      nmap
+    ]);
 }
