@@ -28,7 +28,7 @@
     templates = null;
   };
 
-  gtk.gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+  home.preferXdgDirectories = true;
   xresources.path = "${config.xdg.configHome}/.Xresources";
 
   # This value determines the Home Manager release that your
