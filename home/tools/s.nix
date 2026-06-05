@@ -8,7 +8,7 @@
         echo "Not connected to $WIFI_NAME. Connecting..."
         nmcli dev wifi connect "$WIFI_NAME" || {
           echo "Failed to connect to $WIFI_NAME"
-          return 1
+          exit 1
         }
 
         # wait until connection is active
@@ -25,7 +25,7 @@
 
       if [[ -z "$IP" ]]; then
         echo "Failed to get IP address"
-        return 1
+        exit 1
       fi
 
       OCTET1=$(echo "$IP" | cut -d. -f1)
