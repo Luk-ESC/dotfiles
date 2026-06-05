@@ -1,0 +1,3 @@
+{
+  programs.prismlauncher.enable = true;
+}

@@ -12,6 +12,7 @@
     ./vesktop.nix
   ]
   ++ (lib.optionals (!minimal) [
+    ./prismlauncher.nix
     ./warp.nix
   ]);
 
@@ -21,7 +22,6 @@
       steam
       teams-for-linux
       retroarch-free
-      prismlauncher
       (callPackage ../../pkgs/packetTracer.nix { })
       mysql-workbench
       mattermost-desktop
