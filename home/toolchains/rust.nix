@@ -5,22 +5,7 @@
   ...
 }:
 let
-  cargo_config = {
-    build = {
-      build-dir = "${config.xdg.cacheHome}/cargo_build_dir/{workspace-root}/";
-      rustc-wrapper = lib.getExe pkgs.sccache;
-      rustflags = [
-        "-C"
-        "link-arg=-fuse-ld=${lib.getExe pkgs.mold}"
-        "-C"
-        "linker=${lib.getExe pkgs.clang}"
-      ];
-    };
-  };
-
   toolchain = pkgs.fenix.complete;
-
-  toml = pkgs.formats.toml { };
 in
 {
   home.packages = [
@@ -38,7 +23,19 @@ in
 
   programs.helix.extraPackages = [ toolchain.rust-analyzer ];
 
-  home.file.".cargo/config.toml".source = toml.generate "config.toml" cargo_config;
+  programs.cargo = {
+    enable = true;
+    package = null;
 
-  atlas.cargo.enable = true;
+    settings.build = {
+      build-dir = "${config.xdg.cacheHome}/cargo_build_dir/{workspace-root}/";
+      rustc-wrapper = lib.getExe pkgs.sccache;
+      rustflags = [
+        "-C"
+        "link-arg=-fuse-ld=${lib.getExe pkgs.mold}"
+        "-C"
+        "linker=${lib.getExe pkgs.clang}"
+      ];
+    };
+  };
 }
