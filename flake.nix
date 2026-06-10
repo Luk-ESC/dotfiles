@@ -57,7 +57,9 @@
     };
 
     niri = {
-      url = "github:sodiboo/niri-flake";
+      # FIXME(sodiboo/niri-flake #1731): merges this
+      # url = "github:sodiboo/niri-flake";
+      url = "github:myume/niri-flake?ref=blur";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs";
       inputs.niri-stable.follows = "";

@@ -169,6 +169,11 @@ in
 
       prefer-no-csd = true;
       window-rules = [
+        # FIXME: Remove when alacritty supports ext-background-effect
+        {
+          matches = [ { app-id = "^Alacritty$"; } ];
+          background-effect.blur = true;
+        }
         {
           matches = [
             {
@@ -188,6 +193,26 @@ in
           matches = [ { title = "Bunny"; } ];
 
           open-maximized = true;
+        }
+        {
+          matches = [
+            { app-id = "^firefox$"; }
+            { app-id = "^com.vector35.binaryninja$"; }
+          ];
+
+          popups = {
+            opacity = 0.8;
+            geometry-corner-radius = {
+              bottom-left = 10.0;
+              bottom-right = 10.0;
+              top-left = 10.0;
+              top-right = 10.0;
+            };
+            background-effect = {
+              blur = true;
+              saturation = 3;
+            };
+          };
         }
         {
           matches = [

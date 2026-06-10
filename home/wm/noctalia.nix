@@ -55,7 +55,7 @@ in
         lockScreenBlur = 0.1;
 
         enableShadows = true;
-        enableBlurBehind = false;
+        enableBlurBehind = true;
         showChangelogOnStartup = true;
         telemetryEnabled = false;
       };
