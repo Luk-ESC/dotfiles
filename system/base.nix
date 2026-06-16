@@ -10,6 +10,8 @@
     "flakes"
   ];
 
+  environment.defaultPackages = [ ];
+
   i18n.glibcLocales = pkgs.glibcLocales.override {
     allLocales = false;
     locales = [
