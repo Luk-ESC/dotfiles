@@ -1,5 +1,7 @@
 { pkgs, ... }:
 let
+  impure = x: if x then "--impure" else "";
+
   prefix = ''
     # Check if at least one argument is provided
     if [ $# -lt 1 ]; then
@@ -11,19 +13,19 @@ let
     package="$1"
   '';
 
-  runScript = impure: ''
+  runScript = i: ''
     ${prefix}
 
     # Shift arguments so $@ contains only the remaining args
     shift
 
-    NIXPKGS_ALLOW_UNFREE=1 nix run "nixpkgs#$package" ${impure} -- "$@"
+    NIXPKGS_ALLOW_UNFREE=1 nix run "nixpkgs#$package" ${impure i} -- "$@"
   '';
 
-  shellScript = impure: ''
+  shellScript = i: ''
     ${prefix}
 
-    NIXPKGS_ALLOW_UNFREE=1 nix shell "nixpkgs#$package" ${impure}
+    NIXPKGS_ALLOW_UNFREE=1 nix shell "nixpkgs#$package" ${impure i}
   '';
 
   develop = ''
@@ -32,10 +34,10 @@ let
 in
 {
   home.packages = [
-    (pkgs.writeShellScriptBin "n" (runScript ""))
-    (pkgs.writeShellScriptBin "ni" (runScript "--impure"))
-    (pkgs.writeShellScriptBin "ns" (shellScript ""))
-    (pkgs.writeShellScriptBin "nsi" (shellScript "--impure"))
+    (pkgs.writeShellScriptBin "n" (runScript false))
+    (pkgs.writeShellScriptBin "ni" (runScript true))
+    (pkgs.writeShellScriptBin "ns" (shellScript false))
+    (pkgs.writeShellScriptBin "nsi" (shellScript true))
     (pkgs.writeShellScriptBin "nd" develop)
   ];
 }
