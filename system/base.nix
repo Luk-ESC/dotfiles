@@ -12,6 +12,8 @@
 
   environment.defaultPackages = [ ];
 
+  programs.fish.generateCompletions = false;
+
   i18n.glibcLocales = pkgs.glibcLocales.override {
     allLocales = false;
     locales = [
