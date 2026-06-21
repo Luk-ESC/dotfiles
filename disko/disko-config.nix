@@ -7,7 +7,7 @@ let
     };
   };
 
-  reasonable_subvolumes = opts: lib.mergeAttrsList (map (x: reasonable_subvolume ("/" + x)) opts);
+  reasonable_subvolumes = opts: lib.mergeAttrsList (map reasonable_subvolume opts);
 in
 {
   boot.tmp.useTmpfs = true;
@@ -54,13 +54,13 @@ in
               };
             }
             // reasonable_subvolumes [
-              "persistent"
-              "persistent/data"
-              "persistent/old_roots"
-              "persistent/logs"
-              "persistent/caches"
-              "persistent/session"
-              "nix"
+              "/persistent"
+              "/persistent/data"
+              "/persistent/old_roots"
+              "/persistent/logs"
+              "/persistent/caches"
+              "/persistent/session"
+              "/nix"
             ];
           };
         };
