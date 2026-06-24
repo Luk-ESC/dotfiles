@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.go ];
+  programs.go = {
+    enable = true;
+    telemetry.mode = "off";
+  };
 
   programs.helix.extraPackages = [ pkgs.gopls ];
 }

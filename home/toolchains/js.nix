@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.bun ];
+  programs.bun = {
+    enable = true;
+    enableGitIntegration = false; # Only needed for old file format
+  };
 
   programs.helix = {
     extraPackages = [
