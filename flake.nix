@@ -87,7 +87,7 @@
     };
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia-shell?ref=legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.noctalia-qs.inputs.systems.follows = "systems";
       inputs.noctalia-qs.inputs.treefmt-nix.follows = "";
@@ -200,8 +200,8 @@
               ];
               isoImage.squashfsCompression = "zstd";
 
-              # FIXME(26.11): this becomes default
-              boot.zfs.forceImportRoot = false;
+              # FIXME(26.11, nix-community/disko #1255): disko needs to have this fixed by 26.11
+              # boot.zfs.forceImportRoot = false;
 
               isoImage.contents = [
                 {
