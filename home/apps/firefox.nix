@@ -36,8 +36,8 @@
             "+wiki" = "en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
             "+np" = search "search.nixos.org/packages";
             "+no" = search "search.nixos.org/options";
+            "+ho" = search "search.nixos.org/options" + "&source=home_manager";
             "+nw" = "wiki.nixos.org/w/index.php?search=%s";
-            "+ho" = search "home-manager-options.extranix.com";
             "+yt" = "www.youtube.com/results?search_query=%s";
           };
       };
