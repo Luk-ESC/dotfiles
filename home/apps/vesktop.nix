@@ -18,10 +18,6 @@
         AlwaysTrust.enable = true;
         BetterGifPicker.enable = true;
         ClearURLs.enable = true;
-        CustomIdle = {
-          enabled = true;
-          idleTimeout = 0;
-        };
         FakeNitro.enabled = true;
         WhoReacted.enabled = true;
         VolumeBooster.enabled = true;
