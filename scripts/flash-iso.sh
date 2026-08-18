@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 echo Building ISO...
-nix build path:.#nixosConfigurations.base.config.system.build.isoImage
+nix build --extra-experimental-features nix-command --extra-experimental-features flakes path:.#nixosConfigurations.base.config.system.build.isoImage
 du -h result/iso/*
 echo Select disk to write ISO to:
 lsblk
