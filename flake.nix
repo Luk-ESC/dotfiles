@@ -52,7 +52,7 @@
     };
 
     assets = {
-      url = "github:Luk-ESC/assets";
+      url = "git+ssh://git@github.com/Luk-ESC/assets?ref=main";
       flake = false;
     };
 
