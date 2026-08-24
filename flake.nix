@@ -141,6 +141,7 @@
 
               home-manager.extraSpecialArgs = {
                 inherit assets minimal;
+                fenix = fenix.packages.${system};
                 extensions = firefox-extensions.packages.${system};
                 pwndbg = pwndbg.packages.${system}.default;
                 ida91 = private.packages.${system}.ida91;
@@ -157,7 +158,6 @@
 
             {
               nixpkgs.config.allowUnfree = true;
-              nixpkgs.overlays = [ fenix.overlays.default ];
             }
 
             {

@@ -2,10 +2,11 @@
   pkgs,
   lib,
   config,
+  fenix,
   ...
 }:
 let
-  toolchain = pkgs.fenix.complete;
+  toolchain = fenix.complete;
 in
 {
   home.packages = [
