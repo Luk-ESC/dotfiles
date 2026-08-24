@@ -24,7 +24,7 @@ let
   });
 in
 {
-  home.shellAliases.codex = "${lib.getExe pkgs.bun} x @openai/codex";
+  home.shellAliases.codex = "${lib.getExe pkgs.bun} x @openai/codex@latest";
 
   home.activation.codex-hooks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     $DRY_RUN_CMD mkdir -p ${codex-home}
