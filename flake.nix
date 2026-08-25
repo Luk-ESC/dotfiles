@@ -129,31 +129,27 @@
 
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.eschb =
-                { ... }:
-                {
-                  imports = [
-                    ./home
-                  ];
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.eschb = ./home;
+
+                extraSpecialArgs = {
+                  inherit assets minimal;
+                  fenix = fenix.packages.${system};
+                  extensions = firefox-extensions.packages.${system};
+                  pwndbg = pwndbg.packages.${system}.default;
+                  ida91 = private.packages.${system}.ida91;
+                  age = agenix.packages.${system}.default;
+                  copai = copai.packages.${system}.default;
                 };
 
-              home-manager.extraSpecialArgs = {
-                inherit assets minimal;
-                fenix = fenix.packages.${system};
-                extensions = firefox-extensions.packages.${system};
-                pwndbg = pwndbg.packages.${system}.default;
-                ida91 = private.packages.${system}.ida91;
-                age = agenix.packages.${system}.default;
-                copai = copai.packages.${system}.default;
+                sharedModules = [
+                  stylix.homeModules.stylix
+                  agenix.homeManagerModules.default
+                  noctalia.homeModules.default
+                ];
               };
-
-              home-manager.sharedModules = [
-                stylix.homeModules.stylix
-                agenix.homeManagerModules.default
-                noctalia.homeModules.default
-              ];
             }
 
             {
