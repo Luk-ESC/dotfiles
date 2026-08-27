@@ -139,7 +139,7 @@
                   fenix = fenix.packages.${system};
                   extensions = firefox-extensions.packages.${system};
                   pwndbg = pwndbg.packages.${system}.default;
-                  ida91 = private.packages.${system}.ida91;
+                  ida = private.packages.${system}.ida;
                   age = agenix.packages.${system}.default;
                   copai = copai.packages.${system}.default;
                 };

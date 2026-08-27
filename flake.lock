@@ -532,11 +532,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764791401,
-        "narHash": "sha256-Hl0FjJOIlfni+dXoN4OnPi5ekVmJf9sUz2F9kV++OCU=",
+        "lastModified": 1787873855,
+        "narHash": "sha256-weZc6bB+Zt1zO7eTnWqTyMKNroHmVXrbvt5CY38nEBg=",
         "ref": "main",
-        "rev": "d1328f44aeb184f283cf6d13a954663f68b8286f",
-        "revCount": 4,
+        "rev": "607b2494db50f7db4621e29b61220538ba362cc9",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@github.com/Luk-ESC/private_config"
       },

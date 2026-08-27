@@ -1,5 +1,5 @@
 {
-  ida91,
+  ida,
   pkgs,
   lib,
   minimal,
@@ -26,8 +26,7 @@
       mysql-workbench
       mattermost-desktop
       maltego
-      # FIXME: Doesn't work since 26.05
-      # ida91
+      ida
       geogebra6
       dbeaver-bin
       burpsuite
