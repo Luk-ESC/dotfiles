@@ -119,13 +119,23 @@ writeShellApplication {
     pane_id="''${ZELLIJ_PANE_ID:-}"
     pane_focused=true
     if [[ -n "$pane_id" ]]; then
-      panes=$(${zellijE} action list-panes --json --state --tab 2>/dev/null || printf '[]')
+      panes=$(${zellijE} action list-panes --json --all 2>/dev/null || printf '[]')
       tabs=$(${zellijE} action list-tabs --json 2>/dev/null || printf '[]')
       pane_tab=$(${jqE} -r --argjson id "$pane_id" \
-        '[.[] | select(.is_plugin == false and .id == $id and .is_focused)][0].tab_id // ""' \
+        '[.[] | select(.is_plugin == false and .id == $id and .is_focused and (.is_suppressed | not))][0].tab_id // ""' \
+        <<< "$panes")
+      pane_is_floating=$(${jqE} -r --argjson id "$pane_id" \
+        '[.[] | select(.is_plugin == false and .id == $id)][0].is_floating // false' \
         <<< "$panes")
       active_tab=$(${jqE} -r '[.[] | select(.active)][0].tab_id // ""' <<< "$tabs")
-      [[ -n "$pane_tab" && "$pane_tab" == "$active_tab" ]] || pane_focused=false
+      floating_panes_visible=$(${jqE} -r \
+        '[.[] | select(.active)][0].are_floating_panes_visible // false' <<< "$tabs")
+
+      # Zellij tracks focus separately for tiled and floating panes. A tiled
+      # pane can therefore report is_focused=true while the floating layer is
+      # active (and vice versa), even though it cannot receive input.
+      [[ -n "$pane_tab" && "$pane_tab" == "$active_tab" && \
+        "$pane_is_floating" == "$floating_panes_visible" ]] || pane_focused=false
     fi
 
     if [[ "$window_focused" == true && "$pane_focused" == true ]]; then
