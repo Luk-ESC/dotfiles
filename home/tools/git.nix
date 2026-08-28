@@ -1,4 +1,21 @@
-{ config, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  delta = lib.getExe pkgs.delta;
+  delta-auto = lib.getExe (
+    pkgs.writeShellScriptBin "delta-auto" ''
+      if [ "$(tput cols)" -ge 140 ]; then
+          exec ${delta} --side-by-side "$@"
+      else
+          exec ${delta} "$@"
+      fi
+    ''
+  );
+in
 {
   programs.git = {
     enable = true;
@@ -24,6 +41,16 @@
         l = "log";
         a = "add";
         rbi = "rebase -i";
+      };
+
+      # Delta config
+      core.pager = delta-auto;
+      interactive.diffFilter = "${delta} --color-only";
+
+      delta = {
+        line-numbers = true;
+        navigate = true;
+        hunk-header-style = "omit";
       };
     };
   };
