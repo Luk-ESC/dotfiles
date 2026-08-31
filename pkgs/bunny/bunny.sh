@@ -26,6 +26,17 @@ process_dir() {
   fi
 }
 
+# Check for a default dev shell without evaluating the shell itself. Querying
+# it as a flake installable lets Nix use its evaluation cache.
+has_dev_shell() {
+  nix eval --impure --json .#devShells --apply '
+    devShells:
+    let system = builtins.currentSystem;
+    in builtins.hasAttr system devShells
+      && builtins.hasAttr "default" (builtins.getAttr system devShells)
+  ' 2>/dev/null | grep -qx true
+}
+
 # Process each search path
 for search_path in "${SEARCH_PATHS[@]}"; do
   if [[ -d "$search_path" ]]; then
@@ -51,7 +62,7 @@ if [[ -v "$ZELLIJ" ]]; then
 else
   # if we are not in a zellij session
   cd "$selected_dir"
-  if nix develop -c true; then
+  if has_dev_shell; then
     nix develop -c sh -c "zellij attach '$session_name' || zellij -n $LAYOUT_FILE -s '$session_name'"
   else
     zellij attach "$session_name" || zellij -n $LAYOUT_FILE -s "$session_name"
