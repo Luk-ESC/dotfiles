@@ -23,6 +23,11 @@
     };
   };
 
-  # Disable howdy for Noctalia.
-  security.pam.services.login.howdy.enable = false;
+  security.pam = {
+    howdy.enable = false;
+    services = {
+      sudo.howdy.enable = !minimal;
+      su.howdy.enable = !minimal;
+    };
+  };
 }
