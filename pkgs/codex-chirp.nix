@@ -4,11 +4,13 @@
   jq,
   libnotify,
   niri,
+  procps,
   zellij,
 }:
 let
   jqE = lib.getExe jq;
   niriE = lib.getExe niri;
+  ps = lib.getExe' procps "ps";
   zellijE = lib.getExe zellij;
   notify-send = lib.getExe' libnotify "notify-send";
 in
@@ -19,7 +21,7 @@ writeShellApplication {
     deliver() {
       local title=$1 message=$2 window_id=$3 pane_id=$4 action
 
-      action=$(${notify-send} \
+      action=$(timeout --kill-after=1s 30s ${notify-send} \
         --app-name="Codex" \
         --action="default=Open Codex" \
         --wait \
@@ -97,17 +99,15 @@ writeShellApplication {
     # Find the client attached to this session, then follow its ancestry to the
     # Alacritty window exposed by niri.
     if [[ -z "$window_id" && -n "''${ZELLIJ_SESSION_NAME:-}" ]]; then
-      for proc in /proc/[0-9]*; do
-        client_pid="''${proc##*/}"
-        command=$(tr '\0' ' ' < "$proc/cmdline" 2>/dev/null || true)
-
+      while read -r client_pid command; do
         case "$command" in
-          *zellij*" -s $ZELLIJ_SESSION_NAME "* | *zellij*" attach $ZELLIJ_SESSION_NAME "*)
+          *zellij*" -s $ZELLIJ_SESSION_NAME" | *zellij*" -s $ZELLIJ_SESSION_NAME "* | \
+            *zellij*" attach $ZELLIJ_SESSION_NAME" | *zellij*" attach $ZELLIJ_SESSION_NAME "*)
             window_id=$(window_for_ancestor "$client_pid")
             [[ -n "$window_id" ]] && break
             ;;
         esac
-      done
+      done < <(timeout 1s ${ps} -eo pid=,args= 2>/dev/null || true)
     fi
 
     window_focused=false
