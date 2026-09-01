@@ -35,7 +35,9 @@ in
       alias = {
         d = "diff";
         cm = "commit -m";
+        ca = "commit --amend --no-edit";
         p = "push";
+        pf = "push --force";
         dc = "diff --cached";
         s = "status";
         l = "log";
