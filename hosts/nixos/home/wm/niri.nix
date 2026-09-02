@@ -78,7 +78,7 @@ in
           # Apps
           "Mod+L".action = spawnIpc "lockScreen lock";
           "Mod+Q".action = spawn alacritty;
-          "Mod+B".action = spawn alacritty "-T" "Bunny" "-e" "${../../pkgs/bunny}/bunny.sh";
+          "Mod+B".action = spawn alacritty "-T" "Bunny" "-e" "${../../../../pkgs/bunny}/bunny.sh";
           "Mod+R".action = spawn (lib.getExe pkgs.firefox);
           "Mod+E".action = spawnIpc "launcher toggle";
           "Mod+A".action = spawnIpc "wallpaper toggle";

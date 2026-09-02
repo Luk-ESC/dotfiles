@@ -5,7 +5,7 @@
   ...
 }:
 let
-  codex-chirp = pkgs.callPackage ../../pkgs/codex-chirp.nix { };
+  codex-chirp = pkgs.callPackage ../../../../pkgs/codex-chirp.nix { };
   codex-home = config.home.sessionVariables.CODEX_HOME;
   hook = {
     hooks = [

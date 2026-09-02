@@ -23,7 +23,7 @@ let
       trimesh
       jupyter
 
-      (callPackage ../../pkgs/libdebug.nix { })
+      (callPackage ../../../../pkgs/libdebug.nix { })
     ]
   );
 in

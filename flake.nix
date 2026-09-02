@@ -117,25 +117,33 @@
     }:
     let
       mkSystem =
+        host:
         minimal:
+        let
+          hostDir = ./hosts + "/${host}";
+        in
         nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
-          specialArgs = { inherit minimal; };
+          specialArgs = { inherit host minimal; };
           modules = [
-            # Import the previous configuration.nix we used,
-            # so the old configuration file still takes effect
-            ./system/configuration.nix
-            ./hardware-configuration.nix
+            ./hosts/all/system
+            (hostDir + "/system")
 
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.eschb = ./home;
+                users.eschb = {
+                  imports = [
+                    ./hosts/all/home
+                    (hostDir + "/home")
+                  ];
+                  home.stateVersion = "26.05";
+                };
 
                 extraSpecialArgs = {
-                  inherit assets minimal;
+                  inherit assets host minimal;
                   fenix = fenix.packages.${system};
                   extensions = firefox-extensions.packages.${system};
                   pwndbg = pwndbg.packages.${system}.default;
@@ -169,7 +177,6 @@
             ./disko/disko-config.nix
 
             atlas.nixosModules.default
-            ./system/impermanence.nix
 
             agenix.nixosModules.default
             secrets.nixosModules.default
@@ -182,8 +189,9 @@
         };
     in
     {
-      nixosConfigurations.nixos = mkSystem false;
-      nixosConfigurations.minimal = mkSystem true;
+      nixosConfigurations.nixos = mkSystem "nixos" false;
+      nixosConfigurations.minimal = mkSystem "nixos" true;
+      nixosConfigurations.server = mkSystem "server" false;
       nixosConfigurations.base = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
@@ -214,7 +222,8 @@
               ];
             }
           )
-          ./system/base.nix
+          ./hosts/all/system
+          ./hosts/nixos/system/base.nix
         ];
       };
     };

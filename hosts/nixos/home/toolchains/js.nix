@@ -7,7 +7,7 @@
 
   programs.helix = {
     extraPackages = [
-      (pkgs.callPackage ../../pkgs/angular_language_server.nix { })
+      (pkgs.callPackage ../../../../pkgs/angular_language_server.nix { })
       pkgs.typescript-language-server
       pkgs.superhtml
     ];
