@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, host, ... }: {
+  networking.hostName = host;
 
   atlas.networkmanager.enable = false;
   services.chrony.enable = true;
