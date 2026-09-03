@@ -55,11 +55,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787943363,
-        "narHash": "sha256-+ZDynCaN/e3JhH2xELN/YbZ0adqRr+9BldQIDzEU1U0=",
+        "lastModified": 1788449659,
+        "narHash": "sha256-vbgtMO8AA+tnWk3WtmkrFOK8M7KfL6dSL51A94PyMcQ=",
         "owner": "Luk-ESC",
         "repo": "atlas",
-        "rev": "c12cc4b621d8bac616cbd19ff13472fbf8100f06",
+        "rev": "199ca9b0c84fdfaf5535a83e472913bd49cf0332",
         "type": "github"
       },
       "original": {
@@ -659,11 +659,11 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1764791349,
-        "narHash": "sha256-rmBp/0bd0gcKtyZNoYF291AdVO9fFkPZXY3w3OMZEaM=",
+        "lastModified": 1788451418,
+        "narHash": "sha256-jsaldXmAmLNKJEkVqmdj1ZHtdT4e15xex8Hgw/p5bBI=",
         "ref": "main",
-        "rev": "76744e32c5484608983be202e0318a5b79e25e7b",
-        "revCount": 5,
+        "rev": "fcd24f38ad902de80ae2f8ec2135da11ab9cdff6",
+        "revCount": 7,
         "type": "git",
         "url": "ssh://git@github.com/Luk-ESC/secrets"
       },
