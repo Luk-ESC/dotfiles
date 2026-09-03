@@ -116,15 +116,51 @@
       ...
     }:
     let
+      system = "x86_64-linux";
+      nixos = {
+        name = "nixos";
+        extraModules = [
+          {
+            stylix.image = (assets.outPath + "/wallpapers/default");
+          }
+
+          stylix.nixosModules.stylix
+          niri.nixosModules.niri
+        ];
+        extraSpecialArgs = {
+          inherit assets;
+          fenix = fenix.packages.${system};
+          extensions = firefox-extensions.packages.${system};
+          pwndbg = pwndbg.packages.${system}.default;
+          ida = private.packages.${system}.ida;
+          copai = copai.packages.${system}.default;
+        };
+        homeSharedModules = [
+          stylix.homeModules.stylix
+          agenix.homeManagerModules.default
+          noctalia.homeModules.default
+        ];
+      };
+
+      server = {
+        name = "server";
+        extraModules = [ ];
+        extraSpecialArgs = { };
+        homeSharedModules = [ ];
+      };
+
       mkSystem =
         host: minimal:
         let
-          hostDir = ./hosts + "/${host}";
+          hostDir = ./hosts + "/${host.name}";
         in
-        nixpkgs.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          specialArgs = { inherit host minimal; };
-          modules = [
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit minimal;
+            host = host.name;
+          };
+          modules = host.extraModules ++ [
             ./hosts/all/system
             (hostDir + "/system")
 
@@ -138,37 +174,25 @@
                     ./hosts/all/home
                     (hostDir + "/home")
                   ];
-                  home.stateVersion = "26.05";
                 };
 
                 extraSpecialArgs = {
-                  inherit assets host minimal;
-                  fenix = fenix.packages.${system};
-                  extensions = firefox-extensions.packages.${system};
-                  pwndbg = pwndbg.packages.${system}.default;
-                  ida = private.packages.${system}.ida;
+                  inherit minimal;
+                  host = host.name;
                   age = agenix.packages.${system}.default;
-                  copai = copai.packages.${system}.default;
-                };
+                }
+                // host.extraSpecialArgs;
 
                 sharedModules = [
-                  stylix.homeModules.stylix
                   agenix.homeManagerModules.default
-                  noctalia.homeModules.default
-                ];
+                ]
+                ++ host.homeSharedModules;
               };
             }
 
             {
               nixpkgs.config.allowUnfree = true;
             }
-
-            {
-              stylix.image = (assets.outPath + "/wallpapers/default");
-            }
-
-            stylix.nixosModules.stylix
-            niri.nixosModules.niri
 
             leaves.nixosModules.${system}.default
 
@@ -188,9 +212,9 @@
         };
     in
     {
-      nixosConfigurations.nixos = mkSystem "nixos" false;
-      nixosConfigurations.minimal = mkSystem "nixos" true;
-      nixosConfigurations.server = mkSystem "server" false;
+      nixosConfigurations.nixos = mkSystem nixos false;
+      nixosConfigurations.minimal = mkSystem nixos true;
+      nixosConfigurations.server = mkSystem server false;
       nixosConfigurations.base = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
