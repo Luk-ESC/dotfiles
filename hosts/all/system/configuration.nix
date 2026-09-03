@@ -2,6 +2,10 @@
 
   atlas.networkmanager.enable = false;
   services.chrony.enable = true;
+  services.tailscale = {
+    enable = true;
+    authKeyFile = config.age.secrets.tailscale.path;
+  };
 
   users.users.eschb = {
     isNormalUser = true;
