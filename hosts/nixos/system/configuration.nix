@@ -58,8 +58,6 @@
     pkgs.xdg-desktop-portal-gtk
   ];
 
-  networking.hostName = lib.mkForce "nixos";
-
   hardware.bluetooth.enable = true;
 
   programs.nix-ld.enable = true;

@@ -44,7 +44,7 @@
     nixos.enable = false;
   };
 
-  networking.hostName = "nixos_base";
+  networking.hostName = lib.mkDefault "nixos_base";
   networking.networkmanager = {
     enable = true;
     plugins = [ pkgs.networkmanager-openvpn ];
