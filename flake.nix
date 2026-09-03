@@ -117,8 +117,7 @@
     }:
     let
       mkSystem =
-        host:
-        minimal:
+        host: minimal:
         let
           hostDir = ./hosts + "/${host}";
         in
@@ -222,8 +221,7 @@
               ];
             }
           )
-          ./hosts/all/system
-          ./hosts/nixos/system/base.nix
+          ./hosts/all/system/base.nix
         ];
       };
     };
