@@ -22,7 +22,7 @@
       steam
       teams-for-linux
       retroarch-free
-      (callPackage ../../pkgs/packetTracer.nix { })
+      (callPackage ../../../../pkgs/packetTracer.nix { })
       mysql-workbench
       mattermost-desktop
       maltego

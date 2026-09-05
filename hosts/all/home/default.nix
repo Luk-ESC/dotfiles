@@ -1,13 +1,8 @@
-{ config, age, ... }:
+{ age, ... }:
 {
   imports = [
-    ./apps
     ./term
-    ./toolchains
     ./tools
-    ./wm
-
-    ./lockin.nix
   ];
 
   programs.leaves = {
@@ -29,7 +24,6 @@
   };
 
   home.preferXdgDirectories = true;
-  xresources.path = "${config.xdg.configHome}/.Xresources";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

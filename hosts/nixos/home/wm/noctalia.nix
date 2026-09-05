@@ -190,7 +190,7 @@ in
 
       hooks = {
         enabled = true;
-        wallpaperChange = "${../../scripts/activate-wallpaper.sh} $1";
+        wallpaperChange = "${../../../../scripts/activate-wallpaper.sh} $1";
         startup = "noctalia-shell ipc call lockScreen lock";
       };
 

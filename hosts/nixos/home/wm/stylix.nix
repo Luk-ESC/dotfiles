@@ -44,7 +44,7 @@ in
     in
     {
       name = themeName;
-      package = pkgs.callPackage ../../pkgs/bibata.nix {
+      package = pkgs.callPackage ../../../../pkgs/bibata.nix {
         baseColor = base00;
         outlineColor = base0C;
         cursorThemeName = themeName;

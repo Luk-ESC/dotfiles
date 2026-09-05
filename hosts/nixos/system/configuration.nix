@@ -7,26 +7,16 @@
 }:
 {
   imports = [
-    ./base.nix
     ./howdy.nix
     ./waydroid.nix
   ];
 
-  atlas.networkmanager.enable = false;
   services.upower.enable = true; # Noctalia
-  services.chrony.enable = true;
 
-  users.users.eschb = {
-    isNormalUser = true;
-    uid = 1000;
-    hashedPasswordFile = config.age.secrets.linuxpw.path;
-    extraGroups = [
-      "wheel"
-      "video"
-      "wireshark"
-      "networkmanager"
-    ];
-  };
+  users.users.eschb.extraGroups = [
+    "video"
+    "wireshark"
+  ];
 
   boot.loader.limine.style =
     let
@@ -68,8 +58,6 @@
     pkgs.xdg-desktop-portal-gtk
   ];
 
-  networking.hostName = lib.mkForce "nixos";
-
   hardware.bluetooth.enable = true;
 
   programs.nix-ld.enable = true;
@@ -95,26 +83,10 @@
     openFirewall = true;
   };
 
-  virtualisation =
-    let
-      options = {
-        virtualisation.memorySize = 8192;
-        virtualisation.graphics = true;
-        virtualisation.cores = 6;
-      };
-    in
-    {
-      vmVariant = options;
-      vmVariantWithDisko = options;
-    };
-
   services.pipewire = {
     enable = true;
     pulse.enable = true;
   };
-
-  # Disable nano
-  programs.nano.enable = false;
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
