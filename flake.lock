@@ -659,11 +659,11 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1788451418,
-        "narHash": "sha256-jsaldXmAmLNKJEkVqmdj1ZHtdT4e15xex8Hgw/p5bBI=",
+        "lastModified": 1788569958,
+        "narHash": "sha256-9wCew8Sx36ICiUwiTU4xFUCoyAtXJ9HmstEtTNsrVEc=",
         "ref": "main",
-        "rev": "fcd24f38ad902de80ae2f8ec2135da11ab9cdff6",
-        "revCount": 7,
+        "rev": "3528fc91ca00e3aa81d1f97dd9e8cd8f6d59e020",
+        "revCount": 8,
         "type": "git",
         "url": "ssh://git@github.com/Luk-ESC/secrets"
       },
