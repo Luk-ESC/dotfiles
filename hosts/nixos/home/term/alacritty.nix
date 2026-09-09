@@ -2,7 +2,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      env.TERM = "alacritty";
+      env.TERM = "xterm-256color";
       terminal.shell.program = "zsh";
       cursor.style.shape = "Beam";
     };
