@@ -1,3 +1,6 @@
 {
-  imports = [ ./starship.nix ];
+  imports = [
+    ./opencode.nix
+    ./starship.nix
+  ];
 }

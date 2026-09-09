@@ -10,6 +10,7 @@
 
         hostname = [
           "ssh"
+          "opencode"
         ];
 
         iface = config.services.tailscale.interfaceName;
