@@ -47,6 +47,7 @@ in
         screenRadiusRatio = 0.45;
 
         # lock screen
+        compactLockScreen = true;
         lockScreenAnimations = true;
         lockOnSuspend = true;
         enableLockScreenMediaControls = false;
