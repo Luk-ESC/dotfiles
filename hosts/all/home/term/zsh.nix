@@ -1,0 +1,58 @@
+{
+  pkgs,
+  lib,
+  config,
+  host,
+  ...
+}:
+{
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    initContent = ''
+      bindkey "^H" backward-kill-word
+      WORDCHARS=''${WORDCHARS//[\/-]/}
+
+      bindkey "^[[1;5D" backward-word
+      bindkey "^[[1;5C" forward-word
+
+      autoload -U up-line-or-beginning-search
+      zle -N up-line-or-beginning-search
+      bindkey "^[OA" up-line-or-beginning-search
+      bindkey '^[[A' up-line-or-beginning-search
+
+      autoload -U down-line-or-beginning-search
+      zle -N down-line-or-beginning-search
+      bindkey "^[OB" down-line-or-beginning-search
+      bindkey '^[[B' down-line-or-beginning-search
+    '';
+
+    shellAliases = {
+      nrs = "sudo nixos-rebuild switch --flake ${config.xdg.userDirs.projects}/nixcfg#${host}";
+      nrt = "sudo nixos-rebuild test --flake ${config.xdg.userDirs.projects}/nixcfg#${host}";
+      nrb = "sudo nixos-rebuild boot --flake ${config.xdg.userDirs.projects}/nixcfg#${host}";
+      ls = "ls --color=auto";
+      reload = "source ~/.config/zsh/.zshrc; rehash";
+      erm = "${lib.getExe pkgs.erdtree} --level=1 --sort=size -H --hidden --no-ignore";
+      cat = "${lib.getExe pkgs.bat} --paging=never";
+      df = "df -h";
+      du = "du -h";
+      free = "free -h";
+      diff = "diff --color=auto";
+      yoink = "${lib.getExe pkgs.git} clone --depth 1";
+      b = "${../../../../pkgs/bunny}/bunny.sh";
+    };
+
+    history = {
+      append = true;
+      ignorePatterns = [
+        "poweroff"
+        "reboot"
+        "rm -rf *"
+      ];
+      size = 100000;
+    };
+  };
+}
