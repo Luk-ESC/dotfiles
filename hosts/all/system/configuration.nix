@@ -29,6 +29,17 @@
     {
       vmVariant = options;
       vmVariantWithDisko = options;
+      docker.rootless = {
+        enable = true;
+        setSocketVariable = true; # <--- interferes with podman python client `from_env`
+        # fix broken dns
+        daemon.settings = {
+          dns = [
+            "1.1.1.1"
+            "8.8.8.8"
+          ];
+        };
+      };
     };
 
   # Disable nano
