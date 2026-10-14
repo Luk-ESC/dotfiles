@@ -73,6 +73,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    binary-ninja = {
+      url = "github:jchv/nix-binary-ninja";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.inputs.systems.follows = "systems";
+    };
+
     copai = {
       url = "github:inet4/copai";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -111,6 +117,7 @@
       noctalia,
       niri,
       pwndbg,
+      binary-ninja,
       copai,
       leaves,
       ...
@@ -122,6 +129,8 @@
         extraModules = [
           {
             stylix.image = (assets.outPath + "/wallpapers/default");
+
+            nixpkgs.overlays = [ binary-ninja.overlays.default ];
           }
 
           stylix.nixosModules.stylix
@@ -139,6 +148,7 @@
           stylix.homeModules.stylix
           agenix.homeManagerModules.default
           noctalia.homeModules.default
+          binary-ninja.hmModules.binaryninja
         ];
       };
 

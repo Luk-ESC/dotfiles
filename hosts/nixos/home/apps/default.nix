@@ -16,6 +16,11 @@
     ./warp.nix
   ]);
 
+  programs.binary-ninja = {
+    enable = true;
+    package = pkgs.binary-ninja-personal-wayland;
+  };
+
   home.packages = lib.optionals (!minimal) (
     with pkgs;
     [
@@ -30,7 +35,6 @@
       geogebra6
       dbeaver-bin
       burpsuite
-      binaryninja-free
     ]
   );
 }
