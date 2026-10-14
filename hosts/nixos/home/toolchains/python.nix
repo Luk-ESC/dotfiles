@@ -5,12 +5,16 @@
   ...
 }:
 let
-  python = pkgs.python3.withPackages (
+  realPython = pkgs.python3.override {
+    packageOverrides =
+      python-self: python-super: import ../../../../pkgs/angr.nix pkgs python-self python-super;
+  };
+  python = realPython.withPackages (
     p: with p; [
       pwntools
       requests
       # FIXME(nixos/nixpkgs #501379): doesn't build on 26.05
-      # angr
+      angr
       flask
       z3-solver
       numpy
