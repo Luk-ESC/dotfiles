@@ -12,3 +12,5 @@ name="${filename%%.*}"
 specName="wallpaper-$name"
 
 switchwall "$specName"
+
+exit 0
