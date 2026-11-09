@@ -5,7 +5,7 @@
   ...
 }:
 let
-  noctalia = config.programs.noctalia-shell.package;
+  keep = config.services.keep.package;
 in
 {
   home.packages = [
@@ -25,12 +25,12 @@ in
     package = pkgs.niri;
     settings = {
       spawn-at-startup = [
-        { argv = [ (lib.getExe noctalia) ]; }
+        { argv = [ (lib.getExe keep) ]; }
       ];
 
       layer-rules = [
         {
-          matches = [ { namespace = "^noctalia-wallpaper*"; } ];
+          matches = [ { namespace = "^keep-wallpaper$"; } ];
           place-within-backdrop = true;
         }
       ];
@@ -65,40 +65,37 @@ in
         with config.lib.niri.actions;
         let
           alacritty = lib.getExe pkgs.alacritty;
-          spawnIpc = a: {
-            spawn = [
-              (lib.getExe noctalia)
-              "ipc"
-              "call"
-            ]
-            ++ (lib.splitString " " a);
-          };
+          pamixer = lib.getExe pkgs.pamixer;
+          brightnessctl = lib.getExe pkgs.brightnessctl;
+          playerctl = lib.getExe pkgs.playerctl;
+          spawnKeep = spawn (lib.getExe keep);
         in
         {
           # Apps
-          "Mod+L".action = spawnIpc "lockScreen lock";
+          "Mod+L".action = spawnKeep "lock";
           "Mod+Q".action = spawn alacritty;
           "Mod+B".action = spawn alacritty "-T" "Bunny" "-e" "${../../../../pkgs/bunny}/bunny.sh";
           "Mod+R".action = spawn (lib.getExe pkgs.firefox);
-          "Mod+E".action = spawnIpc "launcher toggle";
-          "Mod+A".action = spawnIpc "wallpaper toggle";
-          "Mod+V".action = spawnIpc "launcher clipboard";
+          "Mod+E".action = spawnKeep "launcher";
+          "Mod+A".action = spawnKeep "wallpapers";
+          "Mod+U".action = spawnKeep "timetable";
+          # "Mod+V".action = spawnIpc "launcher clipboard";
           "Mod+C".action = close-window;
 
           # Audio
-          XF86AudioRaiseVolume.action = spawnIpc "volume increase";
-          XF86AudioLowerVolume.action = spawnIpc "volume decrease";
-          XF86AudioMute.action = spawnIpc "volume muteOutput";
-          XF86AudioMicMute.action = spawnIpc "volume muteInput";
+          XF86AudioRaiseVolume.action = spawn pamixer "--increase" "5";
+          XF86AudioLowerVolume.action = spawn pamixer "--decrease" "5";
+          XF86AudioMute.action = spawn pamixer "--toggle-mute";
+          XF86AudioMicMute.action = spawn pamixer "--default-source" "--toggle-mute";
 
           # Brightness
-          XF86MonBrightnessUp.action = spawnIpc "brightness increase";
-          XF86MonBrightnessDown.action = spawnIpc "brightness decrease";
+          XF86MonBrightnessUp.action = spawn brightnessctl "set" "+5%";
+          XF86MonBrightnessDown.action = spawn brightnessctl "set" "5%-";
 
           # Media
-          XF86AudioPlay.action = spawnIpc "media playPause";
-          XF86AudioNext.action = spawnIpc "media next";
-          XF86AudioPrev.action = spawnIpc "media previous";
+          XF86AudioPlay.action = spawn playerctl "play-pause";
+          XF86AudioNext.action = spawn playerctl "next";
+          XF86AudioPrev.action = spawn playerctl "previous";
 
           # Movement
           "Mod+Left".action = focus-column-left;

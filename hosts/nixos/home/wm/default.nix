@@ -3,7 +3,7 @@
   # The window manager and relevant settings
   imports = [
     ./niri.nix
-    ./noctalia.nix
+    ./keep.nix
   ]
   ++ (lib.optionals (!minimal) [
     ./cursor.nix

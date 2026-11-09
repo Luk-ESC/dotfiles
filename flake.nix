@@ -92,11 +92,9 @@
       inputs.flake-utils.inputs.systems.follows = "systems";
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell?ref=legacy-v4";
+    keep = {
+      url = "git+ssh://git@github.com/Luk-ESC/keep?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.noctalia-qs.inputs.systems.follows = "systems";
-      inputs.noctalia-qs.inputs.treefmt-nix.follows = "";
     };
   };
 
@@ -114,11 +112,11 @@
       private,
       fenix,
       assets,
-      noctalia,
       niri,
       pwndbg,
       binary-ninja,
       copai,
+      keep,
       leaves,
       ...
     }:
@@ -147,7 +145,8 @@
         homeSharedModules = [
           stylix.homeModules.stylix
           agenix.homeManagerModules.default
-          noctalia.homeModules.default
+          keep.homeManagerModules.default
+          keep.homeManagerModules.stylix
           binary-ninja.hmModules.binaryninja
         ];
       };
