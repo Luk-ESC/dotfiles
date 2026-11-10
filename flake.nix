@@ -8,6 +8,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    spotx-nix = {
+      url = "github:SpotX-Official/SpotX-Nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     systems.url = "github:nix-systems/x86_64-linux";
 
     disko = {
@@ -73,6 +78,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    binary-ninja = {
+      url = "github:jchv/nix-binary-ninja";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.inputs.systems.follows = "systems";
+    };
+
     copai = {
       url = "github:inet4/copai";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -86,11 +97,9 @@
       inputs.flake-utils.inputs.systems.follows = "systems";
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell?ref=legacy-v4";
+    keep = {
+      url = "git+ssh://git@github.com/Luk-ESC/keep?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.noctalia-qs.inputs.systems.follows = "systems";
-      inputs.noctalia-qs.inputs.treefmt-nix.follows = "";
     };
   };
 
@@ -99,6 +108,7 @@
       self,
       nixpkgs,
       home-manager,
+      spotx-nix,
       disko,
       atlas,
       stylix,
@@ -108,47 +118,91 @@
       private,
       fenix,
       assets,
-      noctalia,
       niri,
       pwndbg,
+      binary-ninja,
       copai,
+      keep,
       leaves,
       ...
     }:
     let
+      system = "x86_64-linux";
+      nixos = {
+        name = "nixos";
+        extraModules = [
+          {
+            stylix.image = (assets.outPath + "/wallpapers/default");
+
+            nixpkgs.overlays = [ binary-ninja.overlays.default ];
+          }
+
+          stylix.nixosModules.stylix
+          niri.nixosModules.niri
+        ];
+        extraSpecialArgs = {
+          inherit assets;
+          spotify-spotx = spotx-nix.packages.${system}.default;
+          fenix = fenix.packages.${system};
+          extensions = firefox-extensions.packages.${system};
+          pwndbg = pwndbg.packages.${system}.default;
+          ida = private.packages.${system}.ida;
+          copai = copai.packages.${system}.default;
+        };
+        homeSharedModules = [
+          stylix.homeModules.stylix
+          agenix.homeManagerModules.default
+          keep.homeManagerModules.default
+          keep.homeManagerModules.stylix
+          binary-ninja.hmModules.binaryninja
+        ];
+      };
+
+      server = {
+        name = "server";
+        extraModules = [ ];
+        extraSpecialArgs = { };
+        homeSharedModules = [ ];
+      };
+
       mkSystem =
-        minimal:
-        nixpkgs.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          specialArgs = { inherit minimal; };
-          modules = [
-            # Import the previous configuration.nix we used,
-            # so the old configuration file still takes effect
-            ./system/configuration.nix
-            ./hardware-configuration.nix
+        host: minimal:
+        let
+          hostDir = ./hosts + "/${host.name}";
+        in
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit minimal;
+            host = host.name;
+          };
+          modules = host.extraModules ++ [
+            ./hosts/all/system
+            (hostDir + "/system")
 
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.eschb = ./home;
-
-                extraSpecialArgs = {
-                  inherit assets minimal;
-                  fenix = fenix.packages.${system};
-                  extensions = firefox-extensions.packages.${system};
-                  pwndbg = pwndbg.packages.${system}.default;
-                  ida = private.packages.${system}.ida;
-                  age = agenix.packages.${system}.default;
-                  copai = copai.packages.${system}.default;
+                users.eschb = {
+                  imports = [
+                    ./hosts/all/home
+                    (hostDir + "/home")
+                  ];
                 };
 
+                extraSpecialArgs = {
+                  inherit minimal;
+                  host = host.name;
+                  age = agenix.packages.${system}.default;
+                }
+                // host.extraSpecialArgs;
+
                 sharedModules = [
-                  stylix.homeModules.stylix
                   agenix.homeManagerModules.default
-                  noctalia.homeModules.default
-                ];
+                ]
+                ++ host.homeSharedModules;
               };
             }
 
@@ -156,20 +210,12 @@
               nixpkgs.config.allowUnfree = true;
             }
 
-            {
-              stylix.image = (assets.outPath + "/wallpapers/default");
-            }
-
-            stylix.nixosModules.stylix
-            niri.nixosModules.niri
-
             leaves.nixosModules.${system}.default
 
             disko.nixosModules.disko
             ./disko/disko-config.nix
 
             atlas.nixosModules.default
-            ./system/impermanence.nix
 
             agenix.nixosModules.default
             secrets.nixosModules.default
@@ -182,8 +228,9 @@
         };
     in
     {
-      nixosConfigurations.nixos = mkSystem false;
-      nixosConfigurations.minimal = mkSystem true;
+      nixosConfigurations.nixos = mkSystem nixos false;
+      nixosConfigurations.minimal = mkSystem nixos true;
+      nixosConfigurations.server = mkSystem server false;
       nixosConfigurations.base = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
@@ -214,7 +261,7 @@
               ];
             }
           )
-          ./system/base.nix
+          ./hosts/all/system/base.nix
         ];
       };
     };

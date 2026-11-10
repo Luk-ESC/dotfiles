@@ -55,11 +55,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787943363,
-        "narHash": "sha256-+ZDynCaN/e3JhH2xELN/YbZ0adqRr+9BldQIDzEU1U0=",
+        "lastModified": 1794304646,
+        "narHash": "sha256-Gmq9ELiQeVq44B/M2+r7NBk3Kp8qx/NLwUoJth43vPk=",
         "owner": "Luk-ESC",
         "repo": "atlas",
-        "rev": "c12cc4b621d8bac616cbd19ff13472fbf8100f06",
+        "rev": "aae28c34814eaab7c6a3347daa3536eceded45cd",
         "type": "github"
       },
       "original": {
@@ -133,6 +133,27 @@
         "owner": "tinted-theming",
         "repo": "base16-vim",
         "rev": "577fe8125d74ff456cf942c733a85d769afe58b7",
+        "type": "github"
+      }
+    },
+    "binary-ninja": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789865497,
+        "narHash": "sha256-b/8sRfuQBElWBWrQmg7TSkPP6vlSmP3SXgckdCFRT7c=",
+        "owner": "jchv",
+        "repo": "nix-binary-ninja",
+        "rev": "2013beae2046934c5c2faa1fb88e6852f147712f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jchv",
+        "repo": "nix-binary-ninja",
         "type": "github"
       }
     },
@@ -239,6 +260,22 @@
         "type": "github"
       }
     },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767039857,
+        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
+        "owner": "NixOS",
+        "repo": "flake-compat",
+        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -261,6 +298,26 @@
       }
     },
     "flake-utils": {
+      "inputs": {
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
       "inputs": {
         "systems": [
           "systems"
@@ -359,12 +416,33 @@
         "type": "github"
       }
     },
+    "keep": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794250182,
+        "narHash": "sha256-sSucEThxZ5HJaPIlYdP6IJE4AsZI8E0mosHQ4g8UwPw=",
+        "ref": "main",
+        "rev": "0853470306f5026fe82b0fe8f07cfb344df48864",
+        "revCount": 91,
+        "type": "git",
+        "url": "ssh://git@github.com/Luk-ESC/keep"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/Luk-ESC/keep"
+      }
+    },
     "leaves": {
       "inputs": {
         "fenix": [
           "fenix"
         ],
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "naersk": "naersk",
         "nixpkgs": [
           "nixpkgs"
@@ -453,53 +531,6 @@
         "type": "github"
       }
     },
-    "noctalia": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "noctalia-qs": "noctalia-qs"
-      },
-      "locked": {
-        "lastModified": 1783017890,
-        "narHash": "sha256-bAzrtN0GDMH0dOZkgeI3zSxfFs2rdD3pMuzOxvTF0bs=",
-        "owner": "noctalia-dev",
-        "repo": "noctalia-shell",
-        "rev": "a48885b9fec485c903c955749a7da6e30147cd38",
-        "type": "github"
-      },
-      "original": {
-        "owner": "noctalia-dev",
-        "ref": "legacy-v4",
-        "repo": "noctalia-shell",
-        "type": "github"
-      }
-    },
-    "noctalia-qs": {
-      "inputs": {
-        "nixpkgs": [
-          "noctalia",
-          "nixpkgs"
-        ],
-        "systems": [
-          "systems"
-        ],
-        "treefmt-nix": []
-      },
-      "locked": {
-        "lastModified": 1780799499,
-        "narHash": "sha256-YloRtLqJabzYUWvdLyh67zH4DZrR3kQj+dlQJwLPmPM=",
-        "owner": "noctalia-dev",
-        "repo": "noctalia-qs",
-        "rev": "f308426239665e3bc3d624014e9295b2ae2f58ff",
-        "type": "github"
-      },
-      "original": {
-        "owner": "noctalia-dev",
-        "repo": "noctalia-qs",
-        "type": "github"
-      }
-    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -532,11 +563,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787873855,
-        "narHash": "sha256-weZc6bB+Zt1zO7eTnWqTyMKNroHmVXrbvt5CY38nEBg=",
+        "lastModified": 1789113891,
+        "narHash": "sha256-CRegVF4cxnyP6Wj5eY0oju9AxsaAJno9iofsHLgHTo4=",
         "ref": "main",
-        "rev": "607b2494db50f7db4621e29b61220538ba362cc9",
-        "revCount": 5,
+        "rev": "7249b8a2039d45fa2c10cd94b3715d49213e8567",
+        "revCount": 6,
         "type": "git",
         "url": "ssh://git@github.com/Luk-ESC/private_config"
       },
@@ -624,18 +655,20 @@
         "agenix": "agenix",
         "assets": "assets",
         "atlas": "atlas",
+        "binary-ninja": "binary-ninja",
         "copai": "copai",
         "disko": "disko",
         "fenix": "fenix",
         "firefox-extensions": "firefox-extensions",
         "home-manager": "home-manager",
+        "keep": "keep",
         "leaves": "leaves",
         "niri": "niri",
         "nixpkgs": "nixpkgs",
-        "noctalia": "noctalia",
         "private": "private",
         "pwndbg": "pwndbg",
         "secrets": "secrets",
+        "spotx-nix": "spotx-nix",
         "stylix": "stylix",
         "systems": "systems"
       }
@@ -659,11 +692,11 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1764791349,
-        "narHash": "sha256-rmBp/0bd0gcKtyZNoYF291AdVO9fFkPZXY3w3OMZEaM=",
+        "lastModified": 1789113919,
+        "narHash": "sha256-fwG0eE7WcWD09tSHYEq1eia3KgqTq7muAi+pLBe+a7I=",
         "ref": "main",
-        "rev": "76744e32c5484608983be202e0318a5b79e25e7b",
-        "revCount": 5,
+        "rev": "9219351d2540bd502e8b1c6064ce8ff91555acfa",
+        "revCount": 10,
         "type": "git",
         "url": "ssh://git@github.com/Luk-ESC/secrets"
       },
@@ -671,6 +704,44 @@
         "ref": "main",
         "type": "git",
         "url": "ssh://git@github.com/Luk-ESC/secrets"
+      }
+    },
+    "spotx-bash": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793985593,
+        "narHash": "sha256-+dTpUCM7TgGn0b20DulRhzfSmnxMr3dPvDXCilYfiuQ=",
+        "owner": "SpotX-Official",
+        "repo": "SpotX-Bash",
+        "rev": "db0583a456fab7b0488c92fd471e6a260e08b995",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SpotX-Official",
+        "repo": "SpotX-Bash",
+        "type": "github"
+      }
+    },
+    "spotx-nix": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "spotx-bash": "spotx-bash"
+      },
+      "locked": {
+        "lastModified": 1794175841,
+        "narHash": "sha256-Lh1ty4rTtzTO9Mmz85LxfG/NjSYMKeGUJbf3xlL837k=",
+        "owner": "SpotX-Official",
+        "repo": "SpotX-Nix",
+        "rev": "e1b2c3c18577402414ef398d7ed473d40caeeef7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SpotX-Official",
+        "repo": "SpotX-Nix",
+        "type": "github"
       }
     },
     "stylix": {
