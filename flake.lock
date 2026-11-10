@@ -55,11 +55,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789311232,
-        "narHash": "sha256-tUCV9kwbs3vevNv9wgwc8rWZ/DFwmueoGLlm/AGU0z4=",
+        "lastModified": 1794304646,
+        "narHash": "sha256-Gmq9ELiQeVq44B/M2+r7NBk3Kp8qx/NLwUoJth43vPk=",
         "owner": "Luk-ESC",
         "repo": "atlas",
-        "rev": "6d3bb7d655c5a2c7d792f47c4fc50c7a1812b0b2",
+        "rev": "aae28c34814eaab7c6a3347daa3536eceded45cd",
         "type": "github"
       },
       "original": {
@@ -257,6 +257,22 @@
       "original": {
         "owner": "rafaelmardojai",
         "repo": "firefox-gnome-theme",
+        "type": "github"
+      }
+    },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767039857,
+        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
+        "owner": "NixOS",
+        "repo": "flake-compat",
+        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "flake-compat",
         "type": "github"
       }
     },
@@ -652,6 +668,7 @@
         "private": "private",
         "pwndbg": "pwndbg",
         "secrets": "secrets",
+        "spotx-nix": "spotx-nix",
         "stylix": "stylix",
         "systems": "systems"
       }
@@ -687,6 +704,44 @@
         "ref": "main",
         "type": "git",
         "url": "ssh://git@github.com/Luk-ESC/secrets"
+      }
+    },
+    "spotx-bash": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793985593,
+        "narHash": "sha256-+dTpUCM7TgGn0b20DulRhzfSmnxMr3dPvDXCilYfiuQ=",
+        "owner": "SpotX-Official",
+        "repo": "SpotX-Bash",
+        "rev": "db0583a456fab7b0488c92fd471e6a260e08b995",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SpotX-Official",
+        "repo": "SpotX-Bash",
+        "type": "github"
+      }
+    },
+    "spotx-nix": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "spotx-bash": "spotx-bash"
+      },
+      "locked": {
+        "lastModified": 1794175841,
+        "narHash": "sha256-Lh1ty4rTtzTO9Mmz85LxfG/NjSYMKeGUJbf3xlL837k=",
+        "owner": "SpotX-Official",
+        "repo": "SpotX-Nix",
+        "rev": "e1b2c3c18577402414ef398d7ed473d40caeeef7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SpotX-Official",
+        "repo": "SpotX-Nix",
+        "type": "github"
       }
     },
     "stylix": {

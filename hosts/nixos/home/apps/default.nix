@@ -13,6 +13,7 @@
   ]
   ++ (lib.optionals (!minimal) [
     ./prismlauncher.nix
+    ./spotify.nix
     ./warp.nix
   ]);
 
