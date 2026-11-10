@@ -8,6 +8,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    spotx-nix = {
+      url = "github:SpotX-Official/SpotX-Nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     systems.url = "github:nix-systems/x86_64-linux";
 
     disko = {
@@ -103,6 +108,7 @@
       self,
       nixpkgs,
       home-manager,
+      spotx-nix,
       disko,
       atlas,
       stylix,
@@ -136,6 +142,7 @@
         ];
         extraSpecialArgs = {
           inherit assets;
+          spotify-spotx = spotx-nix.packages.${system}.default;
           fenix = fenix.packages.${system};
           extensions = firefox-extensions.packages.${system};
           pwndbg = pwndbg.packages.${system}.default;
