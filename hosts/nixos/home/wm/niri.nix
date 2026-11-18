@@ -6,6 +6,8 @@
 }:
 let
   keep = config.services.keep.package;
+
+  alacrittySocket = "/run/user/${toString config.home.uid}/alacritty-niri.sock";
 in
 {
   home.packages = [
@@ -26,6 +28,14 @@ in
     settings = {
       spawn-at-startup = [
         { argv = [ (lib.getExe keep) ]; }
+        {
+          argv = [
+            (lib.getExe pkgs.alacritty)
+            "--daemon"
+            "--socket"
+            alacrittySocket
+          ];
+        }
       ];
 
       layer-rules = [
@@ -65,6 +75,8 @@ in
         with config.lib.niri.actions;
         let
           alacritty = lib.getExe pkgs.alacritty;
+          spawnAlacritty = spawn alacritty "--socket" alacrittySocket "msg" "create-window";
+
           pamixer = lib.getExe pkgs.pamixer;
           brightnessctl = lib.getExe pkgs.brightnessctl;
           playerctl = lib.getExe pkgs.playerctl;
@@ -73,8 +85,8 @@ in
         {
           # Apps
           "Mod+L".action = spawnKeep "lock";
-          "Mod+Q".action = spawn alacritty;
-          "Mod+B".action = spawn alacritty "-T" "Bunny" "-e" "${../../../../pkgs/bunny}/bunny.sh";
+          "Mod+Q".action = spawnAlacritty;
+          "Mod+B".action = spawnAlacritty "-T" "Bunny" "-e" "${../../../../pkgs/bunny}/bunny.sh";
           "Mod+R".action = spawn (lib.getExe pkgs.firefox);
           "Mod+E".action = spawnKeep "launcher";
           "Mod+A".action = spawnKeep "wallpapers";
@@ -159,6 +171,7 @@ in
       };
 
       environment = {
+        ALACRITTY_SOCKET = alacrittySocket;
         QT_QPA_PLATFORM = "wayland";
         NIXOS_OZONE_WL = "1";
         ELECTRON_OZONE_PLATFORM_HINT = "auto";
